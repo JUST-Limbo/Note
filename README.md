@@ -1,2 +1,1 @@
-![image-20201014183709231](README.assets/image-20201014183709231.png)
-
+![你能忍耐吗长图](README.assets/你能忍耐吗长图.png)
