@@ -93,3 +93,6 @@ console.log(num, obj.num) // 65 30
 ```
 
 第三行匿名函数自调用，传入实参20，此时函数内的`this.num`指向全局下的`num`
+
+
+
