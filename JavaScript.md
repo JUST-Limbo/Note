@@ -94,5 +94,54 @@ console.log(num, obj.num) // 65 30
 
 第三行匿名函数自调用，传入实参20，此时函数内的`this.num`指向全局下的`num`
 
+## 5
 
+html下：
+
+```js
+let obj = {
+    age:20,
+    info:function(){
+        return () => {
+            console.log(this.age)
+        }
+    }
+}
+let person = { age:28 }
+let info1 = obj.info()
+info1() // 20
+let info2 = obj.info.call(person)
+info2() // 28
+```
+
+
+
+## 6
+
+**箭头函数不能在call方法修改里面的this**
+
+函数的this可以通过call等显式绑定的方式修改，而为了减少this的复杂性，箭头函数无法用call()来指定this
+
+```js
+const obj = {
+    a: () => {
+        console.log(this)
+    }
+}
+obj.a.call('123')  //打出来的结果依然是window对象
+```
+
+
+
+## 7
+
+不管我们给函数进行几次bind显式绑定，函数中的this永远由 **第一次bind** 决定
+
+```js
+let a = {}
+let fn = function(){
+    console.log(this)
+}
+fn.bind().bind(a)() // => Window
+```
 
