@@ -145,3 +145,22 @@ let fn = function(){
 fn.bind().bind(a)() // => Window
 ```
 
+
+
+## 8
+
+```js
+var a = 1
+let b = 1
+const c = 1
+console.log(window.a) // 1
+console.log(window.b) // undefined
+console.log(window.c) // undefined
+
+在全局作用域下使用let和const声明变量，变量并不会被挂载到window上，这一点与var不同
+
+关于const，还有两个注意点：
+- const声明之后必须马上赋值，否则报错
+- const简单类型一旦声明就不能修改，而复杂类型（数组，对象）指针指向的地址不能修改，但内部数据可以修改
+```
+
