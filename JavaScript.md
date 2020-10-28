@@ -164,3 +164,64 @@ console.log(window.c) // undefined
 - const简单类型一旦声明就不能修改，而复杂类型（数组，对象）指针指向的地址不能修改，但内部数据可以修改
 ```
 
+
+
+## 9
+
+```html
+<script>
+    let a={}
+    b='0'
+    c=0
+    a[b]='1'
+    a[c]=2
+    console.log(a[b]) // 2
+ </script>
+```
+
+## 10
+
+```html
+  <script>
+    let a={}
+    b={
+      n: '0'
+    }
+    c={
+      m:'2'
+    }
+    a[b]='qaz'
+    a[c]='abc'
+    console.log(a[b]) // 'abc'
+  </script>
+```
+
+## 11
+
+```html
+<script>
+    var test=(function(i){
+      return function(){
+        alert(i*2)
+      }
+    })(2)
+    test(5) // '4' alert默认调用.toString()
+</script>
+```
+
+## 12
+
+```html
+  <script>
+    var a = 0, b = 0
+    function A(a) {
+      A = function (b) {
+        alert(a + b++) // a闭包
+      }
+      alert(a++)
+    }
+    A(1) // '1'
+    A(2) // '4'
+  </script>
+```
+
