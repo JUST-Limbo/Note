@@ -761,7 +761,7 @@ int main() {
 	int a2 = 10;
 	int b2 = 20;
 
-	cout << a2 % b2 << endl;
+	cout << a2 % b2 << endl; // 商0余10
 
 	int a3 = 10;
 	int b3 = 0;
