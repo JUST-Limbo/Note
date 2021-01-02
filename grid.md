@@ -643,3 +643,67 @@ place-self: center center;
 ```
 
 如果省略第二个值，`place-self`属性会认为这两个值相等。
+
+
+
+## 布局实例
+
+### 水平垂直居中
+
+目前 grid 布局是唯一一个一行 css 代码实现水平垂直居中布局的方法：[地址](http://js.jirengu.com/kigix/1/edit?html,css,output)
+
+
+
+![img](grid.assets/16dcd4e3de38f55a)
+
+
+
+```html
+<style>
+.container{
+  display: grid;
+  place-content: center;
+}
+</style>
+<div class="container">
+  <div>asdf</div>
+</div>
+```
+
+
+
+### 自适应两端对齐
+
+这种效果难在实现最后一行左对齐的效果。如果使用 `flex` 布局或者 `text-align: justify` （参考[此处](https://juejin.im/post/6844903894313598989)）方法，则需要使用等列的空标签占位，而如果不确定总共有多少列的话则难以实现最后一行左对齐的效果。而 `grid` 布局则可完美实现两端对齐最后一行左对齐的效果。
+
+项目宽度固定：[地址](http://js.jirengu.com/vigef/4/edit?html,css,output)
+
+
+
+![img](grid.assets/16dd200804aaa578)
+
+
+
+项目宽度不固定：[地址](http://js.jirengu.com/vujem/1/edit?html,css,output)
+
+
+
+![img](grid.assets/16dd2ee29bcc74b1)
+
+### 限定列宽的表格
+
+第三列在宽度足够（即能前两列都大于100px）的情况下是前两列之和，最小是 `200px` ：[地址](http://js.jirengu.com/zineb/2/edit?html,css,output)
+
+
+
+![img](grid.assets/16dcdef5932dba1a)
+
+
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr minmax(200px, 2fr);
+}
+```
+
