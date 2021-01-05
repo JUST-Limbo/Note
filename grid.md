@@ -707,3 +707,13 @@ place-self: center center;
 }
 ```
 
+### 页眉页脚固定布局
+
+页眉页脚固定的布局在管理端和移动端都常见，如下图所示： ![img](grid.assets/720e11100eaf482ba8e9c421c8423bd5~tplv-k3u1fbpfcp-watermark.image) 这种布局头部和底部固定，中间内容区域自适应高度，代码如下：
+
+```css
+display: grid;
+grid-template-rows: auto 1fr auto;
+```
+
+代码的意思就是分成三行布局，第一行和第三行固定，剩下的中间填充满。
