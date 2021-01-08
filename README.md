@@ -2,4 +2,3 @@
 
 ## [译文](https://zhuanlan.zhihu.com/p/30742986)
 
-![](README.assets/你能忍耐吗长图.png)
