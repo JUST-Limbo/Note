@@ -84,6 +84,11 @@ gulp.series(任务1,任务2,任务3,...)
 
 ```js
 gulp.parallel(任务1,任务2,任务3,...)
+/**
+ * 配置一个默认任务
+ * gulp.series() gulp.parallel()
+ * 这两个api的返回值是一个函数,返回值可以直接被当做任务函数使用
+ */
 ```
 
 
@@ -190,3 +195,44 @@ gulp-babel需要手动安装两个依赖
 
 
 ### gulp-imagemin
+
+
+
+### gulp-concat
+
+
+
+### gulp-webserver
+
+启动一个基于node书写的服务器
+
+```js
+gulp
+    .src('./dist')
+    .pipe(webserver({
+      host: 'localhost', // 域名(可以配置自定义域名)
+      port: '8080',
+      livereload: true, // 当文件修改时是否自动刷新页面
+      open: './pages/index.html', // 默认打开哪个文件,从dist目录以后的路径开始书写
+      proxies:[ // 配置所有代理 对象数组 只是针对gulp-webserver服务器启动的代理
+        {
+          source:'', // 代理标识符
+          target:'' // 代理目标地址
+        }
+      ]
+    }))
+启动服务配置自定义域名
+host填自定义域名
+找到电脑的hosts文件
+添加一行 127.0.0.1 自定义域名
+```
+
+
+
+## 删除
+
+### del
+
+npm i -d del
+
+删除文件目录
