@@ -266,6 +266,7 @@ function htmlHandler() {
 <!-- 文件路径从basepath标识符以后开始书写 -->
 @_@include('./footer.html')
 </body>
+也可以导入head标签内的模板
 ```
 
 组件传参：
