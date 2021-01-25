@@ -235,7 +235,49 @@ host填自定义域名
 
 导入后可以得到一个处理流文件函数，在管道函数中调用即可，需传递参数
 
+```js
+function htmlHandler() {
+  return gulp
+    .src('./src/pages/*.html')
+    .pipe(fileInclude({ // 根据配置导入对应的html片段
+      prefix:'@_@', // 自定义的标识符
+      basepath:'./src/components' // 基准目录 组件文件所在目录
+    }))
+    .pipe(htmlmin({ // 通过配置的参数进行压缩
+      // collapseWhitespace: true,  // 移除空格
+      // removeEmptyAttributes: true, // 移除空属性
+      collapseBooleanAttributes: true, // 移除布尔值属性的属性值
+      removeAttributeQuotes: true, // 移除单属性值上的引号
+      minifyCSS: true, // 压缩在style标签内的样式代码(只能压缩一行不能解决兼容性)
+      minifyJS: true,  // 压缩script标签内的js代码
+      removeStyleLinkTypeAttributes: true, // 移除style和link标签上的type属性(text/css)
+      removeScriptTypeAttributes: true // 移除script标签上的type属性(text/css)
+    }))
+    .pipe(gulp.dest('./dist/pages/'))
+}
+```
 
+导入语法：
+
+```html
+<body>
+<!-- 导入组件的使用 -->
+<!-- 自定义标识符include('要导入的文件路径')  -->
+<!-- 文件路径从basepath标识符以后开始书写 -->
+@_@include('./footer.html')
+</body>
+```
+
+组件传参：
+
+```html
+<!-- 在导入时传递第二个参数,一个JSON格式对象 -->
+@_@include('./footer.html',{title:'asb'})
+
+<div>footer</div>
+<h1>@_@title</h1>
+
+```
 
 
 
