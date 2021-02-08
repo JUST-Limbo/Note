@@ -376,6 +376,3 @@ const moduleA = {
   }
 }
 ```
-
-
-
