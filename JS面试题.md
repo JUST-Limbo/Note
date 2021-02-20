@@ -91,3 +91,7 @@ const unique4 = arr => {
 
 ```
 
+
+
+## 原型链
+
