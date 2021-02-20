@@ -95,3 +95,91 @@ const unique4 = arr => {
 
 ## 原型链
 
+当谈到继承时，JavaScript 只有一种结构：对象。每个实例对象（ object ）都有一个私有属性（称之为 __proto__ ）指向它的构造函数的原型对象（**prototype** ）。该原型对象也有一个自己的原型对象( __proto__ ) ，层层向上直到一个对象的原型对象为 `null`。根据定义，`null` 没有原型，并作为这个**原型链**中的最后一个环节。
+
+JavaScript 对象是动态的属性“包”（指其自己的属性）。JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。
+
+```js
+/**
+ * 对应名称
+ * prototype:原型
+ * __proto__:原型链 链接点
+ * 
+ * 从属关系
+ * prototype->函数的一个属性 :对象{}
+ * __proto__ ->对象Object的一个属性 :对象{}
+ * 对象的__proto__保存着改对象的构造函数的prototype
+ */
+function Test(params) {
+  this.a = 1
+  this.b = 333
+}
+console.log(Test.prototype)
+
+Test.prototype.b = 2
+
+const test = new Test()
+console.log(test.__proto__)
+console.log(Test.prototype === test.__proto__)
+
+// Test.prototype 也是一个对象,因此它也有__proto__
+console.log(Test.prototype.__proto__)
+console.log(Object.prototype.__proto__) // 最顶层的__proto__为null 
+
+Object.prototype.c = 3
+
+console.log(test)
+
+/**
+ * test:{
+ *  b:333,
+ *  a:1,
+ *  __proto__:Test.prototype={
+ *    b:2,
+ *    __proto__:Object.prototype={
+ *      c:3
+ *    }
+ *  }
+ * }
+ */
+console.log(test.a)
+console.log(test.b)
+console.log(test.c)
+
+
+// Function Object : 既是函数又是对象
+console.log(Test.__proto__ === Function.prototype) // true
+
+console.log(Function.__proto__)
+console.log(Function.prototype)
+console.log(Function.__proto__ === Function.prototype) // true 内置规定
+
+// const obj={}
+// const obj=new Object()
+
+console.log(typeof Object) // functon
+console.log(Object.__proto__ === Function.prototype) // true
+console.log(Object.__proto__ === Function.__proto__) // true
+
+// test => {a:1,b:333}
+// 不考察原型链
+console.log(test.hasOwnProperty('a')) // true
+console.log(test.hasOwnProperty('b')) // true
+console.log(test.hasOwnProperty('c')) // false
+
+// 考察原型链
+console.log('a' in test) // true
+console.log('b' in test) // true
+console.log('c' in test) // true
+
+// test.constructor -> 实例化test对象的构造函数
+console.log(test.constructor === Test)
+function Test1(params) {
+  this.a=1111
+}
+test.constructor=Test1
+console.log(test)
+console.log(test.__proto__===Test.prototype)
+
+```
+
