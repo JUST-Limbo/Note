@@ -265,7 +265,7 @@ con3.onclick = Debounce(addNum, 300, true) // 防抖（立即执行）
 
 节流
 
-> 节流是不需要clearTimeout
+> 节流不需要clearTimeout
 
 ```js
 const throttle = (func, wait, ...args) => {
