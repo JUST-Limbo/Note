@@ -183,3 +183,142 @@ console.log(test.__proto__===Test.prototype)
 
 ```
 
+
+
+## 防抖 节流
+
+防抖
+
+> 本质上是清除上次定时器，重新声明一个新的定时器
+
+```js
+const debounce = (func, wait, ...args) => {
+  let timeout;
+  return function(){
+    const context = this;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(context, args)
+    },wait);
+  }
+}
+```
+
+```js
+const debounce = (func, wait, ...args) => {
+  let timeout;
+  return function(){
+    const context = this;
+    if (timeout) cleatTimeout(timeout);
+    let callNow = !timeout;
+    timeout = setTimeout(() => {
+      timeout = null;
+    },wait)
+    
+    if(callNow) func.apply(context,args)
+   }
+}
+```
+
+
+
+```js
+let Debounce = function (fn, delay = 300, immediate = false) {
+  let timer = null // 闭包存储setTimeout状态
+  return function () {
+    let self = this // 事件源this
+    let args = arguments // 接收事件源的event
+    if (timer) {
+      clearTimeout(timer) // 清除定时器,timer变量仍然保存着计时器ID
+    } // 存在就清除执行fn的定时器
+    if (immediate) { // 立即执行
+      let callNow = !timer // 执行fn的状态
+      console.log(`callNow: `, callNow)
+      timer = setTimeout(function () {
+        timer = null
+      }, delay)
+      if (callNow) fn.apply(self, args)
+    } else { // 非立即执行
+      timer = setTimeout(function () { // 或者使用箭头函数将this指向dom
+        fn.apply(self, args)
+      }, delay)
+    }
+  }
+}
+
+let con1 = document.querySelector('.con1')
+let con2 = document.querySelector('.con2')
+let con3 = document.querySelector('.con3')
+
+let addNum = function (args) {
+  console.log('addnum')
+  // console.log(this, args)
+  // this.innerText = (+this.innerText) + 1
+}
+
+con1.onclick = addNum // 无防抖
+
+con2.onclick = Debounce(addNum) // 防抖
+
+con3.onclick = Debounce(addNum, 300, true) // 防抖（立即执行）
+```
+
+节流
+
+> 节流是不需要clearTimeout
+
+```js
+const throttle = (func, wait, ...args) => {
+  let pre = 0;
+  return function(){
+    const context = this;
+    let now = Date.now();
+    if (now - pre >= wait){
+       func.apply(context, args);
+       pre = Date.now();
+    }
+  }
+}
+```
+
+```js
+const throttle = (func, wait, ...args) => {
+  let timeout;
+  return function(){
+    const context = this;
+    if(!timeout){
+      timeout = setTimeout(() => {
+        timeout = null;
+        func.apply(context,args);
+      },wait)
+    }
+  }
+}
+```
+
+
+
+```js
+// 是否立即执行
+let ThrottlePro = function (fn, delay = 500, immediate = false) {
+    let preTime = 0 // 记录上一次执行时间
+    return function () {
+        let self = this, // 保留执行时候的的this
+            args = [...arguments], // 执行时候的传入参数
+            nowTime = +new Date(), // 记录当前的时间
+            flag = nowTime - preTime >= delay // 执行命令
+        if (immediate) { // 是否立即执行
+            if (!flag) return
+            preTime = nowTime // 更新执行时间
+            fn.apply(self, args)
+        } else {
+            if (!flag) return // 不满足执行条件
+            preTime = nowTime
+            setTimeout(function () {
+                fn.apply(self, args)
+            }, delay)
+        }
+    }
+}
+```
+
