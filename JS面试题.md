@@ -205,6 +205,7 @@ const debounce = (func, wait, ...args) => {
 ```
 
 ```js
+// 第一次函数一定执行，不会被第二次覆盖掉
 const debounce = (func, wait, ...args) => {
   let timeout;
   return function(){
