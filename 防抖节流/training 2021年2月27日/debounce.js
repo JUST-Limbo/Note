@@ -1,25 +1,23 @@
 let debounce = function (func, wait) {
   let timeout
   return function () {
-    const self = this
+    let self = this
     if (timeout) clearTimeout(timeout)
-    timeout = setTimeout(() => {
+    setTimeout(() => {
       func.apply(self, arguments)
-    }, wait)
+    }, wait);
   }
 }
 
 let debounceImmediate = function (func, wait) {
   let timeout
   return function () {
-    const self = this
-    if (timeout) clearTimeout
-    let callNow = !timeout
+    let self = this
+    if (timeout) clearTimeout(timeout)
+    let callnow = !timeout
     timeout = setTimeout(() => {
       timeout = null
-    }, wait)
-    if (callNow) {
-      func.apply(self, arguments)
-    }
+    }, wait);
+    if (callnow) func.apply(self, arguments)
   }
 }
