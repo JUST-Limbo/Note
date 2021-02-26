@@ -4,7 +4,7 @@ let debounce = function (func, delay) {
     const self = this
     if (timeout) clearTimeout(timeout)
     timeout = setTimeout(() => {
-      func.bind(self, arguments)
+      func.apply(self, arguments)
     }, delay)
   }
 }
@@ -18,6 +18,6 @@ let debounceImmediate = function (func, delay) {
     timeout = setTimeout(() => {
       timeout = null
     }, delay)
-    if (callNow) func.bind(self, arguments)
+    if (callNow) func.apply(self, arguments)
   }
 }

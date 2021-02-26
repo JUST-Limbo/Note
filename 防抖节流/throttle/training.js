@@ -4,7 +4,7 @@ let throttleImmediate = function (func, delay) {
     let self = this
     let nowtime = +new Date()
     if (nowtime - prevtime >= delay) {
-      func.bind(self, arguments)
+      func.apply(self, arguments)
       prevtime = nowtime
     }
   }
@@ -17,7 +17,7 @@ let throttle = function (func, delay) {
     if (!timeout) {
       timeout = setTimeout(() => {
         timeout = null
-        func.bind(self, arguments)
+        func.apply(self, arguments)
       }, delay)
     }
   }
