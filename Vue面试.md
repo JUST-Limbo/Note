@@ -1,4 +1,4 @@
-# Vue面试题
+#  Vue面试题
 
 ## v-if和v-for为什么不应该一起用
 
@@ -70,6 +70,8 @@ v-show：当v-show赋值为false时，元素被隐藏，此时查看代码时，
 + 事件总线
 + \$ref \$parent ​\$children ​\$root
 + slot
++ v-bind props
++ $attrs $listeners
 
 ## provide/inject
 

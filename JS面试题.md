@@ -273,10 +273,10 @@ const throttle = (func, wait, ...args) => {
   let pre = 0;
   return function(){
     const context = this;
-    let now = Date.now();
+    let now = +Date.now();
     if (now - pre >= wait){
        func.apply(context, args);
-       pre = Date.now();
+       pre = now
     }
   }
 }
