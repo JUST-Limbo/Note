@@ -51,6 +51,8 @@ const arr = [1, 1, '1', 17, true, true, false, false, 'true', 'a', {}, {}];
 
 **方法1：利用Set**
 
+**缺点：**无法识别相同对象和数组；
+
 ```js
 const res1 = Array.from(new Set(arr));
 ```
@@ -66,6 +68,7 @@ ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都
 **方法2：利用`indexOf includes filter`**
 
 ```js
+// 缺点：indexOf无法区分NaN;需要特殊处理；
 const unique2 = arr => {
   const res = [];
   for (let i = 0; i < arr.length; i++) {
@@ -82,13 +85,17 @@ const unique3 = arr => {
   return res;
 }
 
-
+// 缺点：indexOf无法区分NaN;需要特殊处理；
 const unique4 = arr => {
   return arr.filter((item, index) => {
     return arr.indexOf(item) === index;
   });
 }
 
+var unique = (arr) =>  {
+   if (!Array.isArray(arr)) return;
+   return arr.reduce((prev,cur) => prev.includes(cur) ? prev : [...prev,cur],[]);
+}
 ```
 
 
