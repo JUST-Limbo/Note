@@ -146,7 +146,7 @@ import eventBus from './js/bus.vue';
 
 ### 2.发布（声明）事件
 
-```js
+```vue
 created() {  
     eventBus.$on('getTarget', target => {  
         console.log(target);  
@@ -156,12 +156,24 @@ created() {
 
 ### 3.订阅（触发）事件
 
-```js
+```vue
 methods: {
    addCart(event) {
        eventBus.$emit('getTarget', event.target);   
    }
 }
+```
+
+### 4.移除事件监听器
+
+```vue
+eventBus.$off('getTarget')
+```
+
+### 5.销毁一个实例
+
+```vue
+eventBus.$destroy()
 ```
 
 
@@ -215,8 +227,6 @@ Result:
 
 
 
-
-
 ## Vue生命周期
 
 总共分为8个阶段创建前/后，载入前/后，更新前/后，销毁前/后。
@@ -244,8 +254,6 @@ Model-View-ViewModel 模式
 
 
 ## 双向绑定实现原理
-
-
 
 
 
@@ -371,8 +379,6 @@ beforeDestroy() {
 
 
 
-
-
 ## Vuex和单纯的全局对象有什么区别？
 
 `vuex`和全局对象主要有两大区别：
@@ -382,23 +388,13 @@ beforeDestroy() {
 
 
 
-## 箭头函数中，`this`是固定的，不可变的
+## $set $delete
 
-```js
-const obj = {
-    a: () => {
-        console.log(this.id)
-    }
-}
-var id = '1'
-obj.a() // '1'
-obj.a.call({
-    id:'2'
-}) // '1'
-```
+Vue无法探测普通的新增property，也无法探测到property被删除。因此若对象是响应式的，且需要在新增/删除property时触发更新视图，则需要使用到`$set $delete`
 
-
-
+> vm.$set( target, propertyName/index, value ) // 这是全局Vue.set的别名
+>
+> vm.$delete( target, propertyName/index ) // 这是全局Vue.delete的别名
 
 
 
