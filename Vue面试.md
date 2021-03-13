@@ -390,7 +390,7 @@ beforeDestroy() {
 
 ## $set $delete
 
-Vue无法探测普通的新增property，也无法探测到property被删除。因此若对象是响应式的，且需要在新增/删除property时触发更新视图，则需要使用到`$set $delete`
+Vue **不能检测**数组和对象的变化。因此若对象/数组是响应式的，且需要在新增/删除property时触发更新视图，则需要使用到`$set $delete`
 
 > vm.$set( target, propertyName/index, value ) // 这是全局Vue.set的别名
 >
@@ -433,6 +433,26 @@ created(){
    ```
 
 2. hook
+
+   ```vue
+   //  Parent.vue
+   <Child @hook:mounted="doSomething" ></Child>
+   
+   doSomething() {
+      console.log('父组件监听到 mounted 钩子函数 ...');
+   },
+       
+   //  Child.vue
+   mounted(){
+      console.log('子组件触发 mounted 钩子函数 ...');
+   },    
+       
+   // 以上输出顺序为：
+   // 子组件触发 mounted 钩子函数 ...
+   // 父组件监听到 mounted 钩子函数 ...
+   ```
+
+   
 
 
 
