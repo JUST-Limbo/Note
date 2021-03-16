@@ -454,6 +454,28 @@ created(){
 
    
 
+## 全局指令和局部指令
+
+全局指令：在main.js中
+
+```js
+Vue.directive('upper-word',(el,binding)=>{
+  el.textContent = binding.value.toUpperCase();
+})
+```
+
+局部指令：在组件中添加钩子
+
+```js
+// 自定义局部指令
+, directives: {
+  'lower-word'(el, binding){
+    console.log(el, binding)
+    el.textContent = binding.value.toLowerCase();
+  }
+}
+```
+
 
 
 
