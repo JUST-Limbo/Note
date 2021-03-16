@@ -345,3 +345,50 @@ let ThrottlePro = function (fn, delay = 500, immediate = false) {
 }
 ```
 
+## event loop
+
+每个宏任务之后，引擎会立即执行微任务队列中的所有任务，然后再执行其他的宏任务，或渲染，或进行其他任何操作。
+
+```
+宏任务 → 所有微任务 → 下一个宏任务
+```
+
+```js
+题 1：
+
+setTimeout(function () {
+    console.log(1)
+});
+new Promise(function(resolve,reject){
+    console.log(2)
+    resolve(3)
+}).then(function(val){
+    console.log(val)
+})
+console.log(4)
+
+Result:
+2 → 4 → 3 → 1
+```
+
+```js
+题 2：
+
+new Promise(resolve => {
+    resolve(1);
+    
+    Promise.resolve().then(() => {
+    	// t2
+    	console.log(2)
+    });
+    console.log(4)
+}).then(t => {
+	// t1
+	console.log(t)
+});
+console.log(3);
+
+Result:
+4 → 3 → 2 → 1
+```
+
