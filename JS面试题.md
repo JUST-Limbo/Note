@@ -392,3 +392,25 @@ Result:
 4 → 3 → 2 → 1
 ```
 
+
+
+## 函数累加
+
+用js实现无限累加的函数，形如`add(1)(2)(3)(4)...`
+
+当一个对象转换成原始值时，先查看对象是否有`valueOf`方法，如果有并且返回值是一个原始值，
+那么直接返回这个值，否则没有`valueOf`或返回的不是原始值，那么调用`toString`方法，返回字符串表示
+
+```js
+function add (a) {
+    function sum(b) { // 使用闭包
+        a = a + b; // 累加
+        return sum;
+    }
+    sum.toString = function() { // 重写toSting() 方法 把结果a返回出去
+        return a;
+    }
+    return sum; // 返回一个函数
+}
+```
+
