@@ -208,6 +208,31 @@ Model-View-ViewModel 模式
 
 ## 双向绑定实现原理
 
+vue实现数据双向绑定的原理就是用`Object.defineproperty()`重新定义（set方法）对象设置属性值和（get方法）获取属性值的操纵来实现的
+
+Proxy代理整个对象，Object.defineProperty只代理对象上的某个属性。
+
+Proxy不兼容IE，Object.defineProperty不兼容IE8及以下。
+
+对象上定义新属性时，Proxy可以监听到，Object.defineProperty监听不到。
+
+数组新增删除修改时，Proxy可以监听到，Object.defineProperty监听不到。
+
+```js
+var obj = {
+  test:'hello'
+}
+
+Object.defineProperty(obj,'test',{
+  get() {
+    console.log('查看了a属性');
+  },
+  set(val) {
+    console.log('设置了a属性', val);
+  }
+})
+```
+
 
 
 ## `.sync`修饰符

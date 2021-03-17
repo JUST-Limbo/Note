@@ -402,15 +402,15 @@ Result:
 那么直接返回这个值，否则没有`valueOf`或返回的不是原始值，那么调用`toString`方法，返回字符串表示
 
 ```js
-function add (a) {
-    function sum(b) { // 使用闭包
-        a = a + b; // 累加
-        return sum;
-    }
-    sum.toString = function() { // 重写toSting() 方法 把结果a返回出去
-        return a;
-    }
-    return sum; // 返回一个函数
+function add(a) {
+  function sum(b) { // 使用闭包
+    a = a + b; // 累加
+    return sum;
+  }
+  sum.toString = function () { // 重写toSting() 方法 把结果a返回出去
+    return a;
+  }
+  return sum; // 返回一个函数
 }
 ```
 
