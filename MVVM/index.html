@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script> -->
+  <div id="app">
+    <h2>{{person.name}} --{{person.age}}</h2>
+    <h3>{{person.fav}}</h3>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <h3>{{msg}}</h3>
+    <div v-text="msg"></div>
+    <div v-html='htmlStr'></div>
+    <input type="text" v-model='msg'>
+    <button v-on:click='handlerClick'>按钮on</button>
+    <button @click='handlerClick'>按钮@</button>
+  </div>
+  <script src="./Observer.js"></script>
+  <script src="./MVue.js"></script>
+  <script>
+    let vm = new MVue({
+      el: '#app',
+      data: {
+        htmlStr: '',
+        person: {
+          name: 'asd',
+          age: 18,
+          fav: '姑娘'
+        },
+        msg: '学习mvvm原理'
+      },
+      methods: {
+        handlerClick() {
+          console.log(this)
+          this.$data.person.name = '12312321'
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

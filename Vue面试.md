@@ -208,15 +208,15 @@ Model-View-ViewModel 模式
 
 ## 双向绑定实现原理
 
-vue实现数据双向绑定的原理就是用`Object.defineproperty()`重新定义（set方法）对象设置属性值和（get方法）获取属性值的操纵来实现的
+`vue`实现数据双向绑定的原理就是用`Object.defineproperty()`重新定义（set方法）对象设置属性值和（get方法）获取属性值的操纵来实现的
 
-Proxy代理整个对象，Object.defineProperty只代理对象上的某个属性。
+Proxy代理整个对象，`Object.defineProperty`只代理对象上的某个属性。
 
-Proxy不兼容IE，Object.defineProperty不兼容IE8及以下。
+Proxy不兼容IE，`Object.defineProperty`不兼容IE8及以下。
 
-对象上定义新属性时，Proxy可以监听到，Object.defineProperty监听不到。
+对象上定义新属性时，Proxy可以监听到，`Object.defineProperty`监听不到。
 
-数组新增删除修改时，Proxy可以监听到，Object.defineProperty监听不到。
+数组新增删除修改时，Proxy可以监听到，`Object.defineProperty`监听不到。
 
 ```js
 var obj = {
@@ -276,7 +276,7 @@ this.$emit('update:title', newTitle)
 
 ## $nextTick
 
-vue实现响应式并不是数据发生变化后dom立即变化，而是按照一定的策略来进行dom更新。
+`vue`实现响应式并不是数据发生变化后`dom`立即变化，而是按照一定的策略来进行`dom`更新。
 
 > nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用nextTick，则可以在回调中获取更新后的 DOM
 
