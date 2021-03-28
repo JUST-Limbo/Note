@@ -14,6 +14,7 @@ tsc作用：负责将ts代码转为浏览器和nodejs识别的js代码
 
 终端中输入`tsc -w`
 
+<<<<<<< HEAD
 ## function
 
 ### 可选参数
@@ -83,3 +84,10 @@ new Animal("Cat").name; // 错误: 'name' 是私有的.
 ## 抽象类
 
 ## 接口
+=======
+## vue中添加ts
+
+![image-20210325160231123](TypeScript.assets/image-20210325160231123.png)
+
+![image-20210325160619229](TypeScript.assets/image-20210325160619229.png)
+>>>>>>> 0331b53660514660cf6ea08c055027beeb0c1d45
