@@ -88,3 +88,9 @@ new Animal("Cat").name; // 错误: 'name' 是私有的.
 ![image-20210325160231123](TypeScript.assets/image-20210325160231123.png)
 
 ![image-20210325160619229](TypeScript.assets/image-20210325160619229.png)
+
+
+
+
+
+## typescript在vue中的应用
