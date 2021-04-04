@@ -94,3 +94,16 @@ new Animal("Cat").name; // 错误: 'name' 是私有的.
 
 
 ## typescript在vue中的应用
+
+Component装饰器
+
+```vue
+@Component({
+  name: "App",  // 当前组件name属性
+  components: { // 注册子组件
+    HelloWorld,
+  },
+  filters: {},  // 过滤器
+  directives: {}, // 自定义指令
+})
+```
