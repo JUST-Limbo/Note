@@ -83,6 +83,36 @@ new Animal("Cat").name; // 错误: 'name' 是私有的.
 ## 抽象类
 
 ## 接口
+
+## 问号?
+
+data入参可能为null,undefined，通常我们的写法是直接上if判断啥的，然后再取data中的属性，但是有了问号点(?.)写法就简单很多了，看下面例子：
+
+1.typescript写法：
+
+```typescript
+//1.data可能为null,undefined , row也可能为null,undefined
+//2.假设data完整结构 {row:{name:'aaa'}}
+function getData(data: any){
+	let name = data?.row?.name
+}
+```
+
+2.普通写法
+
+```js
+//1.data可能为null,undefined , row也可能为null,undefined
+//2.假设data完整结构 {row:{name:'aaa'}}
+function getData(data: any){
+	let name;
+	if (data && data.row) {
+		name = data.row.name
+	}
+}
+```
+
+从上面写法可以看出来问号点(?.)的写法其实等价于例2的if判断、三元运算符（let a = b == null ? null : b.a）
+
 ## vue中添加ts
 
 ![image-20210325160231123](TypeScript.assets/image-20210325160231123.png)
