@@ -2,7 +2,7 @@
 
 最近看别人的小程序代码，学到了一个过去没遇到过的关于api封装的技巧，在这里做一下记录。
 
-本文以`uni-app`的内置api：`uni.showToast`， `uni.navigateTo()`的封装为例，阐述这一技巧。
+本文以`uni-app`的内置api：`uni.showToast`， `uni.navigateTo`的封装为例，阐述这一技巧。
 
 ## 官方文档
 
@@ -23,7 +23,7 @@ let originToast = uni.showToast
 uni.showToast = (option) => {
   // 自定义默认参数
   let defaultOpt = {
-    mask=true
+    mask:true
   }
   // 合并参数
   let tragetOpt = Object.assign(defaultOpt, option)
@@ -46,6 +46,7 @@ import qs from 'qs'
 
 let originNav = uni.navigateTo
 uni.navigateTo = (option) => {
+  let defaultOpt = {}
   if (option.url) {
     let checkResult = checkUrlSync(option.url)
     if (!checkResult) {
@@ -53,10 +54,10 @@ uni.navigateTo = (option) => {
     }
   }
 
-  // 可以在option实参中使用$params,调用时以对象形式传入参数,在此处做url处理,省去拼接计算字符串的时间.
+  // 可以在option实参中使用$params属性,调用时以对象形式传入参数,在此处做url处理,省去手动拼接计算字符串的时间.
   // 这么做会与官方文档上的调用产生差异,要根据实际情况决定是否这么封装,此处只提供想法.
   if (option.$params) {
-    option.url = option.url + qs.stringify(option.params)
+    option.url = option.url + qs.stringify(option.$params)
   }
 
   let tragetOpt = Object.assign(defaultOpt, option)
@@ -68,7 +69,7 @@ uni.navigateTo = (option) => {
 
 在不同的页面文件反复import同一个文件开发体验其实挺差的，因为每次新建一个页面文件都要复制粘贴一模一样的import语句。
 
-每个页面都要用到就没必要在每个页面的顶部去import，看起来很蠢。事实上如果是调用比较频繁的公共函数比如（`uni.navigate uni.showLoading`），直接在`main.js`里做修改或挂载在全局对象的prototype上是最方便。
+每个页面都要用到就没必要在每个页面的顶部去import，看起来很蠢。事实上如果是调用比较频繁的公共函数（比如`uni.navigate uni.showLoading`），直接在`main.js`里做修改或挂载在全局对象的prototype上是最方便。
 
 其实主要还是因为我懒。
 
