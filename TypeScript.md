@@ -1,5 +1,9 @@
 # TypeScript
 
+## 使用ts-node加速开发
+
+https://blog.csdn.net/qq_39969226/article/details/105806754
+
 ## 安装
 
 `npm i -g typescript`
