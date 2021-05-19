@@ -8,3 +8,6 @@ https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr()
 
 CSS表达式 `attr()` 用来获取选择到的元素的某一HTML属性值，并用于其样式。它也可以用于伪元素，属性值采用伪元素所依附的元素。
 
+
+
+## :nth-of-type
