@@ -7,6 +7,8 @@
 3. const用来定义常量，使用时必须初始化(即必须赋值)，**只能在块作用域里访问**，而且不能修改。
 4. 同一个变量只能使用一种方式声明，不然会报错
 
+[var、let、const 的本质区别是什么 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/373652940)
+
 ## 监听元素进入视口
 
 http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
