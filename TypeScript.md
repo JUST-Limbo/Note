@@ -556,3 +556,35 @@ export default {
 }
 ```
 
+
+
+## 巧用查找类型
+
+```ts
+interface Person {
+  addr: {
+    city: string,
+    street: string,
+    num: number,
+  }
+}
+```
+
+当需要使用 `addr` 的类型时，除了把类型提出来
+
+```ts
+interface Address {
+  city: string,
+  street: string,
+  num: number,
+}
+interface Person {
+  addr: Address,
+}
+```
+
+还可以
+
+```ts
+Person["addr"] // This is Address.
+```
