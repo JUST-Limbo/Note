@@ -24,3 +24,8 @@
 工具库：PubSubJS
 
 安装：`npm i pubsub-js --save`
+
+
+
+jsx中的单标签必须以`/>`结尾 如 `<img src="" /> `
+
