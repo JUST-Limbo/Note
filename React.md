@@ -29,3 +29,8 @@
 
 jsx中的单标签必须以`/>`结尾 如 `<img src="" /> `
 
+ 
+
+## 脚手架
+
+`react-scripts eject` 暴露webpack配置
