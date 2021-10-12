@@ -38,6 +38,19 @@
 
 ## class
 
+```javascript
+class A{
+  aaa=1
+	bbb=function(){}
+	ccc=()=>{}
+}
+aaa bbb ccc都定义在类的实例对象上
+```
+
+
+
+
+
 
 
 ## promise async/await
