@@ -191,6 +191,148 @@ ReactDOM.render(<Person name="jerry"/>,document.getElementById('test1'))
 
 
 
+## 类组件实例的三大属性-refs
+
+### 字符串形式的ref
+
+```javascript
+//创建组件
+class Demo extends React.Component{
+  //展示左侧输入框的数据
+  showData = ()=>{
+    const {input1} = this.refs
+    alert(input1.value)
+  }
+  //展示右侧输入框的数据
+  showData2 = ()=>{
+    const {input2} = this.refs
+    alert(input2.value)
+  }
+  render(){
+    return(
+      <div>
+        <input ref="input1" type="text" placeholder="点击按钮提示数据"/>&nbsp;
+        <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+        <input ref="input2" onBlur={this.showData2} type="text" placeholder="失去焦点提示数据"/>
+      </div>
+    )
+  }
+}
+//渲染组件到页面
+ReactDOM.render(<Demo a="1" b="2"/>,document.getElementById('test'))
+```
+
+### 回调形式的ref
+
+```javascript
+//创建组件
+class Demo extends React.Component{
+  //展示左侧输入框的数据
+  showData = ()=>{
+    const {input1} = this
+    alert(input1.value)
+  }
+  //展示右侧输入框的数据
+  showData2 = ()=>{
+    const {input2} = this
+    alert(input2.value)
+  }
+  render(){
+    return(
+      <div>
+        <input ref={c => this.input1 = c } type="text" placeholder="点击按钮提示数据"/>&nbsp;
+        <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+        <input onBlur={this.showData2} ref={c => this.input2 = c } type="text" placeholder="失去焦点提示数据"/>&nbsp;
+      </div>
+    )
+  }
+}
+//渲染组件到页面
+ReactDOM.render(<Demo a="1" b="2"/>,document.getElementById('test'))
+```
+
+> ### 关于回调 refs 的说明
+>
+> 如果 `ref` 回调函数是以内联函数的方式定义的，在更新过程中它会被执行两次，第一次传入参数 `null`，然后第二次会传入参数 DOM 元素。这是因为在每次渲染时会创建一个新的函数实例，所以 React 清空旧的 ref 并且设置新的。通过将 ref 的回调函数定义成 class 的绑定函数的方式可以避免上述问题，**但是大多数情况下它是无关紧要的**。
+
+```javascript
+//创建组件
+class Demo extends React.Component{
+
+  state = {isHot:false}
+
+  showInfo = ()=>{
+    const {input1} = this
+    alert(input1.value)
+  }
+
+  changeWeather = ()=>{
+    //获取原来的状态
+    const {isHot} = this.state
+    //更新状态
+    this.setState({isHot:!isHot})
+  }
+
+  saveInput = (c)=>{
+    this.input1 = c;
+    console.log('@',c);
+  }
+
+  render(){
+    const {isHot} = this.state
+    return(
+      <div>
+        <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>
+        {/*<input ref={(c)=>{this.input1 = c;console.log('@',c);}} type="text"/><br/><br/>*/}
+        <input ref={this.saveInput} type="text"/><br/><br/>
+        <button onClick={this.showInfo}>点我提示输入的数据</button>
+        <button onClick={this.changeWeather}>点我切换天气</button>
+      </div>
+    )
+  }
+}
+//渲染组件到页面
+ReactDOM.render(<Demo/>,document.getElementById('test'))
+```
+
+
+
+### createRef
+
+```javascript
+//创建组件
+class Demo extends React.Component{
+  /* 
+    React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点,该容器是“专人专用”的
+    */
+  myRef = React.createRef()
+  myRef2 = React.createRef()
+  //展示左侧输入框的数据
+  showData = ()=>{
+    alert(this.myRef.current.value);
+  }
+  //展示右侧输入框的数据
+  showData2 = ()=>{
+    alert(this.myRef2.current.value);
+  }
+  render(){
+    return(
+      <div>
+        <input ref={this.myRef} type="text" placeholder="点击按钮提示数据"/>&nbsp;
+        <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+        <input onBlur={this.showData2} ref={this.myRef2} type="text" placeholder="失去焦点提示数据"/>&nbsp;
+      </div>
+    )
+  }
+}
+//渲染组件到页面
+ReactDOM.render(<Demo a="1" b="2"/>,document.getElementById('test'))
+```
+
+
+
+
+
 ## 组件间通信
 
 ### 通过props传递
