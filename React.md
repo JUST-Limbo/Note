@@ -446,19 +446,27 @@ class NameForm extends React.Component {
 
 函数柯里化：柯里化是指这样一个函数(假设叫做createCurry)，他接收函数A作为参数，运行后能够返回一个新的函数。并且这个新的函数能够处理函数A的剩余参数。
 
-## 消息订阅(subscribe)-发布(publish)机制
-
-### 使用消息订阅(subscribe)-发布(publish)机制
-
-工具库：PubSubJS
-
-安装：`npm i pubsub-js --save`
 
 
+## 组件生命周期
 
-jsx中的单标签必须以`/>`结尾 如 `<img src="" /> `
+旧
 
- 
+![image-20211017152817655](React.assets/image-20211017152817655.png)
+
+`componentWillReceiveProps`首次挂载不会触发，更新`props`才会触发
+
+新
+
+`componentWillMount` `componentWillReceiveProps` `componentWillUpdate`需要加`UNSAFE_`前缀
+
+![react生命周期(新)](React.assets/react生命周期(新).png)
+
+> `static getDerivedStateFromProps()`
+>
+> `getDerivedStateFromProps` 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 `null` 则不更新任何内容。
+>
+> 此方法适用于[罕见的用例](https://zh-hans.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)，即 state 的值在任何时候都取决于 props。
 
 ## 脚手架
 
