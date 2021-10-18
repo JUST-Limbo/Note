@@ -462,11 +462,49 @@ class NameForm extends React.Component {
 
 ![react生命周期(新)](React.assets/react生命周期(新).png)
 
-> `static getDerivedStateFromProps()`
->
-> `getDerivedStateFromProps` 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 `null` 则不更新任何内容。
->
-> 此方法适用于[罕见的用例](https://zh-hans.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)，即 state 的值在任何时候都取决于 props。
+**static getDerivedStateFromProps()**
+
+```js
+static getDerivedStateFromProps(props, state)
+```
+
+`getDerivedStateFromProps` 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 `null` 则不更新任何内容。
+
+此方法适用于[罕见的用例](https://zh-hans.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)，即 state 的值在任何时候都取决于 props。
+
+
+
+**getSnapshotBeforeUpdate()**
+
+```js
+getSnapshotBeforeUpdate(prevProps, prevState)
+```
+
+`getSnapshotBeforeUpdate()` 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。**此生命周期方法的任何返回值将作为参数传递给 `componentDidUpdate()`。**
+
+此用法并不常见，但它可能出现在 UI 处理中，如需要以特殊方式处理滚动位置的聊天线程等。
+
+应返回 snapshot 的值（或 `null`）。
+
+
+
+**componentDidUpdate()**
+
+```javascript
+componentDidUpdate(prevProps, prevState, snapshot)
+```
+
+`componentDidUpdate()` 会在更新后会被立即调用。首次渲染不会执行此方法。
+
+当组件更新后，可以在此处对 DOM 进行操作。如果你对更新前后的 props 进行了比较，也可以选择在此处进行网络请求。（例如，当 props 未发生变化时，则不会执行网络请求）。
+
+如果组件实现了 `getSnapshotBeforeUpdate()` 生命周期（不常用），则它的返回值将作为 `componentDidUpdate()` 的第三个参数 “snapshot” 参数传递。否则此参数将为 undefined。
+
+
+
+## 列表渲染与Diffing
+
+
 
 ## 脚手架
 
