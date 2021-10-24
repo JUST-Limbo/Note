@@ -518,6 +518,33 @@ componentDidUpdate(prevProps, prevState, snapshot)
 
    仅用于渲染列表用于展示，使用index作为key是没有问题的。
 
+
+
+## 样式的模块化
+
+`index.module.css`
+
+```css
+.title{
+	background-color: orange;
+}
+```
+
+`hello.jsx`
+
+```js
+import React,{Component} from 'react'
+import hello from './index.module.css'
+
+export default class Hello extends Component{
+	render(){
+		return <h2 className={hello.title}>Hello,React!</h2>
+	}
+}
+```
+
+
+
 ## 脚手架
 
 `react-scripts eject` 暴露webpack配置
