@@ -608,3 +608,64 @@ export default class Hello extends Component{
 
 
 
+## pubsub-js
+
+
+
+
+
+## react-router-dom
+
+### 基本使用
+
+1. 导航区a标签改为Link标签
+
+   ```html
+   <Link className="list-group-item" to="/home">Home</Link>
+   ```
+
+2. 展示区写Route标签进行路径匹配
+
+   ```html
+   <Route path="/about" component={About} />
+   ```
+
+3. `<App/>`的最外侧包裹一个`<BrowserRouter>`或`<HashRouter>`
+
+### 路由组件与一般组件
+
+1. 写法
+
+   ```html
+   一般组件：
+   <Demo/>
+   路由组件
+   <Route path="/demo" component={Demo}>
+   ```
+
+2. 存放位置不同
+
+   一般组件：components文件夹
+
+   路由组件：pages文件夹
+
+3. 接收到的props不同
+
+   一般组件：使用时传递了什么就能接收到什么
+
+   路由组件：接收到三个固定属性
+
+										history:
+													go: ƒ go(n)
+													goBack: ƒ goBack()
+													goForward: ƒ goForward()
+													push: ƒ push(path, state)
+													replace: ƒ replace(path, state)
+										location:
+													pathname: "/about"
+													search: ""
+													state: undefined
+										match:
+													params: {}
+													path: "/about"
+													url: "/about"
