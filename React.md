@@ -669,3 +669,43 @@ export default class Hello extends Component{
 													params: {}
 													path: "/about"
 													url: "/about"
+
+### navlink
+
+NavLink可以实现路由链接的高亮，通过activeClassName指定样式名
+
+标签体荣是一个特殊的标签属性，通过`this.props.children`可以获取标签体内容
+
+
+
+### switch
+
+```html
+<Route path="/about" component={About}/>
+<Route path="/about" component={Abc}/> // /about路由会同时展示About和Abc组件
+<Route path="/home" component={Home}/>
+<Route path="/home" component={Test}/> // /home路由会同时展示Home和Test组件
+```
+
+路由组件会一直匹配下去，为提高路由匹配效率，应使用`Switch`实现单一匹配，即`path`和`component`一一对应
+
+```html
+<Switch>
+	<Route path="/about" component={About}/>
+	<Route path="/home" component={Home}/>
+	<Route path="/home" component={Test}/> // /home不会匹配到此处
+</Switch>
+```
+
+### 解决多级路径刷新页面样式丢失的问题
+
+> /a/b路由下刷新页面，访问静态文件会访问localhost:3000/a/xxx.css
+
+			1.public/index.html 中 引入样式时不写 ./ 写 / （常用）
+			2.public/index.html 中 引入样式时不写 ./ 写 %PUBLIC_URL% （常用）
+			3.使用HashRouter /#/后的内容是前端资源,不访问localhost:3000 访问样式文件时忽略/#/后的内容
+### 路由的严格匹配与模糊匹配
+
+			1.默认使用的是模糊匹配（简单记：【输入的路径】必须包含要【匹配的路径】，且顺序要一致）
+			2.开启严格匹配：<Route exact path="/about" component={About}/>
+			3.严格匹配不要随便开启，需要再开，有些时候开启会导致无法继续匹配二级路由
