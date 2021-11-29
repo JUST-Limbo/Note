@@ -804,3 +804,9 @@ export default withRouter(Header)
 					(1).BrowserRouter没有任何影响，因为state保存在history对象中。
 					(2).HashRouter刷新后会导致路由state参数的丢失！！！
 		4.备注：HashRouter可以用于解决一些路径错误相关的问题。
+
+
+## redux
+
+<img src="React.assets/image-20211128185336134.png" alt="image-20211128185336134" style="zoom:80%;" />
+
