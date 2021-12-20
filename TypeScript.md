@@ -255,7 +255,7 @@ export default class PropsComponent extends Vue {
 `@PropSync`装饰器与`@prop`用法类似，二者的区别在于：
 
 - `@PropSync` 装饰器接收两个参数：
-  `propName: string` 表示父组件传递过来的属性名；
+  `propName: string` 表示父组件传递过来的属性名；必填
   `options: Constructor | Constructor[] | PropOptions` 与`@Prop`的第一个参数一致；
 - `@PropSync` 会生成一个新的计算属性。
 
