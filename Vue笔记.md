@@ -2,7 +2,7 @@
 
 ## props
 
-```
+```js
 props:{
 	arr:{
 		type: Array,
@@ -52,4 +52,44 @@ PC、移动端路由组件切换
 <router-view v-if="pageType == 'pc'" name="pc"></router-view>
 <router-view v-else-if="pageType == 'mobile'" name="m"></router-view>
 ```
+
+## Vue中图片Src使用变量
+
+错误的写法：因为在打包时会被自动加上hash值从而引用失败（或因为没有把路径字符串当做路径处理，而是纯字符串处理？）
+
+```vue
+<template>
+  <img :src="imgSrc" />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      imgSrc: '../../images/web_bg.png'
+    }
+  }
+}
+</script>
+```
+
+解决方法：
+
+1. 使用网络资源
+
+2. 使用import或require导入本地资源
+
+   ```js
+   import imgSrc from '../../images/web_bg.png'
+   export default {
+     data() {
+       return {
+           imgSrc: imgSrc,
+   		imgSrc2: require('../../images/web_bg.png')
+       }
+     }
+   }
+   ```
+
+   
 
