@@ -84,6 +84,24 @@ var intElemOffsetHeight = document.getElementById(id_attribute_value).offsetHeig
 
 > 属性将会对值四舍五入取整。如果需要小数值，使用[`Element.getBoundingClientRect()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect).
 
+### offsetTop
+
+**`HTMLElement.offsetTop`** 为只读属性，它返回当前元素相对于其 [`offsetParent`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent) 元素的顶部内边距的距离。
+
+### offsetLeft
+
+ **`HTMLElement.offsetLeft`** 是一个只读属性，返回当前元素*左上角*相对于  [`HTMLElement.offsetParent`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetParent) 节点的左边界偏移的像素值。
+
+> **`HTMLElement.offsetParent`** 主要是一个定位元素（开启定位的父元素内边框，如果没有就按照`body`作为标准来计算），即`position`属性值不为`static`
+>
+> **`HTMLElement.offsetParent`** 是一个只读属性，返回一个指向最近的（指包含层级上的最近）包含该元素的**定位元素**或者最近的 `table,``td,``th,``body`元素。当元素的 `style.display` 设置为 "none" 时，`offsetParent` 返回 `null`。
+
+> 一、offsetTop 返回的是数字，而 style.top 返回的是字符串，除了数字外还带有单位：px。
+>
+> 二、offsetTop 只读，而 style.top 可读写。
+>
+> 三、如果没有给 HTML 元素指定过 top 样式，则 style.top 返回的是空字符串。
+
 ### scrollWidth
 
 这个只读属性是元素内容宽度的一种度量，包括由于overflow溢出而在屏幕上不可见的内容。
