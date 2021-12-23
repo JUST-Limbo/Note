@@ -403,23 +403,139 @@ Result:
 
 
 
+## valueOf和toString
+
+### valueOf转换规则
+
+非原始值(也就是对象)重写规则如下：
+
+| 对象     | valueOf返回值        |
+| -------- | -------------------- |
+| Array    | 数组本身             |
+| Boolean  | 布尔值               |
+| Date     | 返回毫秒形式的时间戳 |
+| Function | 函数本身             |
+| Number   | 数字值               |
+| Object   | 对象本身             |
+| String   | 字符串值             |
+
+#### 对象转换为布尔值
+
+1. 直接转换为true（包装类型也一样），不调用valueOf和toString
+
+#### 对象转换为数字
+
+在预期会将对象用作数字使用时，比如参与算术运算等等操作，对象转换为数字会依次调用valueOf和toString方法，具体规则如下：
+
+1. 如果对象具有`valueOf`方法且返回原始值(string、number、boolean、undefined、null)，则将该原始值转换为数字(转换失败会返回NaN)，并返回这个数字
+2. 如果对象具有`toString`方法且返回原始值(string、number、boolean、undefined、null)，则将该原始值转换为数字(转换失败会返回NaN)，并返回这个数字
+3. 转换失败，抛出`TypeError`
+
+#### 对象转换为字符串
+
+1. 如果对象具有`toString`方法且返回原始值(string、number、boolean、undefined、null)，则将该原始值转换为字符串，并返回该字符串
+2. 如果对象具有`valueOf`方法且返回原始值(string、number、boolean、undefined、null)，则将该原始值转换为字符串，并返回该字符串
+3. 转换失败，抛出`TypeError`
+
+### toString转换规则
+
+| 对象     | toString返回值                                               |
+| -------- | ------------------------------------------------------------ |
+| Array    | 以逗号分割的字符串，如[1,2]的toString返回值为"1,2"           |
+| Boolean  | "true"                                                       |
+| Date     | 可读的时间字符串，如"Tue Oct 15 2019 12:20:56 GMT+0800 (中国标准时间)" |
+| Function | 声明函数的JS源代码字符串                                     |
+| Number   | "数字值"                                                     |
+| Object   | "[object Object]"                                            |
+| String   | "字符串"                                                     |
+
+### 面试题
+
+```
+var a = {};
+var b = {};
+var c = {};
+c[a] = 1;
+c[b] = 2;
+
+console.log(c[a]);
+console.log(c[b]);
+复制代码
+```
+
+### 题解
+
+由于对象的key是字符串，所以`c[a]`和`c[b]`中的`a`和`b`会执行[对象到字符串]的转换。
+
+根据转换规则, `a`和`b`都转换为了`[object Object]`，所以`c[a]`和`c[b]`操作的是同一个键。
+
+答案是`输出两个2`，c对象的最终结构如下：
+
+```
+{
+  '[object Object]':2
+}
+```
+
+
+
 ## 函数累加
 
-用js实现无限累加的函数，形如`add(1)(2)(3)(4)...`
+问题：用 `JS `实现一个无限累加的函数 `add`，示例如下：
 
-当一个对象转换成原始值时，先查看对象是否有`valueOf`方法，如果有并且返回值是一个原始值，
-那么直接返回这个值，否则没有`valueOf`或返回的不是原始值，那么调用`toString`方法，返回字符串表示
+```js
+add(1); // 1
+add(1)(2);  // 3
+add(1)(2)(3)； // 6
+add(1)(2)(3)(4)； // 10 
+// 以此类推
+```
+
+
 
 ```js
 function add(a) {
   function sum(b) { // 使用闭包
-    a = a + b; // 累加
+    a = b ? a + b : a; // 累加
     return sum;
   }
   sum.toString = function () { // 重写toSting() 方法 把结果a返回出去
     return a;
   }
   return sum; // 返回一个函数
+}
+```
+
+> `add()`每次都会返回一个函数`sum`，直到最后一个没被调用，默认会触发`toString`方法，所以我们这里重写`toString`方法，并返回累计的最终值`a`
+
+当一个对象转换成原始值时，先查看对象是否有`valueOf`方法，如果有并且返回值是一个原始值，则直接返回这个值；如果没有`valueOf`或返回的不是原始值，那么调用`toString`方法，返回字符串表示。
+
+```js
+function add(){
+    // 1 把所有参数转换成数组
+    let args = Array.prototype.slice.call(arguments)
+    // 2 再次调用add函数，传递合并当前与之前的参数
+    let fn = function() {
+        let arg_fn = Array.prototype.slice.call(arguments)
+        return add.apply(null, args.concat(arg_fn))
+    }
+    // 3 最后默认调用，返回合并的值
+    fn.toString = function() {
+        return args.reduce(function(a, b) {
+            return a + b
+        })
+    }
+    return fn
+}
+
+// ES6写法
+function add () {
+    let args = [...arguments];
+    let fn = function(){
+        return add.apply(null, args.concat([...arguments]))
+    } 
+    fn.toString = () => args.reduce((a, b) => a + b)
+    return fn;
 }
 ```
 
