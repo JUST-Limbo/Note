@@ -30,3 +30,58 @@ inset: 2.4em 3em 3em 3em; /* top right bottom left */
 
 
 
+## pointer-events
+
+`pointer-events`是一个用于 HTML 指针事件的属性，属性有很多值，但是对于浏览器来说，只有`auto`和`none`两个值可用，其它的几个是针对SVG的。
+
+- auto——效果和没有定义pointer-events属性相同，鼠标不会穿透当前层。
+- none——可以禁用 HTML 元素的 hover/focus/active 等动态效果，鼠标的动作将不能被该元素及其子元素所捕获，但是能够被其父元素所捕获。但是，当其后代元素的`pointer-events`属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。实际上默认就可以穿透当前层，因为pointer-events默认为auto
+
+若HTML上两个元素之间没有包含关系，那么，鼠标事件就不会在这两个元素之间传递，而是上层的元素会覆盖下层的元素，导致下层元素捕获不到事件；将上层元素的 `pointer-events` 属性设置为 `none` ，则上层元素将不捕获事件，那么事件将被下层元素捕获到；
+
+### 使用场景
+
++ 禁用 a 标签事件效果
+
+在做 tab 切换的时候，当选中当前项，禁用当前标签的事件，只有切换其他 tab 的时候，才重新请求新的数据。
+
+ ```html
+   <!--CSS-->
+   <style>
+       .active{
+           pointer-events: none;
+       }
+   </style>
+   <!--HTML-->
+   <ul>
+       <li><a class="tab"></a></li>
+       <li><a class="tab active"></a></li>
+       <li><a class="tab"></a></li>
+   </ul>复制代码
+ ```
+
++ 切换开/关按钮状态
+
+点击提交按钮的时候，为了防止用户一直点击按钮，发送请求，当请求未返回结果之前，给按钮增加 pointer-events: none，可以防止这种情况，这种情况在业务中也十分常见。
+
+```html
+ <!--CSS-->
+.j-pro{ pointer-events: none; }
+<!--HTML-->
+<button r-model={this.submit()} r-class={{"j-pro": flag}}>提交</button>
+<!--JS-->
+submit: function(){
+　　this.data.flag = true;
+　　this.$request(url, {
+　　　　// ... onload: function(json){
+　　　　　　　　if(json.retCode == 200){
+　　　　　　　　　　this.data.flag = false;
+　　　　　　　　} }.bind(this)
+　　　　// ...
+　　});
+}
+```
+
++ 防止透明元素和可点击元素重叠不能点击
+
+一些内容的展示区域，为了实现一些好看的 css 效果，当元素上方有其他元素遮盖，为了不影响下方元素的事件，给被遮盖的元素增加 pointer-events: none; 可以解决。
