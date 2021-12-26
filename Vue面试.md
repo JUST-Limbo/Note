@@ -379,14 +379,16 @@ Vue **不能检测**数组和对象的变化。因此若对象/数组是响应�
 
 ## hook
 
-### 在同一组件下监听生命周期
+### 在当前组件下监听当前组件生命周期
 
 在`created`生命周期中监听其他生命周期，并触发回调
 
 ```js
 created(){
-  this.$on('hook:beforeDestroy',function(){
+  const id = setInterval(()=>{},1000)
+  this.$once('hook:beforeDestroy',function(){
     console.log('beforeDestroy')
+    clearInterval(id)
   })
 }
 ```
