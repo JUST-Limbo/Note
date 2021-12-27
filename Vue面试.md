@@ -377,7 +377,7 @@ Vue **不能检测**数组和对象的变化。因此若对象/数组是响应�
 
 
 
-## hook
+## HookEvent
 
 ### 在当前组件下监听当前组件生命周期
 
@@ -432,33 +432,6 @@ created(){
    // 子组件触发 mounted 钩子函数 ...
    // 父组件监听到 mounted 钩子函数 ...
    ```
-
-   
-
-## 全局指令和局部指令
-
-全局指令：在main.js中
-
-```js
-Vue.directive('upper-word',(el,binding)=>{
-  el.textContent = binding.value.toUpperCase();
-})
-```
-
-局部指令：在组件中添加钩子
-
-```js
-// 自定义局部指令
-, directives: {
-  'lower-word'(el, binding){
-    console.log(el, binding)
-    el.textContent = binding.value.toLowerCase();
-  }
-}
-```
-
-
-
 
 
 
