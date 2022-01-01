@@ -543,10 +543,168 @@ function add () {
 
 ## 函数默认参数的作用域
 
-普通情况下，a b c 都在局部作用域里
+1. 普通情况下，a b c 都在局部作用域里
 
 ![image-20211228231110477](JS面试题.assets/image-20211228231110477.png)
 
-函数参数有默认值时，a b在局部作用域里，c在块作用域里
+2. 函数参数有默认值时，a b在局部作用域里，c在块作用域里
 
 ![image-20211228232240876](JS面试题.assets/image-20211228232240876.png)
+
+3. 函数形参和函数体内都声明了同一个变量名的变量a，代码执行第16行时，块级作用域中a的值取自局部作用域中a的值。
+
+   代码执行第13行时，块作用域中a的值为7，局部作用域中a的值为1。
+
+   如果进入函数时，局部作用域形参有默认值则会给块作用域中同名的变量赋默认值。
+
+![image-20220101215340845](JS面试题.assets/image-20220101215340845.png)
+
+![image-20220101215812796](JS面试题.assets/image-20220101215812796.png)
+
+
+
+```html
+<script>
+  var x=1
+  function test(x,y=function(){x=3;console.log(x)}){
+    /*
+      局部作用域Local
+      x => undefined => 3
+      y => function(){x=3;console.log(x)} // 第2个输出:3
+
+    */
+
+      /*
+        块作用域 Block
+        x => undefined => 2
+      */
+      console.log(x) // 第1个输出:undefined
+      var x=2
+      y()
+      console.log(x) // 第3个输出:2
+  }
+  test()
+  console.log(x) // 第4个输出:1
+</script>
+```
+
+
+
+```html
+<script>
+  var x=1
+  function test(x=4,y=function(){x=3;console.log(x)}){
+    /*
+      局部作用域Local
+      x => 4 => 3
+      y => function(){x=3;console.log(x)} // 第2个输出:3
+    */
+
+      /*
+        块作用域 Block
+        x => 4 => 2
+      */
+      console.log(x) // 第1个输出:4
+      var x=2
+      y()
+      console.log(x) // 第3个输出:2
+  }
+  test()
+  console.log(x) // 第4个输出:1
+</script>
+```
+
+
+
+```html
+<script>
+  /*
+    全局作用域 Global
+    x => 1 => 3
+  */
+  var x=1
+  function test(a,y=function(){x=3;console.log(x)}){
+    /*
+      局部作用域Local
+      a => undefined
+      y => function(){x=3;console.log(x)} // 第2个输出:3
+    */
+
+      /*
+        块作用域 Block
+        x => undefined
+      */
+      console.log(x) // 第1个输出:undefined
+      var x=2
+      y()
+      console.log(x) // 第3个输出:2
+  }
+  test()
+  console.log(x) // 第4个输出:3
+</script>
+```
+
+
+
+```html
+<script>
+  /*
+    全局作用域 Global
+  */
+  var x=1
+  function test(x,y=function(){x=3;console.log(x)}){
+    /*
+      局部作用域Local
+      x => undefined => 3
+      y => function(){x=3;console.log(x)} // 第2个输出:3
+    */
+
+      /*
+        块作用域 Block
+      */
+      console.log(x) // 第1个输出: undefined
+      // var x=2
+      y()
+      console.log(x) // 第3个输出:3
+  }
+  test()
+  console.log(x) // 第4个输出:1
+</script>
+```
+
+
+
+```html
+<script>
+  /*
+    全局作用域 Global
+    x => 1 => 3
+  */
+  var x = 1
+  function yy() {
+    x = 3
+    console.log(x) // 第2个输出:3
+  }
+  function test(x, y = yy) {
+    /*
+      局部作用域 Local
+      x => undefined
+      y => yy
+    */
+
+    /*
+        块作用域 Block
+        x => undefined => 2
+      */
+      console.log(x) //  第1个输出:undefined
+      var x = 2
+      y()
+      console.log(x) // 第3个输出:2
+  }
+  test()
+  console.log(x) // 第4个输出:3
+</script>
+```
+
+
+
