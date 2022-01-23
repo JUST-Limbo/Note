@@ -708,3 +708,28 @@ function add () {
 
 
 
+## new做了什么事情
+
+1. 创建一个空对象
+2. 将空对象的原型指向构造函数的原型对象
+3. 执行时将构造函数内部的this指向空对象
+
+
+
+## BFC
+
+独立渲染区域
+
+创建BFC的方式：
+
+1. float不为none（float默认为none）
+2. position值为absoluted、fixed
+3. display值为inline-block、table-cell、flex、flow-root
+4. overflow值为hidden、auto、scroll
+
+能解决什么问题：
+
+1. 边距重叠
+2. 边距溢出、盒子塌陷
+3. 清除浮动
+4. 浮动环绕文字
