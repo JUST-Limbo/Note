@@ -366,3 +366,23 @@ div:hover{
 }
 ```
 
+
+
+## BFC
+
+独立渲染区域
+
+创建BFC的方式：
+
+1. float不为none（float默认为none）
+2. position值为absoluted、fixed
+3. display值为inline-block、table-cell、flex、flow-root
+4. overflow值为hidden、auto、scroll
+
+能解决什么问题：
+
+1. 边距重叠
+2. 边距溢出、盒子塌陷
+3. 清除浮动
+4. 浮动环绕文字（现象的原因是文本信息不会被浮动元素所覆盖）
+
