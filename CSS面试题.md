@@ -370,12 +370,14 @@ div:hover{
 
 ## BFC
 
+当CSS的 **position** 属性为 **static** 或 **relative**，并且 **float** 为 **none** 时，其布局方式为普通流。
+
 独立渲染区域
 
 创建BFC的方式：
 
 1. float不为none（float默认为none）
-2. position值为absoluted、fixed
+2. position值为absoluted、fixed（没有relative、static）
 3. display值为inline-block、table-cell、flex、flow-root
 4. overflow值为hidden、auto、scroll
 
