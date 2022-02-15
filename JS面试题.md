@@ -114,7 +114,7 @@ var unique = (arr) =>  {
 ```js
 const obj = {
     a: () => {
-        console.log(this.id)
+        console.log(this.id)  // 此处的this指向window
     }
 }
 var id = '1'
@@ -715,3 +715,94 @@ function add () {
 3. 执行时将构造函数内部的this指向空对象
 
 
+
+## typeof instanceof toString
+
+![image-20220215103036235](JS面试题.assets/image-20220215103036235.png)
+
+在 javascript 的最初版本中，使用的 32 位系统，为了性能考虑使用低位存储了变量的类型信息：
+
+- 000：对象
+- 010：浮点数
+- 100：字符串
+- 110：布尔
+- 1：整数
+
+对于 `undefined` 和 `null` 来说，这两个值的信息存储是有点特殊的。     
+
+`null`：对应机器码的 NULL 指针，一般是全零
+
+`undefined`：用 −2^30 整数来表示 
+
+所以，`typeof` 在判断 `null` 的时候就出现问题了，由于 `null` 的所有机器码均为0，因此直接被当做了对象来看待。
+
+### typeof返回值
+
+- "undefined"
+- "object"
+- "boolean"
+- "number"
+- "bigint"
+- "string"
+- "symbol"
+- "function"
+
+```js
+typeof null // 'object'
+typeof undefined; // "undefined"
+typeof false; // "boolean"
+typeof 1; // "number"
+typeof '1'; // "string"
+typeof {}; // "object" 
+typeof []; // "object" 
+typeof new Date(); // "object"
+typeof Symbol(); // "Symbol"
+typeof 123n // 'bigint'
+typeof function foo() {}; // 'function'
+```
+
+### instanceof
+
+**instanceof** **运算符**用于检测构造函数的 `prototype` 属性是否出现在某个实例对象的原型链上。
+
+#### 手写instanceof
+
+```javascript
+function my_instance_of(leftVaule, rightVaule) {
+    if(typeof leftVaule !== 'object' || leftVaule === null) return false;
+    let rightProto = rightVaule.prototype,
+        leftProto = leftVaule.__proto__;
+    while (true) {
+        if (leftProto === null) {
+            return false;
+        }
+        if (leftProto === rightProto) {
+            return true;
+        }
+        leftProto = leftProto.__proto__
+    }
+}
+```
+
+### toString
+
+```js
+var toString=Object.prototype.toString;
+
+console.log(toString.call(und));  // [object Undefined]
+console.log(toString.call(nul));  // [object Null]
+console.log(toString.call(boo));  // [object Boolean]
+console.log(toString.call(num));  // [object Number]
+console.log(toString.call(str));  // [object String]
+console.log(toString.call(obj));  // [object Object]
+console.log(toString.call(arr));  // [object Array]
+console.log(toString.call(fun));  // [object Function]
+console.log(toString.call(date));  // [object Date]
+console.log(toString.call(reg));  // [object RegExp]
+console.log(toString.call(err));  // [object Error]
+console.log(toString.call(arg));  // [object Arguments]
+```
+
++ 使用 typeof 来判断基本数据类型是可行的,需要注意的是typeof判断null类型时的问题
++ 判断一个对象考虑用instanceof，但是instanceof判断一个数组的时候,它可以被instanceof判断为Object
++ 比较准确的的判断对象实例的类型，采取`Object.prototype.toString.call()`方法
