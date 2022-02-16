@@ -119,7 +119,7 @@ npm run dev
 
     （reference引用 implement实现）
 
-  - JS中操作数据：`xxx.value`
+  - JS中操作数据：必须是`xxx.value`
 
   - 模板中读取数据: 不需要.value，直接：`<div>{{xxx}}</div>`
 
@@ -135,6 +135,7 @@ npm run dev
 - 语法：```const 代理对象= reactive(源对象)```接收一个对象（或数组），返回一个<strong style="color:#DD5145">代理对象（Proxy的实例对象，简称proxy对象）</strong>
 - reactive定义的响应式数据是“深层次的”。
 - 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作。
+- 读取数据时不再需要`xxx.value`而是直接`xxx`
 
 ## 4.Vue3.0中的响应式原理
 
@@ -208,13 +209,14 @@ npm run dev
 
 - setup执行的时机
   - 在beforeCreate之前执行一次，this是undefined。
-
 - setup的参数
   - props：值为对象，包含：组件外部传递过来，且组件内部声明接收了的属性。
   - context：上下文对象
     - attrs: 值为对象，包含：组件外部传递过来，但没有在props配置中声明的属性, 相当于 ```this.$attrs```。
-    - slots: 收到的插槽内容, 相当于 ```this.$slots```。
+    - slots: 收到的插槽内容, 相当于 ```this.$slots```，疑似只支持v-slot
     - emit: 分发自定义事件的函数, 相当于 ```this.$emit```。
+
+使用emit需要在子组件配置`emits:['eventName']`
 
 
 ## 7.计算属性与监视
@@ -316,44 +318,6 @@ npm run dev
 
 <strong>vue2.x的生命周期</strong><img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom:33%;width:1200px" />
 <strong>vue3.0的生命周期</strong><img src="https://v3.cn.vuejs.org/images/lifecycle.svg" alt="lifecycle_2" style="zoom:33%;width:2500px" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
   - ```beforeDestroy```改名为 ```beforeUnmount```
