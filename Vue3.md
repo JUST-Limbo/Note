@@ -266,9 +266,9 @@ npm run dev
   },{immediate:true})
   
   //情况二：监视多个ref定义的响应式数据
-  watch([sum,msg],(newValue,oldValue)=>{
-  	console.log('sum或msg变化了',newValue,oldValue)
-  }) 
+  watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
+    /* ... */
+  })
   
   /* 情况三：监视reactive定义的响应式数据
   			若watch监视的是reactive定义的响应式数据，则无法正确获得oldValue！！
@@ -279,9 +279,18 @@ npm run dev
   },{immediate:true,deep:false}) //此处的deep配置不再奏效
   
   //情况四：监视reactive定义的响应式数据中的某个属性
+  // 侦听器数据源可以是一个具有返回值的 getter 函数，也可以直接是一个 ref：
   watch(()=>person.job,(newValue,oldValue)=>{
   	console.log('person的job变化了',newValue,oldValue)
   },{immediate:true,deep:true}) 
+  // 侦听一个 getter
+  const state = reactive({ count: 0 })
+  watch(
+    () => state.count,
+    (count, prevCount) => {
+      /* ... */
+    }
+  )
   
   //情况五：监视reactive定义的响应式数据中的某些属性
   watch([()=>person.job,()=>person.name],(newValue,oldValue)=>{
@@ -316,8 +325,13 @@ npm run dev
 
 ## 8.生命周期
 
-<strong>vue2.x的生命周期</strong><img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom:33%;width:1200px" />
-<strong>vue3.0的生命周期</strong><img src="https://v3.cn.vuejs.org/images/lifecycle.svg" alt="lifecycle_2" style="zoom:33%;width:2500px" />
+<strong>vue2.x的生命周期</strong>
+
+<img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom:33%;width:1200px" />
+
+<strong>vue3.0的生命周期</strong>
+
+<img src="https://v3.cn.vuejs.org/images/lifecycle.svg" alt="lifecycle_2" style="zoom:33%;width:2500px" />
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
   - ```beforeDestroy```改名为 ```beforeUnmount```
