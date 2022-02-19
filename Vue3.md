@@ -216,7 +216,7 @@ npm run dev
     - slots: 收到的插槽内容, 相当于 ```this.$slots```，疑似只支持v-slot
     - emit: 分发自定义事件的函数, 相当于 ```this.$emit```。
 
-使用emit需要在子组件配置`emits:['eventName']`
+**使用emit需要在子组件配置**`emits:['eventName']`
 
 
 ## 7.计算属性与监视
@@ -327,7 +327,7 @@ npm run dev
 
 <strong>vue2.x的生命周期</strong>
 
-<img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom:33%;width:1200px" />
+<img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom: 200%; width: 1200px;" />
 
 <strong>vue3.0的生命周期</strong>
 
@@ -337,8 +337,8 @@ npm run dev
   - ```beforeDestroy```改名为 ```beforeUnmount```
   - ```destroyed```改名为 ```unmounted```
 - Vue3.0也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下：
-  - `beforeCreate`===>`setup()`
-  - `created`=======>`setup()`
+  - `beforeCreate`===>相当于`setup()`
+  - `created`=======>相当于`setup()`
   - `beforeMount` ===>`onBeforeMount`
   - `mounted`=======>`onMounted`
   - `beforeUpdate`===>`onBeforeUpdate`
@@ -386,8 +386,8 @@ npm run dev
 ## 3.toRaw 与 markRaw
 
 - toRaw：
-  - 作用：将一个由```reactive```生成的<strong style="color:orange">响应式对象</strong>转为<strong style="color:orange">普通对象</strong>。
-  - 使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，不会引起页面更新。
+  - 作用：将一个由```reactive```生成的<strong style="color:orange">响应式对象</strong>转为<strong style="color:orange">普通对象</strong>，必须是`reactive`对象。
+  - 使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，**不会引起页面更新**。
 - markRaw：
   - 作用：标记一个对象，使其永远不会再成为响应式对象。
   - 应用场景:
@@ -488,25 +488,9 @@ npm run dev
 
 使用传统OptionsAPI中，新增或者修改一个需求，就需要分别在data，methods，computed里修改 。
 
-<div style="width:600px;height:370px;overflow:hidden;float:left">
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image" style="width:600px;float:left" />
-</div>
-<div style="width:300px;height:370px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;width:560px;left" /> 
-</div>
+<img src="file://G:/code/Note/Vue3.assets/f84e4e2c02424d9a99862ade0a2e4114tplv-k3u1fbpfcp-watermark.image?lastModify=1645253141" alt="img"  />
 
-
-
-
-
-
-
-
-
-
-
-
-
+![img](file://G:\code\Note\Vue3.assets\e5ac7e20d1784887a826f6360768a368tplv-k3u1fbpfcp-watermark.image?lastModify=1645253141)
 
 
 
@@ -514,44 +498,9 @@ npm run dev
 
 我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。
 
-    <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0be8211fc54b6c941c036791ba4efe~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
+![img](Vue3.assets/bc0be8211fc54b6c941c036791ba4efetplv-k3u1fbpfcp-watermark.image)
 
-
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img](Vue3.assets/6cc55165c0e34069a75fe36f8712eb80tplv-k3u1fbpfcp-watermark.image)
 
 
 # 五、新的组件
