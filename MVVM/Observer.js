@@ -1,73 +1,84 @@
 class Watcher {
-  constructor(vm, expr, cb) {
-    this.vm = vm
-    this.expr = expr
-    this.cb = cb
-    // 先存旧值
-    this.oldVal = this.getOldVal()
-  }
-  getOldVal() {
-    Dep.target = this
-    console.log(this)
-    const oldVal = compileUtil.getVal(this.expr, this.vm)
-    Dep.target = null
-    return oldVal
-  }
-  update() {
-    const newVal = compileUtil.getVal(this.expr, this.vm)
-    if (newVal !== this.oldVal) {
-      this.cb(newVal)
-    }
-  }
+	constructor(vm, expr, cb) {
+		this.vm = vm
+		this.expr = expr
+		this.cb = cb
+
+		//保存旧值
+		this.oldVal = this.getOldVal()
+	}
+
+	getOldVal() {
+		Dep.target = this
+		console.log('getOldVal before')
+		const oldVal = compileUtils.getValue(this.expr, this.vm)
+		console.log('getOldVal after')
+		Dep.target = null
+		return oldVal
+	}
+
+	notify() {
+		const newVal = compileUtils.getValue(this.expr, this.vm)
+		if (this.oldVal != newVal) {
+			this.cb(newVal)
+      this.oldVal = newVal
+		}
+	}
 }
 
 class Dep {
-  constructor() {
-    this.subs = []
-  }
-  // 收集观察者
-  addSub(watcher) {
-    this.subs.push(watcher)
-  }
-  // 通知观察者去更新
-  notify() {
-    console.log('通知了观察者')
-    this.subs.forEach(w => w.update())
-  }
+	constructor() {
+		this.subs = []
+	}
+
+	addSub(watcher) {
+		this.subs.push(watcher)
+	}
+
+	notify() {
+		this.subs.forEach((w) => w.notify())
+	}
 }
 
 class Observer {
-  constructor(data) {
-    this.observe(data)
-  }
-  observe(data) {
-    if (data && typeof data === 'object') {
-      // console.log(Object.keys(data))
-      Object.keys(data).forEach(key => {
-        this.defineReactive(data, key, data[key])
-      })
-    }
-  }
-  defineReactive(data, key, value) {
-    // 递归
-    this.observe(value)
-    const dep = new Dep(Dep.target)
-    // 劫持
-    Object.defineProperty(data, key, {
-      enumerable: true,
-      configurable: false,
-      get() {
-        // 订阅数据变化时,往Dep中添加观察者
-        Dep.target && dep.addSub(Dep.target)
-        return value
-      },
-      set: (newVal) => { // 箭头函数此时this指向当前类Observer 不用箭头函数会导致this指向Object
-        this.observe(newVal) // 如果将新的对象赋值给person,要重新劫持一次
-        if (newVal !== value) {
-          value = newVal
-        }
-        dep.notify()
-      }
-    })
-  }
+	constructor(data) {
+		// this.dep = new Dep()
+		this.observer(data)
+	}
+
+	observer(data) {
+		if (data && typeof data === 'object') {
+			Object.keys(data).forEach((key) => {
+				this.defineReactive(data, key, data[key])
+			})
+		}
+	}
+
+	defineReactive(obj, key, value) {
+		//递归遍历
+		this.observer(value)
+		let dep = new Dep()
+		console.log('defineReactive' + key)
+		Object.defineProperty(obj, key, {
+			enumerable: true,
+			configurable: false,
+			set: (newVal) => {
+				console.log('set' + newVal)
+				//监听新的对象修改
+				this.observer(newVal)
+				//监听值的修改
+				if (newVal != value) {
+					value = newVal
+				}
+				dep.notify()
+			},
+			get() {
+				// console.log("get"+key)
+				console.log(Dep.target)
+				Dep.target && dep.addSub(Dep.target)
+				//订阅数据变化，王dep中添加观察者，dep是观察者集合
+				return value
+			}
+		})
+	}
 }
