@@ -379,7 +379,7 @@ div:hover{
 1. float不为none（float默认为none）
 2. position值为absoluted、fixed（没有relative、static）
 3. display值为inline-block、table-cell、flex、flow-root
-4. overflow值为hidden、auto、scroll
+4. overflow值为hidden、auto、scroll（除了visible？）
 
 能解决什么问题：
 

@@ -1,5 +1,9 @@
 # http
 
+## http和https
+
+
+
 ## http缓存
 
 ### 强缓存和协商缓存
