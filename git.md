@@ -116,3 +116,7 @@ git pull --rebase = git fetch + git rebase
 merge会产生新节点，之前的提交分开显示
 
 rebase不会产生新节点，是将两个分支融合成一个线性提交
+
+
+
+## 撤销commit

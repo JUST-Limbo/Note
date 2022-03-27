@@ -1,5 +1,47 @@
 # CSS
 
+## :target伪类
+
+**`:target`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) 代表一个唯一的页面元素(目标元素)，其[`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#attr-id) 与当前URL片段匹配 
+
+```html
+<h3>Table of Contents</h3>
+<ol>
+ <li><a href="#p1">Jump to the first paragraph!</a></li>
+ <li><a href="#p2">Jump to the second paragraph!</a></li>
+ <li><a href="#nowhere">This link goes nowhere,
+   because the target doesn't exist.</a></li>
+</ol>
+<h3>My Fun Article</h3>
+<p id="p1">You can target <i>this paragraph</i> using a
+  URL fragment. Click on the link above to try out!</p>
+<p id="p2">This is <i>another paragraph</i>, also accessible
+  from the links above. Isn't that delightful?</p>
+```
+
+```css
+p:target {
+  background-color: gold;
+}
+
+/* 在目标元素中增加一个伪元素*/
+p:target::before {
+  font: 70% sans-serif;
+  content: "►";
+  color: limegreen;
+  margin-right: .25em;
+}
+
+/*在目标元素中使用italic样式*/
+p:target i {
+  color: red;
+}
+```
+
+## outline和border
+
+outline不占页面空间，不会影响元素尺寸和位置，不能像border一样只设置某一边。
+
 ## attr()
 
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr()

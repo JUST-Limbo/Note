@@ -1153,7 +1153,38 @@ changeOrigin：它表示是否更新代理后请求的headers中host地址
 
 如果我们需要修改，那么可以将changeOrigin设置为true即可
 
-## devServer的historyApiFallback
+## devServer.headers
+
+```javascript
+module.exports = {
+  //...
+  devServer: {
+    headers: {
+      'X-Custom-Foo': 'bar',
+    },
+  },
+};
+```
+
+```javascript
+module.exports = {
+  //...
+  devServer: {
+    headers: [
+      {
+        key: 'X-Custom',
+        value: 'foo',
+      },
+      {
+        key: 'Y-Custom',
+        value: 'bar',
+      },
+    ],
+  },
+};
+```
+
+## 为所有响应添加 headers：devServer的historyApiFallback
 
 historyApiFallback是开发中一个非常常见的属性，它主要的作用是解决SPA页面在路由跳转之后，进行页面刷新
 时，返回404的错误。
@@ -1206,6 +1237,10 @@ extensions是解析到文件时自动添加扩展名：
 我们可以给某些常见的路径起一个别名；
 
 ![image-20220303230018967](webpack5.assets/image-20220303230018967.png)
+
+## cache
+
+生产模式禁用
 
 ## 如何区分开发环境
 
@@ -1506,18 +1541,29 @@ webpack提供了两种实现动态导入的方式：
 
 ## optimization.chunkIds配置
 
-optimization.chunkIds配置用于告知webpack模块的id采用什么算法生成
+## optimization. moduleIds
 
-有三个比较常见的值：
-natural：按照数字的顺序使用id；
-named：development下的默认值，一个可读的名称的id；
-deterministic：确定性的，在不同的编译中不变的短数字id
-	在webpack4中是没有这个值的；
-	那个时候如果使用natural，那么在一些编译发生变化时，就会有问题；
+```
+boolean = false` `string: 'natural' | 'named' | 'size' | 'total-size' | 'deterministic'
+```
 
-开发过程中，我们推荐使用named
+不同`mode`下，chunkIds的默认值是不同的（需要打包论证是依赖于false还是依赖于mode）
 
-打包过程中，我们推荐使用deterministic
+![image-20220321235137984](webpack5.assets/image-20220321235137984.png)
+
+| 选项值            | 描述                                                         |
+| :---------------- | :----------------------------------------------------------- |
+| `'natural'`       | 按使用顺序的数字 id。                                        |
+| `'named'`         | 对调试更友好的可读的 id。                                    |
+| `'deterministic'` | 在不同的编译中不变的短数字 id。有益于长期缓存。在生产模式中会默认开启。 |
+| `'size'`          | 专注于让初始下载包大小更小的数字 id。                        |
+| `'total-size'`    | 专注于让总下载包大小更小的数字 id。                          |
+
+开发中使用`named`，生产使用`deterministic`
+
+配置`moduleIds`明显改善二次构建速度（原因未论证）（moduleIds的默认值疑似和chunkIds不一致？）
+
+使用named值会不会导致热更新不及时的问题？（未论证）
 
 ## optimization. runtimeChunk
 
@@ -1533,6 +1579,52 @@ single：打包一个runtime文件；
 对象：name属性决定runtimeChunk的名称；
 
 ![image-20220305102451907](webpack5.assets/image-20220305102451907.png)
+
+如果当前runtimechunk的包体积过小，可以考虑直接写入到`index.html`中具体参考`InlineChunkHtmlPlugin`，`html-webpack-inline-source-plugin`，`react-dev-utils/InlineChunkHtmlPlugin`插件
+
+
+
+## optimization.minimizer
+
+```js
+  optimization: {
+    chunkIds: "named",
+    moduleIds: "named",
+    usedExports: true, // 树摇
+    splitChunks: {
+      chunks: "all",
+      minSize: 1024 * 20,
+      maxSize: 1024 * 500,
+      minChunks: 2,
+    },
+    runtimeChunk: {
+      name: "runtime",
+    },
+    minimize: true, // 不设置true下面的minimizer疑似不生效
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          compress: {
+            drop_console: true, // 删除console.log
+          },
+        },
+      }),
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            "default",
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
+  },
+```
+
+
 
 ## Prefetch和Preload
 
@@ -1626,6 +1718,10 @@ contenthash表示生成的文件hash名称，只和内容有关系：
 那么当index.js文件的内容发生变化时，css文件的命名也会发生变化；
 这个时候我们可以使用contenthash；
 
+推荐 `production` 环境的构建将 CSS 从你的 bundle 中分离出来，这样可以使用 CSS/JS 文件的并行加载。 这可以通过使用 `mini-css-extract-plugin` 来实现，因为它可以创建单独的 CSS 文件。 对于 `development` 模式（包括 `webpack-dev-server`），你可以使用 [style-loader](https://webpack.docschina.org/loaders/style-loader/)，因为它可以使用多个 标签将 CSS 插入到 DOM 中，并且反应会更快。
+
+> i 不要同时使用 `style-loader` 与 `mini-css-extract-plugin`。
+
 ## Terser
 
 压缩、丑化我们的代码，让我们的bundle变得更小
@@ -1683,6 +1779,26 @@ npm install css-minimizer-webpack-plugin -D
 在optimization.minimizer中配置
 
 ![image-20220305152157627](webpack5.assets/image-20220305152157627.png)
+
+```js
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            "default",
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
+  },
+}
+```
 
 ## Scope Hoisting
 
@@ -1776,7 +1892,7 @@ paths：表示要检测哪些目录下的内容需要被分析，这里我们可
 
 默认情况下，Purgecss会将我们的html标签的样式移除掉，如果我们希望保留，可以添加一个safelist的属性
 
-![image-20220305171031955](webpack5.assets/image-20220305171031955.png)
+![	](webpack5.assets/image-20220305171031955.png)
 
 purgecss也可以对less文件进行处理（所以它是对打包后的css进行tree shaking操作）；
 
@@ -1806,16 +1922,26 @@ npm install compression-webpack-plugin -D
 
 ## HTML文件中代码的压缩
 
+
+
 HtmlWebpackPlugin插件来生成HTML的模板，事实上它还有一些其他的配置
 
 inject：设置打包的资源插入的位置
 	true、false 、body、head
 cache：设置为true，只有当文件改变时，才会生成新的文件（默认值也是true）
-minify：默认会使用一个插件html-minifier-terser
+minify：默认会使用一个插件html-minifier-terser  生产环境默认启动，见文档  不会合并的
 
 ![image-20220305175902107](webpack5.assets/image-20220305175902107.png)
 
 ## InlineChunkHtmlPlugin
+
+```
+将代码内联到html中
+script-ext-html-webpack-plugin 不支持webpack5
+html-webpack-inline-source-plugin 官网文档推荐另一个
+```
+
+
 
 另外有一个插件，可以辅助将一些chunk出来的模块，内联到html中：
 比如runtime的代码，代码量不大，但是是必须加载的；
@@ -1841,3 +1967,11 @@ webpack可以帮助我们打包自己的库文件，比如我们需要打包一�
 ![image-20220305181225197](webpack5.assets/image-20220305181225197.png)
 
 ## Vue脚手架分析
+
+
+
+
+
+## webpack()
+
+## webpack-bundle-analyzer

@@ -97,3 +97,12 @@ export default {
 
    
 
+## vue重置数据
+
+```js
+Object.assign(this.$data, this.$options.data.call(this))
+```
+
+
+
+[Vue中的this.$options.data()和this.$data_mocoe的博客-CSDN博客_this.$data](https://blog.csdn.net/mocoe/article/details/89682022)
