@@ -907,6 +907,20 @@ npm install @babel/preset-typescript -D
 
 ## ESLint
 
+如果webpack中eslint配置不生效，可能需要删除node_modules重新装
+
+```js
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+```
+
+eslint8和standard的版本有冲突，需要手动降到eslint7  （全是运气）
+
+
+
 ```bash
 npm install eslint -D
 ```
@@ -999,6 +1013,26 @@ npm命令
 ![image-20220302205303184](webpack5.assets/image-20220302205303184.png)
 
 
+
+### overlay
+
+```js
+module.exports = {
+  //...
+  devServer: {
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
+  },
+};
+```
+
+疑似用的last-modify监控文件改动?
+
+未掌握防抖方案
 
 ## HMR
 
@@ -1975,3 +2009,5 @@ webpack可以帮助我们打包自己的库文件，比如我们需要打包一�
 ## webpack()
 
 ## webpack-bundle-analyzer
+
+webpack-bundle-analyzer报错可能是因为文件在内存里?
