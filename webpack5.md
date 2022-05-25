@@ -1,5 +1,9 @@
 # Webpack5
 
+```
+<link rel="icon" href="<%= BASE_URL %>favicon.ico">
+```
+
 ## 安装
 
 需要安装`webpack` `webpack-cli`
@@ -25,6 +29,10 @@ npm install webpack webpack-cli –D # 局部安装
 3. 此外，浏览器也不认识`CommonJS`的引入方式
 
 因此我们需要通过某个工具对其进行打包，让其转换成浏览器可以直接识别的语法。
+
+如果要局部安装webpack 需要使用npx
+
+[webpack的使用及过程中遇到的问题和解决办法 - 简书 (jianshu.com)](https://www.jianshu.com/p/a3058f860836)
 
 ## Webpack配置文件
 
@@ -64,6 +72,8 @@ webpack --config wk.config.js
 
 ## loader配置方式
 
+**webpack 默认支持处理 JS 与 JSON 文件**
+
 module.rules中允许我们配置多个loader（因为我们也会继续使用其他的loader，来完成其他文件的加载）
 
 module.rules的配置如下：
@@ -82,6 +92,10 @@ rules属性对应的值是一个数组：[Rule]
 - loader属性： Rule.use: [ { loader } ] 的简写。
 
 ![image-20220228211421439](webpack5.assets/image-20220228211421439.png)
+
+## context
+
+## mode
 
 ## css-loader
 
@@ -532,6 +546,10 @@ globOptions：设置一些额外的选项，其中可以编写需要忽略的文
 
 ![image-20220301164148252](webpack5.assets/image-20220301164148252.png)
 
+## stats
+
+'errors-only'不能屏蔽eslint warning
+
 ## mode配置
 
 提供 `mode` 配置选项，告知 webpack 使用相应模式的内置优化。
@@ -905,7 +923,37 @@ npm install @babel/preset-typescript -D
 
 ![image-20220302181452637](webpack5.assets/image-20220302181452637.png)
 
+## ForkTsCheckerWebpackPlugin
+
+过去支持eslint，现在移除了
+
+[错误信息列表 · TypeScript中文网 · TypeScript——JavaScript的超集 (tslang.cn)](https://www.tslang.cn/docs/handbook/error.html)
+
+https://github.com/TypeStrong/fork-ts-checker-webpack-plugin/issues/601
+
 ## ESLint
+
+eslint-config-standard 需要eslint 7.32.0[【一听就懂】ESLint机制浅析_黑马老邹的博客-CSDN博客](https://blog.csdn.net/jameszou707/article/details/121749796?spm=1001.2014.3001.5502)
+
+[Overview | TypeScript ESLint (typescript-eslint.io)](https://typescript-eslint.io/rules/)
+
+[Eslint - 规则 | Rules - 开发者手册 - 云+社区 - 腾讯云 (tencent.com)](https://cloud.tencent.com/developer/chapter/12618)
+
+[Introduction | eslint-plugin-vue (vuejs.org)](https://eslint.vuejs.org/)
+
+[Enabling the `threads` option makes it so that the plugin doesn't emit errors unless in watch mode after the file was changed. · Issue #146 · webpack-contrib/eslint-webpack-plugin (github.com)](https://github.com/webpack-contrib/eslint-webpack-plugin/issues/146)
+
+[Potential performance improvements · Issue #137 · webpack-contrib/eslint-webpack-plugin (github.com)](https://github.com/webpack-contrib/eslint-webpack-plugin/issues/137)
+
+[Documentation - ESLint - Pluggable JavaScript linter](https://eslint.org/docs/user-guide/formatters/)
+
+[List of available rules - ESLint中文文档 (bootcss.com)](https://eslint.bootcss.com/docs/rules/)
+
+https://eslint.vuejs.org/rules/
+
+'errors-only'不能屏蔽eslint warn 
+
+eslintignore 屏蔽build webpack.config.js
 
 如果webpack中eslint配置不生效，可能需要删除node_modules重新装
 
@@ -967,6 +1015,16 @@ npm install eslint-loader -D
 ```
 
 ![image-20220302201427829](webpack5.assets/image-20220302201427829.png)
+
+## eslintWebpackPlugin
+
+未来会移除threads exclude
+
+[Futute + Perfomance · Issue #143 · webpack-contrib/eslint-webpack-plugin (github.com)](https://github.com/webpack-contrib/eslint-webpack-plugin/issues/143)
+
+[Potential performance improvements · Issue #137 · webpack-contrib/eslint-webpack-plugin (github.com)](https://github.com/webpack-contrib/eslint-webpack-plugin/issues/137)
+
+[Enabling the `threads` option makes it so that the plugin doesn't emit errors unless in watch mode after the file was changed. · Issue #146 · webpack-contrib/eslint-webpack-plugin (github.com)](https://github.com/webpack-contrib/eslint-webpack-plugin/issues/146)
 
 ## 加载Vue文件
 
@@ -1188,6 +1246,8 @@ changeOrigin：它表示是否更新代理后请求的headers中host地址
 如果我们需要修改，那么可以将changeOrigin设置为true即可
 
 ## devServer.headers
+
+不能改变异步请求的headers
 
 ```javascript
 module.exports = {
@@ -1525,17 +1585,23 @@ index.js和main.js都依赖两个库：lodash、dayjs
 
 ### SplitChunks
 
+分析：`webpack` 默认配置下会把所有的依赖和插件都打包到 `vendors.js` 中，有些可能是 `app.js` 。所以，对于大量引入第三方依赖的项目，这个文件会非常的大。而对于在特定页面中才会使用的插件也会造成性能浪费。这时拆分和异步就显得尤为重要了。
+
 SplitChunksPlugin插件该插件webpack已经默认安装和集成，所以我们并不需要单独安装和直接使用该插件
 
 Webpack提供了SplitChunksPlugin默认的配置，我们也可以手动来修改它的配置
 
 比如默认配置中，chunks仅仅针对于异步（async）请求，我们可以设置为initial或者all
 
+minSize越小，入口bundle越小，但是会有一个极限最小体积，chunk越多会导致http加载时间比代码执行时间长，所以minSize的值需要多考究考究
+
 ![image-20220304235945569](webpack5.assets/image-20220304235945569.png)
 
 ![image-20220305000252018](webpack5.assets/image-20220305000252018.png)
 
 ![image-20220305000311928](webpack5.assets/image-20220305000311928.png)
+
+
 
 ### 动态导入(dynamic import)
 
@@ -1695,6 +1761,8 @@ preload chunk 会在父chunk 中立即请求，用于当下时刻。prefetch chu
   <% } %> 
 ```
 
+左边是包名，右边是使用的变量名
+
 ## shimming
 
 依赖一个第三方的库，这个第三方的库本身依赖lodash，但是默认没有对lodash进行导入（认
@@ -1806,7 +1874,7 @@ keep_fnames：保留函数的名称；
 
 CSS压缩通常是去除无用的空格等，因为很难去修改选择器、属性的名称、值等
 
-```js
+```bash
 npm install css-minimizer-webpack-plugin -D
 ```
 
@@ -1918,6 +1986,20 @@ sideEffects用于告知webpack compiler哪些模块是有副作用不能被删�
 
 ### CSS树摇
 
+[Vue | PurgeCSS](https://purgecss.com/guides/vue.html#use-the-vue-cli-plugin)
+
+[对vue项目进行CSS Tree-Shaking优化的不完全指南 - 掘金 (juejin.cn)](https://juejin.cn/post/6844904077814398983)
+
+[Add `whitelistPatternsGreedy` option by benface · Pull Request #424 · FullHuman/purgecss (github.com)](https://github.com/FullHuman/purgecss/pull/424)
+
+[CSS Modules classes removed in .vue file · Issue #52 · FullHuman/purgecss (github.com)](https://github.com/FullHuman/purgecss/issues/52)
+
+[purgecss-webpack-plugin 1.6 -> 2.1.2 ignores styles in vue SFCs · Issue #361 · FullHuman/purgecss (github.com)](https://github.com/FullHuman/purgecss/issues/361)
+
+[CSS attribute selectors are removed even when whitelisted · Issue #277 · FullHuman/purgecss (github.com)](https://github.com/FullHuman/purgecss/issues/277)
+
+[Vue - `purgecss` doesn't recognize the `::v-deep` · Issue #362 · FullHuman/purgecss (github.com)](https://github.com/FullHuman/purgecss/issues/362)
+
 ```bash
 npm install purgecss-webpack-plugin -D
 ```
@@ -1929,6 +2011,8 @@ paths：表示要检测哪些目录下的内容需要被分析，这里我们可
 ![	](webpack5.assets/image-20220305171031955.png)
 
 purgecss也可以对less文件进行处理（所以它是对打包后的css进行tree shaking操作）；
+
+purify-css
 
 ## HTTP压缩
 
@@ -2010,4 +2094,20 @@ webpack可以帮助我们打包自己的库文件，比如我们需要打包一�
 
 ## webpack-bundle-analyzer
 
-webpack-bundle-analyzer报错可能是因为文件在内存里?
+webpack-bundle-analyzer报错可能是因为devServer的文件在内存里
+
+
+
+## [`DefinePlugin`](https://webpack.docschina.org/plugins/define-plugin)
+
+## Stylelint
+
+## QA
+
+如果具名插槽的内容为undefined，可能是vue版本的问题建议下降到2.5版本
+
+如果eslint不报错，重启/删除node_modules后重试，eslintwebpackplugin概率性出现缓存的问题，
+
+多线程 
+
+happypack thread-loader
