@@ -133,14 +133,19 @@ var  intElemScrollTop = someElement.scrollTop;
 
 
 
-## 判断页面是否滚动到底部
+## contextmenu
+
+打开上下文菜单触发该事件，通常为鼠标右键点击触发。
+
+如果想要实现右击鼠标不打开默认的浏览器菜单，可以通过`preventDefault()`取消默认行为实现。
+
+监听鼠标右键的另一个方法：
 
 ```js
-const scrollTop=document.body.scrollTop
-const scrollHeight=document.body.scrollHeight
-const clientHeight=document.body.clientHeight
-if(scrollTop+clientHeight +50 >=scrollHeight){
-  console.log('reach bottom')
+document.onmousedown = function(event) {
+	if (event.button == 2) {
+    	//鼠标右键
+    }
 }
 ```
 
