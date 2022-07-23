@@ -132,6 +132,16 @@ var  intElemScrollTop = someElement.scrollTop;
 **`Element.scrollLeft`** 属性可以读取或设置元素滚动条到元素左边的距离。
 
 
+## 判断页面是否滚动到底部
+
+```js
+const scrollTop=document.body.scrollTop
+const scrollHeight=document.body.scrollHeight
+const clientHeight=document.body.clientHeight
+if(scrollTop+clientHeight +50 >=scrollHeight){
+  console.log('reach bottom')
+}
+```
 
 ## contextmenu
 
