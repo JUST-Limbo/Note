@@ -25,3 +25,23 @@
 
 
 
+npm淘宝镜像地址
+
+```bash
+https://registry.npmmirror.com
+
+npm config set registry https://registry.npmmirror.com
+yarn config set registry https://registry.npmmirror.com
+```
+
+
+
+node-sass淘宝镜像地址
+
+```bash
+https://npmmirror.com/mirrors/node-sass/ 
+
+npm config set sass_binary_site=https://npmmirror.com/mirrors/node-sass/ 
+yarn config set sass_binary_site=https://npmmirror.com/mirrors/node-sass/ 
+```
+
