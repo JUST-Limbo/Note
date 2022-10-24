@@ -23,6 +23,12 @@
 - npm 命令 -help
   + 查看指定命令的使用帮助
 
+清楚npm缓存
+
+```bash
+npm cache clear --force
+```
+
 
 
 npm淘宝镜像地址
