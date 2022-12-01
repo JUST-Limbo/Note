@@ -6,11 +6,9 @@
 vue create .
 ```
 
-
-
 ## watch注意事项
 
-> 注意：在变更 (不是替换) 对象或数组时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
+注意：在变更 (不是替换) 对象或数组时，旧值将与新值相同，因为它们的引用指向同一个对象/数组。Vue 不会保留变更之前值的副本。
 
 ## props
 
@@ -26,8 +24,6 @@ props:{
 ```
 
 default属性值为该 prop 指定一个默认值。如果该 prop 没有被传入，则换做用这个值。**对象或数组的默认值必须从一个工厂函数返回。**
-
-
 
 ## 命名视图
 
@@ -103,7 +99,6 @@ export default {
    }
    ```
 
-   
 
 ## vue重置数据
 
@@ -111,6 +106,47 @@ export default {
 Object.assign(this.$data, this.$options.data.call(this))
 ```
 
-
-
 [Vue中的this.$options.data()和this.$data_mocoe的博客-CSDN博客_this.$data](https://blog.csdn.net/mocoe/article/details/89682022)
+
+## 全局scss
+
+共享全局scss变量（via [CSS 相关 | Vue CLI (vuejs.org)](https://cli.vuejs.org/zh/guide/css.html#向预处理器-loader-传递选项)）
+
+```js
+// vue.config.js
+module.exports = {
+  css: {
+    loaderOptions: {
+      // 给 sass-loader 传递选项
+      sass: {
+        // @/ 是 src/ 的别名
+        // 所以这里假设你有 `src/variables.sass` 这个文件
+        // 注意：在 sass-loader v8 中，这个选项名是 "prependData"
+        additionalData: `@import "~@/variables.sass"`
+      },
+      // 默认情况下 `sass` 选项会同时对 `sass` 和 `scss` 语法同时生效
+      // 因为 `scss` 语法在内部也是由 sass-loader 处理的
+      // 但是在配置 `prependData` 选项的时候
+      // `scss` 语法会要求语句结尾必须有分号，`sass` 则要求必须没有分号
+      // 在这种情况下，我们可以使用 `scss` 选项，对 `scss` 语法进行单独配置
+      scss: {
+        additionalData: `@import "~@/variables.scss";`
+      },
+      // 给 less-loader 传递 Less.js 相关选项
+      less:{
+        // http://lesscss.org/usage/#less-options-strict-units `Global Variables`
+        // `primary` is global variables fields name
+        globalVars: {
+          primary: '#fff'
+        }
+      }
+    }
+  }
+}
+```
+
+参考资料
+
++ [vue-cli3/cli4 vue.config.js 中全局引入 scss 样式不生效 解决方案 - 简书 (jianshu.com)](https://www.jianshu.com/p/72bbeb6279eb)
+
++ [vue全局引入scss样式文件_KILIG_yss的博客-CSDN博客_vue 引入scss](https://blog.csdn.net/Yss915/article/details/126573672)
