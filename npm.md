@@ -52,7 +52,7 @@ yarn config set sass_binary_site=https://npmmirror.com/mirrors/node-sass/
 
 npm_lifecycle_event
 
-由npm提供的变量，返回当前所运行脚本的名称，如`build`等
+由npm提供的变量，返回当前所运行脚本的名称，如`build`等（via [npm scripts 使用指南 - 阮一峰的网络日志 (ruanyifeng.com)](https://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)）
 
 ```js
 const TARGET = process.env.npm_lifecycle_event;
