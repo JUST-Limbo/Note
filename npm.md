@@ -1,5 +1,8 @@
+# npm
+
+## 命令
+
 - npm init
-  
   - npm init -y 跳过向导 快速生成
 - npm install
 - npm install 包名
@@ -12,24 +15,22 @@
 
   - npm i -S 包名
 - npm uninstall 包名
-	- 只删除,如果有依赖项会依然保存
-	- npm un 包名
--	npm uninstall --save 包名
-	-	删除的同时去除依赖信息
-	-	npm un -S 包名
--	npm help
-	-	查看使用帮助
+  - 只删除,如果有依赖项会依然保存
+  - npm un 包名
+- npm uninstall --save 包名
+  -	删除的同时去除依赖信息
+  -	npm un -S 包名
+- npm help
+  -	查看使用帮助
 
 - npm 命令 -help
   + 查看指定命令的使用帮助
 
-清楚npm缓存
+清除npm缓存
 
 ```bash
 npm cache clear --force
 ```
-
-
 
 npm淘宝镜像地址
 
@@ -40,8 +41,6 @@ npm config set registry https://registry.npmmirror.com
 yarn config set registry https://registry.npmmirror.com
 ```
 
-
-
 node-sass淘宝镜像地址
 
 ```bash
@@ -49,5 +48,13 @@ https://npmmirror.com/mirrors/node-sass/
 
 npm config set sass_binary_site=https://npmmirror.com/mirrors/node-sass/ 
 yarn config set sass_binary_site=https://npmmirror.com/mirrors/node-sass/ 
+```
+
+npm_lifecycle_event
+
+由npm提供的变量，返回当前所运行脚本的名称，如`build`等
+
+```js
+const TARGET = process.env.npm_lifecycle_event;
 ```
 
