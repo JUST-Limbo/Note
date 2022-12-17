@@ -61,7 +61,7 @@ PC、移动端路由组件切换
 <router-view v-else-if="pageType == 'mobile'" name="m"></router-view>
 ```
 
-## Vue中图片Src使用变量
+## Vue中图片src使用变量
 
 [vue中动态引入图片为什么要是require， 你不知道的那些事 - 掘金 (juejin.cn)](https://juejin.cn/post/7159921545144434718)
 
