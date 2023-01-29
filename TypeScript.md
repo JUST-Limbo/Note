@@ -18,6 +18,10 @@ tsc作用：负责将ts代码转为浏览器和nodejs识别的js代码
 
 终端中输入`tsc -w`
 
+## type和interface的区别
+
+[TypeScript type 和 interface 的区别 - CodeSky 代码之空](https://www.codesky.me/archives/typescript-difference-type-interface.wind)
+
 ## function
 
 ### 可选参数
