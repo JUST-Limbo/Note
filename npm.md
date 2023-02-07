@@ -29,7 +29,7 @@
 清除npm缓存
 
 ```bash
-npm cache clear --force
+npm cache clean --force
 ```
 
 npm淘宝镜像地址
@@ -58,3 +58,8 @@ npm_lifecycle_event
 const TARGET = process.env.npm_lifecycle_event;
 ```
 
+
+
+node与node-sass版本对应关系
+
+[node-sass - npm (npmjs.com)](https://www.npmjs.com/package/node-sass)
