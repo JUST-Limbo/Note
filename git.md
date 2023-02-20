@@ -38,16 +38,17 @@ git config --global user.email 邮箱
 
 ### 分支命令
 
-| 命令                               | 作用                             |
-| ---------------------------------- | -------------------------------- |
-| git branch 分支名                  | 创建分支                         |
-| git branch                         | 列出当前分支清单                 |
-| git branch -v                      | 查看各个分支最后一个提交信息     |
-| git branch --delete 分支名         | 删除本地分支                     |
-| git checkout 分支名                | 切换分支                         |
-| git checkout --orphan 分支名       | 创建空白分支                     |
-| git merge 分支名                   | 把指定的分支合并到**当前分支**上 |
-| git push --set-upstream origin XXX | 将本地新的XXX分支推送到远端      |
+| 命令                                  | 作用                             |
+| ------------------------------------- | -------------------------------- |
+| git branch 分支名                     | 创建分支                         |
+| git branch                            | 列出当前分支清单                 |
+| git branch -v                         | 查看各个分支最后一个提交信息     |
+| git branch --delete 分支名            | 删除本地分支                     |
+| git push origin --delete 分支名       | 删除远程分支                     |
+| git checkout 分支名                   | 切换分支                         |
+| git checkout --orphan 分支名          | 创建空白分支                     |
+| git merge 分支名                      | 把指定的分支合并到**当前分支**上 |
+| git push --set-upstream origin 分支名 | 将本地新分支推送到远端           |
 
 ### 合并冲突
 
