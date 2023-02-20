@@ -1,8 +1,14 @@
 # NuxtJS
 
-cookie-universal-nuxt
+## SSR脱水 喝水的概念
 
-vuex数据持久化
+[React SSR中的hydrate是什么意思？ | 黯羽轻扬 (ayqy.net)](http://www.ayqy.net/blog/ssr-hydrate/)
+
+[如何理解 SSR 中的 hydrate？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/323174003)
+
+![image-20230220234231709](NuxtJS.assets/image-20230220234231709.png)
+
+## cookie-universal-nuxt
 
 ## 子组件meta标签覆盖父组件
 
