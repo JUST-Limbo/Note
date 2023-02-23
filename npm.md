@@ -22,9 +22,11 @@
   -	npm un -S 包名
 - npm help
   -	查看使用帮助
-
 - npm 命令 -help
   + 查看指定命令的使用帮助
+
++ npm update packageName
+  + 更新指定依赖安装包
 
 清除npm缓存
 
