@@ -28,6 +28,9 @@
 + npm update packageName
   + 更新指定依赖安装包
 
++ npm create xxx
+  + 按照模板创建项目，是npm init xxx的别名
+
 清除npm缓存
 
 ```bash
