@@ -152,3 +152,36 @@ module.exports = {
 + [vue-cli3/cli4 vue.config.js 中全局引入 scss 样式不生效 解决方案 - 简书 (jianshu.com)](https://www.jianshu.com/p/72bbeb6279eb)
 
 + [vue全局引入scss样式文件_KILIG_yss的博客-CSDN博客_vue 引入scss](https://blog.csdn.net/Yss915/article/details/126573672)
+
+## 路由懒加载与webpack-dev-server性能
+
+原因未知，效果未验证。
+
+```js
+// _import_development.js
+module.exports = file => require('@/views/' + file + '.vue').default
+```
+
+```js
+// _import_production.js
+module.exports = file => () => import('@/views/' + file + '.vue')
+```
+
+```javascript
+const _import = require('./_import_' + process.env.NODE_ENV);
+
+export const routers = [
+    {
+        path: '/',
+        name: 'home',
+        meta: { 
+            title: '主页'
+        },
+        component: _import('home')
+    },
+]
+```
+
+参考资料
+
++ [vue路由懒加载链接过多导致本地开发热更新慢的解决 - 简书 (jianshu.com)](https://www.jianshu.com/p/ff1f10909a67)
