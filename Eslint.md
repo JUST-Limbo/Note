@@ -4,6 +4,8 @@
 
 https://www.bilibili.com/video/BV1x341177X8?p=12&share_source=copy_web
 
+[深入浅出 Eslint，告别 Lint 恐惧症 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/558474060)
+
 ## 生成配置文件
 
 > ESLint 可以创建独立的配置文件 .eslintrc.js  也可以直接在package.json中配置
