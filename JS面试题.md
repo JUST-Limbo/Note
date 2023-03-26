@@ -806,3 +806,25 @@ console.log(toString.call(arg));  // [object Arguments]
 + 使用 typeof 来判断基本数据类型是可行的,需要注意的是typeof判断null类型时的问题
 + 判断一个对象考虑用instanceof，但是instanceof判断一个数组的时候,它可以被instanceof判断为Object
 + 比较准确的的判断对象实例的类型，采取`Object.prototype.toString.call()`方法
+
+## 箭头函数
+
+如何检测函数是不是箭头函数：
+
+箭头函数不能作为构造函数被new关键字调用，可以通过判断函数对象是否存在`prototype`来判断（不完善）
+
+```js
+(() => {}).prototype // undefined
+(function() {}).prototype // {constructor: f}
+```
+
+箭头函数和普通函数的区别
+
+1. 没有自己的this
+2. call apply bind无法改变this指向
+3. 不能作为构造函数使用，不能被new关键字调用，没有prototype
+4. 没有arguments
+
+## 如何判断当前函数是否被new调用
+
+在通过[new](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)运算符被初始化的函数或构造方法中，`new.target`返回一个指向构造方法或函数的引用。在普通的函数调用中，`new.target` 的值是`undefined`。
