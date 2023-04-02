@@ -1,4 +1,4 @@
-# CSS
+#  CSS
 
 ## :target伪类
 
@@ -535,3 +535,95 @@ div:hover{
 2. 边距溢出、盒子塌陷
 3. 清除浮动
 4. 浮动环绕文字（现象的原因是文本信息不会被浮动元素所覆盖）
+
+## fit-content
+
+fit-content的效果和inline-block、absolute的效果类似，都能实现尺寸收缩效果
+
+fit-content的使用时机：
+
+1. 想保持display、position实现尺寸收缩
+2. 让元素有一个确定的width、height
+
+关于(2)的详细描述：
+
+水平垂直居中的代码如下
+
+```css
+.center{
+  position:absolute;
+  left:50%;
+  right:50%;
+  transform:translate(-50%,-50%);
+}
+
+```
+
+如果对上述代码的transform还有其它动画效果则会干扰transform的值
+
+```css
+.center{
+  position:absolute;
+  left:50%;
+  right:50%;
+  transform:translate(-50%,-50%);
+  animation: oo 3s;
+}
+@keyframes oo {
+	from {
+		transform: translateY(20px)
+	}
+	to {
+		transform: translateY(0px);
+	}
+}
+
+```
+
+解决：
+
+```css
+.center{
+  position:absolute;
+  width:fit-content;
+  height:fit-content;
+  inset:0;
+}
+
+```
+
+fit-content也能用来更好的处理水平居中：（via[理解CSS3 max/min-content及fit-content等width值 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/?shrink=1)）
+
+```css
+.box {
+    background-color: #f0f3f9;
+    padding: 10px;
+    /* 这里左右方向是auto */
+    margin: 10px auto 20px;
+    overflow: hidden;
+}
+
+.inline-block {
+    display: inline-block;
+}
+.fit-content {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;    
+}
+```
+
+```html
+<strong>display:inline-block;</strong>
+<div class="box inline-block">
+    <img src="mm1.jpg">
+    <p>display:inline-block居中要靠父元素，而width:fit-content直接margin:auto.</p>
+</div>
+
+<strong>width: fit-content;</strong>
+<div class="box fit-content">
+    <img src="mm1.jpg">
+    <p>display:inline-block居中要靠父元素，而width:fit-content直接margin:auto.</p>
+</div>
+```
+
