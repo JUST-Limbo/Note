@@ -31,6 +31,14 @@
 + npm create xxx
   + 按照模板创建项目，是npm init xxx的别名
 
++ npm version 
+
+  version字段结构为：'0.0.0-0'，分别代表：大号.中号.小号-预发布号，对应majon.minor.patch-prerelease
+
+  [npm version 常用命令_文摘资讯的博客-CSDN博客](https://blog.csdn.net/gtLBTNq9mr3/article/details/125252366)
+
+  [git自动生成changelog及项目版本管理 - 掘金 (juejin.cn)](https://juejin.cn/post/6844904147892830221)
+
 清除npm缓存
 
 ```bash
