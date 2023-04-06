@@ -18,11 +18,12 @@
   },
   "homepage": "https://github.com/JUST-Limbo/Note#readme",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+        "path": "node_modules/cz-customizable"
     }
   }
 }
