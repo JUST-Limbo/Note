@@ -20,6 +20,8 @@ https://www.yuque.com/guoba7/xh8mvb/dfrqiq
 
 [lentoo/vue-cli-ssr-example: 基于 vue-cli3构建的一个SSR应用程序 (github.com)](https://github.com/lentoo/vue-cli-ssr-example)
 
+[通过vue-cli3构建一个SSR应用程序 - 掘金 (juejin.cn)](https://juejin.cn/post/6844903678646681607)
+
 [基于vue-cli3 SSR 程序实现热更新功能 - 掘金 (juejin.cn)](https://juejin.cn/post/6844903693373046792)
 
 [5.4.3 SSR的作用及Vue-SSR在网易的实践 (yuque.com)](https://www.yuque.com/guoba7/xh8mvb/dfrqiq#N5D7R)
