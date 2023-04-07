@@ -1,5 +1,3 @@
-# http
-
 ## http和https
 
 
@@ -64,3 +62,45 @@
 
 ![img](http.assets/16a8c60fb0ef49f0~tplv-t2oaga2asx-watermark.awebp)
 
+## Cookie
+
+每个域名下的cookie 的大小最大为4KB
+
+| 属性名   | 描述                                                         |
+| -------- | ------------------------------------------------------------ |
+| name     | 名称，创建后不能更改；必填                                   |
+| value    | 值；必填                                                     |
+| maxAge   | 失效时间，单位秒，，默认-1，负数表示当前为临时Cookie关闭浏览器即失效，0表示删除该Cookie |
+| secure   | 默认false，该字段不是键值对的形式，如果要指定该字段，只要在设置cookie时添加secure字符即可。设置了该字段即表示只有使用SSL链接时Cookie才会发送到浏览器。 |
+| path     | Cookie的使用路径，通过这个字段可以为服务器上特定的文档分配cookie。默认值是设置 Cookie 时的当前目录。如果设置为“/sessionWeb/”，则只有contextPath为“/sessionWeb”的程序可以访问该Cookie。如果设置为“/”，则本域名下contextPath都可以访问该Cookie。注意最后一个字符必须为“/”。 |
+| HttpOnly | 只能由服务端设置。用来控制Cookie是否能通过JS（`document.cookie`）访问，默认为空表示可以访问 |
+| domain   | 可以访问该Cookie的域名，所有向该域名发送的请求中都会包含这个cookie信息。如果设置为“.google.com”，则所有以“google.com”结尾的域名都可以访问该Cookie。注意第一个字符必须为“.”。 |
+
+use example：
+
+```js
+document.cookie = "username=Darren;path=/;domain=.csdn.net"
+```
+
+### CORS中的cookie
+
+CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，一方面要服务器同意，指定`Access-Control-Allow-Credentials`字段。（via[跨域资源共享 CORS 详解 - 阮一峰的网络日志 (ruanyifeng.com)](http://www.ruanyifeng.com/blog/2016/04/cors.html)）
+
+> ```http
+> Access-Control-Allow-Credentials: true
+> ```
+
+另一方面，开发者必须在AJAX请求中打开`withCredentials`属性。
+
+> ```javascript
+> var xhr = new XMLHttpRequest();
+> xhr.withCredentials = true;
+> ```
+
+如果要发送Cookie，`Access-Control-Allow-Origin`就不能设为星号，必须指定明确的、与请求网页一致的域名。
+
+参考链接：
+
+[cookie的domain属性_cookie domain_545龙哥哥的博客-CSDN博客](https://blog.csdn.net/longgege001/article/details/81274088)
+
+[关于Cookie的知识的总结 - Fogwind - 博客园 (cnblogs.com)](https://www.cnblogs.com/fogwind/p/6890159.html)
