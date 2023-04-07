@@ -171,6 +171,8 @@ pre标签可定义预格式化的文本。被包围在 <pre> 标签 元素中的
 
 ## line-height
 
+主要是纯数字属性值
+
 ```
 normal
 ```
@@ -194,6 +196,10 @@ normal
 ```
 
 与元素自身的字体大小有关。计算值是给定的百分比值乘以元素计算出的字体大小。**百分比**值可能会带来不确定的结果。
+
+参考资料：
+
+[line-height - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height)
 
 
 
