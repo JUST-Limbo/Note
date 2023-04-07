@@ -1,5 +1,3 @@
-#  CSS
-
 ## :target伪类
 
 **`:target`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) 代表一个唯一的页面元素(目标元素)，其[`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#attr-id) 与当前URL片段匹配 
@@ -627,3 +625,52 @@ fit-content也能用来更好的处理水平居中：（via[理解CSS3 max/min-c
 </div>
 ```
 
+## em和rem
+
+em，相对单位，这个单位表示元素的 [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 的计算值。如果用在[`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 属性本身，它则表示元素*继承*的 `font-size` 值。em不仅可以用作font-size的计算值，也可用于width等。
+
+```css
+ /* em的用法1：自己元素设置font-size的值来当作em的参照值 */
+.div-em{
+    font-size: 32px;  // 1em = 32px
+    width: 10em;      // 10em = 10 x 32 = 320px
+    height: 10em;     // 10em = 10 x 32 = 320px
+    background-color: aquamarine;
+}
+
+ /* em的用法2：自己元素不设置，而父级元素设置font-size的值来当作em的参照值 */
+.div-em-father{
+    font-size: 64px;  // 1em = 64px
+}
+
+.div-em-child{
+    width: 10em;     // 10em = 10 x 64 = 640px
+    height: 10em;    // 10em = 10 x 64 = 640px
+    background-color: cadetblue;
+}
+```
+
+rem，相对单位，这个单位代表根元素（通常为<html> 元素）的 font-size 大小。当用在根元素的 font-size 上面时，它代表了它的初始值。
+
+```css
+/* rem的用法 */
+html{
+    font-size:16px;  // 1rem = 16px
+}
+
+.div-rem{
+    width: 10rem;    // 10rem = 10 x 16 = 160px
+    height: 10rem;   // 10rem = 10 x 16 = 160px
+    font-size: 1rem; // 1rem = 16px
+    background-color: #a58778;
+}
+```
+
+```css
+html{
+  font-size: 2rem; // 2*16=32px
+}
+.d1{
+  font-size: 2rem; // 2*32=64px
+}
+```
