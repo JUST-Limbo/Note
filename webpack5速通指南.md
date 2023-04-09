@@ -818,6 +818,8 @@ not ie <= 8
 
 #### vue
 
+[15.0.0 support for rules.oneOf config · Issue #1204 · vuejs/vue-loader (github.com)](https://github.com/vuejs/vue-loader/issues/1204)
+
 ```bash
 npm install -D vue vue-loader vue-template-compiler
 ```
@@ -859,6 +861,10 @@ module.exports = {
 ```
 
 #### js ts
+
+esbuild-loader?
+
+[webpack + esbuild-loader 提升构建速度 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/596805639)
 
 ```js
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
