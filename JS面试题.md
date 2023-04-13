@@ -826,3 +826,32 @@ console.log(toString.call(arg));  // [object Arguments]
 ## 如何判断当前函数是否被new调用
 
 在通过[new](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)运算符被初始化的函数或构造方法中，`new.target`返回一个指向构造方法或函数的引用。在普通的函数调用中，`new.target` 的值是`undefined`。
+
+## map和parseInt
+
+```js
+[1, 2, 3].map(parseInt);
+// 等同于
+[1, 2, 3].map((item, index, arr) => {
+  return parseInt(item, index);
+});
+// 1 NaN NaN
+```
+
+```js
+parseInt(string, radix);
+```
+
+**parseInt(\*string\*, \*radix\*)** 解析一个字符串并返回指定基数的十进制整数
+
+`string`
+
+要被解析的值。如果参数不是一个字符串，则将其转换为字符串 (使用 [`ToString`](https://www.ecma-international.org/ecma-262/6.0/#sec-tostring)抽象操作)。字符串开头的空白符将会被忽略。
+
+`radix`_ 可选_
+
+从 `2` 到 `36` 的整数，表示进制的基数。例如指定 `16` 表示被解析值是十六进制数。如果超出这个范围，将返回 `NaN`。**假如指定 `0` 或未指定，基数将会根据字符串的值进行推算。**注意，推算的结果不会永远是默认值 `10`！
+
+参考资料：
+
+[parseInt - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt)

@@ -25,6 +25,16 @@ props:{
 
 default属性值为该 prop 指定一个默认值。如果该 prop 没有被传入，则换做用这个值。**对象或数组的默认值必须从一个工厂函数返回。**
 
+## 如何判断是否显式传入了prop
+
+```js
+this.$options.propsData.hasOwnProperty('xxx')
+```
+
+参考资料：
+
+https://www.bilibili.com/video/BV12G4y1L7ts?share_source=copy_web
+
 ## 命名视图
 
 有时候想同时 (同级) 展示多个视图，而不是嵌套展示，例如创建一个布局，有 `sidebar` (侧导航) 和 `main` (主内容) 两个视图，这个时候命名视图就派上用场了。你可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。如果 `router-view` 没有设置名字，那么默认为 `default`。
