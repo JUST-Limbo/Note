@@ -63,6 +63,16 @@ npm i webpack@5 webpack-cli@4 –D # 局部安装
 }
 ```
 
+你可以使用 `--node-env` 选项来设置 `process.env.NODE_ENV`
+
+[命令行接口（CLI） | webpack 中文文档 (docschina.org)](https://webpack.docschina.org/api/cli/#node-env)
+
+### 如何快速创建一个webpack项目
+
+[配置 | webpack 中文文档 (docschina.org)](https://webpack.docschina.org/configuration/#set-up-a-new-webpack-project)
+
+[命令行接口（CLI） | webpack 中文文档 (docschina.org)](https://webpack.docschina.org/api/cli/#init)
+
 ## 配置
 
 ### mode
@@ -265,6 +275,12 @@ module.exports = {
 > 模板字符串的描述见 [Template Strings](https://webpack.docschina.org/configuration/output/#template-strings) 
 
 ### devServer
+
+关闭devserver的日志输出
+
+[webpack-dev-server/CHANGELOG.md at 80a96fd4a989972dc308d0356c68f71c5a2abfc6 · webpack/webpack-dev-server (github.com)](https://github.com/webpack/webpack-dev-server/blob/80a96fd4a989972dc308d0356c68f71c5a2abfc6/CHANGELOG.md#400-beta0-2020-11-27)
+
+[其它选项 | webpack 中文文档 (docschina.org)](https://webpack.docschina.org/configuration/other-options/#level)
 
 ```bash
 npm install webpack-dev-server@4 -D
@@ -709,6 +725,12 @@ module.exports = {
 
 #### CSS和CSS预处理器
 
+sassloader不应该是用thread-loader
+
+[TypeError: loaderContext.getLogger is not a function in utils.js · Issue #993 · webpack-contrib/sass-loader (github.com)](https://github.com/webpack-contrib/sass-loader/issues/993)
+
+[sass-loader 12.3.0 breaks compatibility with thread-loader · Issue #1016 · webpack-contrib/sass-loader (github.com)](https://github.com/webpack-contrib/sass-loader/issues/1016)
+
 ```js
 module.exports = {
   mode: 'development',
@@ -819,6 +841,12 @@ not ie <= 8
 #### vue
 
 [15.0.0 support for rules.oneOf config · Issue #1204 · vuejs/vue-loader (github.com)](https://github.com/vuejs/vue-loader/issues/1204)
+
+[老项目vue2.x误用了vue3的插件问题_vue-loader版本_七里汀的博客-CSDN博客](https://blog.csdn.net/xy_peng/article/details/127221778)
+
+vue-template-compiler需要控制在2.6.14以前，从2.7开始支持vue3的兼容
+
+**vue-loader插件最为适合的版本是[15.9.8](https://www.npmjs.com/package/vue-loader/v/15.9.8)， vue3的语法编译就在[15.10.0](https://www.npmjs.com/package/vue-loader/v/15.10.0)以及版本以上**，以下是插件迭代的截图：
 
 ```bash
 npm install -D vue vue-loader vue-template-compiler
