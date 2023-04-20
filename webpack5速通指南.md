@@ -137,6 +137,8 @@ module.exports = {
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 不生成列映射，仅生成行映射；<br />针对babel-loader等源自 loader 的 source map 会有更好的优化，这里的意思是说会显示 babel-loader 等转换之前的代码；<br />优点是代码 debug 直观，并且行映射足够用于定位问题；缺点是构建速度和二次构建速度都慢 | 构建速度快，有行映射，仅显示转换后的代码（转换后的代码也还好，没有到完全看不了的地步） |
 
+生产模式下建议直接使用 `none`
+
 > 关于 `devtool` 几个可选值的构建速度对比，我觉得 v4 的文档[devtool v4](https://v4.webpack.docschina.org/configuration/devtool/)描述的比 v5 的文档 [devtool v5](https://webpack.docschina.org/configuration/devtool/)直观一些。
 
 ### context
@@ -726,6 +728,16 @@ sassloader不应该是用thread-loader
 [TypeError: loaderContext.getLogger is not a function in utils.js · Issue #993 · webpack-contrib/sass-loader (github.com)](https://github.com/webpack-contrib/sass-loader/issues/993)
 
 [sass-loader 12.3.0 breaks compatibility with thread-loader · Issue #1016 · webpack-contrib/sass-loader (github.com)](https://github.com/webpack-contrib/sass-loader/issues/1016)
+
+
+
+##### scss  icss
+
+[将 SCSS 变量分享给 JS - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/352741442)
+
+[css-loader | webpack 中文文档 (docschina.org)](https://webpack.docschina.org/loaders/css-loader/#separating-interoperable-css-only-and-css-module-features)
+
+[CSS 相关 | Vue CLI (vuejs.org)](https://cli.vuejs.org/zh/guide/css.html#css-modules)
 
 ```js
 module.exports = {
