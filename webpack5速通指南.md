@@ -1147,6 +1147,10 @@ module.exports = {
 
 
 
+## 构建性能
+
+[构建性能 | webpack 中文文档 (docschina.org)](https://webpack.docschina.org/guides/build-performance/)
+
 ## 小结
 
 

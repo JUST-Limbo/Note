@@ -855,3 +855,86 @@ parseInt(string, radix);
 参考资料：
 
 [parseInt - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+
+
+
+## 异步调度器
+
+```js
+//异步调度器
+class Scheduler {
+    constructor(maxNum) {
+      //等待执行的任务队列
+      this.taskList = []
+      //当前任务数
+      this.count = 0
+      //最大任务数
+      this.maxNum = maxNum
+    }
+
+    run() {
+      this.count++
+      this.taskList.shift()().then((result) => {
+        this.count--
+        if(this.taskList.length) this.run()
+      })
+    }
+      
+    add(promiseCreator) {
+       this.taskList.push(() => promiseCreator())
+       //当当前任务数小于最大任务数就将其任务执行
+       this.count < this.maxNum && this.run()
+    }
+  }
+```
+
+```js
+// 并发请求函数
+const concurrencyRequest = (urls, maxNum) => {
+    return new Promise((resolve) => {
+        if (urls.length === 0) {
+            resolve([]);
+            return;
+        }
+        const results = [];
+        let index = 0; // 下一个请求的下标
+        let count = 0; // 当前请求完成的数量
+
+        // 发送请求
+        async function request() {
+            if (index === urls.length) return;
+            const i = index; // 保存序号，使result和urls相对应
+            const url = urls[index];
+            index++;
+            try {
+                const resp = await fetch(url);
+                // resp 加入到results
+                results[i] = resp;
+            } catch (err) {
+                // err 加入到results
+                results[i] = err;
+            } finally {
+                count++;
+                // 判断是否所有的请求都已完成
+                if (count === urls.length) {
+                    console.log('完成了');
+                    resolve(results);
+                }
+                request();
+            }
+        }
+
+        // maxNum和urls.length取最小进行调用
+        const times = Math.min(maxNum, urls.length);
+        for(let i = 0; i < times; i++) {
+            request();
+        }
+    })
+}
+```
+
+参考资料：
+
+[Promise 事件执行控制 - 掘金 (juejin.cn)](https://juejin.cn/post/6901912409343492103)
+
+https://juejin.cn/post/7163522138698153997
