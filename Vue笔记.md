@@ -1,6 +1,4 @@
-# Vue笔记
-
-## 在当前目录下直接创建vue项目而不是创建子目录
+## vuecli在当前目录下直接创建vue项目而不是创建子目录
 
 ```bash
 vue create .
@@ -195,3 +193,32 @@ export const routers = [
 参考资料
 
 + [vue路由懒加载链接过多导致本地开发热更新慢的解决 - 简书 (jianshu.com)](https://www.jianshu.com/p/ff1f10909a67)
+
+## Vue.extend函数式组件
+
+propsData在该写法中疑似不支持响应式？
+
+```js
+  const Action = Vue.extend(component)
+  const div = document.createElement('div')
+  document.body.appendChild(div)
+  const ele = new Action({
+    propsData:{
+      cancelText:'cancel',
+      sureText:'sure',
+      close:()=>{
+        ele.$el.remove()
+        callback&&callback()
+      }
+    }
+  }).$mount(div)
+```
+
+参考资料
+
+[API — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/api/#Vue-extend)
+
+[API — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/api/#propsData)
+
+[API — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/api/#vm-mount)
+

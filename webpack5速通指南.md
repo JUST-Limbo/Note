@@ -272,6 +272,20 @@ module.exports = {
 
 > 模板字符串的描述见 [Template Strings](https://webpack.docschina.org/configuration/output/#template-strings)
 
+hash **[范围最大]** 是针对整个项目的,如果把整个项目当做是一个文件(为什么非要是单个的1.txt就这么好理解成是文件了?),那么这个项目文件的内容发生改变(文件删除添加,文件内容修改),都会导致整个项目的hash值发生改变.
+
+chunkhash **[范围其次]** 是根据当前入口文件最终打包出来的js文件.output. 当前依赖链中,有任意文件变动,都会改变这个hash值.
+
+而contenthash **[范围最小]** 就仅仅只是针对当前文件的内容
+
+**注意：** 本地开发环境不要配置 `chunkhash` 或 `contenthash`，因为编译后文件只存在于内存中，没有实际的磁盘文件，也会与`热更新`功能冲突。
+
+参考资料
+
+https://www.jianshu.com/p/6d81adb31601
+
+[webpack中的hash、chunkhash、contenthash - 简书 (jianshu.com)](https://www.jianshu.com/p/2e4e930afc3d)
+
 ### devServer
 
 关闭devserver的日志输出
@@ -723,7 +737,9 @@ module.exports = {
 
 #### CSS和CSS预处理器
 
-sassloader不应该是用thread-loader
+弃用node-sass，使用sass（dart-sass）
+
+sassloader不应该使用thread-loader
 
 [TypeError: loaderContext.getLogger is not a function in utils.js · Issue #993 · webpack-contrib/sass-loader (github.com)](https://github.com/webpack-contrib/sass-loader/issues/993)
 
