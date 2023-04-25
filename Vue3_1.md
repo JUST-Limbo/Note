@@ -43,7 +43,7 @@ yarn create vite
   - 真正的按需编译，不再等待整个应用编译完成。
 - 传统构建 与 vite构建对比图
 
-<img src="Vue3.assets/bundler.37740380.png" style="width:500px;height:280px;float:left">
+<img src="Vue3_1.assets/bundler.37740380.png" style="width:500px;height:280px;float:left">
 
 ### 3.使用create-vue脚手架
 
@@ -78,7 +78,7 @@ npm init vue@latest
 
   - 创建一个包含响应式数据的<strong style="color:#DD5145">引用对象（reference对象，简称ref对象）</strong>。
 
-    ![image-20220215234914273](Vue3.assets/image-20220215234914273.png)
+    ![image-20220215234914273](Vue3_1.assets/image-20220215234914273.png)
 
     （reference引用 implement实现）
 
@@ -408,7 +408,7 @@ npm init vue@latest
 
 ## 5.provide 与 inject
 
-<img src="Vue3.assets/components_provide.png" style="width:300px" />
+<img src="Vue3_1.assets/components_provide.png" style="width:300px" />
 
 - 作用：实现<strong style="color:#DD5145">祖与后代组件间</strong>通信
 
@@ -461,9 +461,9 @@ npm init vue@latest
 
 我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。
 
-![img](Vue3.assets/bc0be8211fc54b6c941c036791ba4efetplv-k3u1fbpfcp-watermark.image)
+![img](Vue3_1.assets/bc0be8211fc54b6c941c036791ba4efetplv-k3u1fbpfcp-watermark.image)
 
-![img](Vue3.assets/6cc55165c0e34069a75fe36f8712eb80tplv-k3u1fbpfcp-watermark.image)
+![img](Vue3_1.assets/6cc55165c0e34069a75fe36f8712eb80tplv-k3u1fbpfcp-watermark.image)
 
 
 # 五、新的组件
