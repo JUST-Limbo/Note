@@ -74,14 +74,6 @@ master、hot-fix 其实都是指向具体版本记录的指针。当前所在的
 HEAD 如果指向master，那么我们现在就在master 分支上。
 HEAD 如果指向hotfix，那么我们现在就在hotfix 分支上。
 
-
-
-## 团队协作
-
-团队内协作
-
-![image-20220312234357639](git.assets/image-20220312234357639.png)
-
 ## 远程仓库
 
 | 命令                           | 作用                                       |
@@ -106,10 +98,6 @@ git push origin 分支名(默认只有一个master分支)
 ## 跨团队协作
 
 ![image-20220312234418753](git.assets/image-20220312234418753.png)
-
-## eslint
-
-
 
 ## rebase
 
