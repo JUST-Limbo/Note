@@ -864,6 +864,8 @@ not ie <= 8
 
 #### vue
 
+thread-loader对vue-loader的构建是否有积极作用？（测试了6次未发现明显改善）
+
 [15.0.0 support for rules.oneOf config · Issue #1204 · vuejs/vue-loader (github.com)](https://github.com/vuejs/vue-loader/issues/1204)
 
 [老项目vue2.x误用了vue3的插件问题_vue-loader版本_七里汀的博客-CSDN博客](https://blog.csdn.net/xy_peng/article/details/127221778)
