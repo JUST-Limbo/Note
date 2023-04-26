@@ -872,7 +872,7 @@ thread-loader对vue-loader的构建是否有积极作用？（测试了6次未�
 
 vue-template-compiler需要控制在2.6.14以前，从2.7开始支持vue3的兼容
 
-**vue-loader插件最为适合的版本是[15.9.8](https://www.npmjs.com/package/vue-loader/v/15.9.8)， vue3的语法编译就在[15.10.0](https://www.npmjs.com/package/vue-loader/v/15.10.0)以及版本以上**，以下是插件迭代的截图：
+**vue-loader插件最为适合的版本是[15.9.8](https://www.npmjs.com/package/vue-loader/v/15.9.8)， vue3的语法编译就在[15.10.0](https://www.npmjs.com/package/vue-loader/v/15.10.0)以及版本以上**
 
 ```bash
 npm install -D vue vue-loader vue-template-compiler
