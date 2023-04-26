@@ -59,3 +59,5 @@ export default {
 ```
 
 其实原理很简单，主要是维护`displayPriority`变量，通过`requestAnimationFrame`在每一帧渲染时自增，然后我们就可以在组件上通过`v-if="defer(n)"`使`displayPriority`增加到某一值时再渲染，这样就可以避免 js 执行时间过长导致的卡顿问题了。
+
+每当触发重新渲染时，调用方法将**总会**再次执行函数。
