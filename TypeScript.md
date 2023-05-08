@@ -592,3 +592,7 @@ interface Person {
 ```ts
 Person["addr"] // This is Address.
 ```
+
+## namespace
+
+TypeScript与ECMAScript 2015一样，任何包含顶级`import`或者`export`的文件都被当成一个模块。相反地，如果一个文件不带有顶级的`import`或者`export`声明，那么它的内容被视为全局可见的（因此对模块也是可见的）
