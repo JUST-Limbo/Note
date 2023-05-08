@@ -680,3 +680,21 @@ html{
   font-size: 2rem; // 2*32=64px
 }
 ```
+
+## 幽灵空白节点
+
+```html
+<div style="background-color:#e5edff;"><img src="mm1.jpg"></div>
+```
+
+> ![image-20230508215141743](CSS_1.assets/image-20230508215141743.png)
+
+**在HTML5文档声明下，块状元素内部的内联元素的行为表现，就好像块状元素内部还有一个（更有可能两个-前后）看不见摸不着没有宽度没有实体的空白节点，这个假想又似乎存在的空白节点，我称之为“幽灵空白节点”。**
+
+图片初始的`vertical-align:baseline`其所在行的基线即对应当前图片元素的底边，英文字母`g y j`和部分汉字的基线会造成幽灵节点。
+
+**一个inline-block元素，如果里面没有inline内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘，否则，其基线就是元素里面最后一行内联元素的基线。**
+
+参考资料
+
+[CSS深入理解vertical-align和line-height的基友关系 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/)
