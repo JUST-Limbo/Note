@@ -596,3 +596,12 @@ Person["addr"] // This is Address.
 ## namespace
 
 TypeScript与ECMAScript 2015一样，任何包含顶级`import`或者`export`的文件都被当成一个模块。相反地，如果一个文件不带有顶级的`import`或者`export`声明，那么它的内容被视为全局可见的（因此对模块也是可见的）
+
+## 为js文件提供类型声明
+
+导入`.js`文件时，TS会自动加载与其文件同名的`.d.ts`文件，以提供类型声明
+
+`declare`关键字：用于类型声明，为其他地方已存在的变量声明类型，而不是创建一个新的变量
+
+1. 对于type interface等明确是ts类型的可以省略declare
+2. 对于let function等应该使用declare关键字明确指出此处是用于类型声明
