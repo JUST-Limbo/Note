@@ -193,6 +193,7 @@ export const routers = [
 参考资料
 
 + [vue路由懒加载链接过多导致本地开发热更新慢的解决 - 简书 (jianshu.com)](https://www.jianshu.com/p/ff1f10909a67)
++ [路由懒加载 | vue-element-admin (gitee.io)](https://panjiachen.gitee.io/vue-element-admin-site/zh/guide/advanced/lazy-loading.html#vue-cli-3-该方案已淘汰)
 
 ## Vue.extend函数式组件
 
