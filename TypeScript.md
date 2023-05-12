@@ -605,3 +605,7 @@ TypeScript与ECMAScript 2015一样，任何包含顶级`import`或者`export`的
 
 1. 对于type interface等明确是ts类型的可以省略declare
 2. 对于let function等应该使用declare关键字明确指出此处是用于类型声明
+
+## CSS选择器的读取顺序是**从右向左**
+
+https://www.bilibili.com/video/BV1xs4y1u7b2?share_source=copy_web
