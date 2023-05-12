@@ -702,3 +702,16 @@ html{
 [CSS深入理解vertical-align和line-height的基友关系 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/)
 
 [css vertical-align你真的很了解嘛？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/28626505)
+
+## flex
+
+容器的 [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 属性值改为 `flex` 或者 `inline-flex`，flex 容器中的所有 flex 元素都会有下列行为：
+
+- 元素排列为一行 (`flex-direction` 属性的初始值是 `row`)。
+- 元素从主轴的起始线开始。
+- **元素不会在主维度方向拉伸，但是可以缩小。**
+- **元素被拉伸来填充交叉轴大小。**
+- [`flex-basis`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis) 属性为 `auto`。
+- [`flex-wrap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-wrap) 属性为 `nowrap`。
+
+`align-items`属性可以使元素在交叉轴方向对齐。这个属性的初始值为`stretch`，这就是为什么 flex 元素**会默认被拉伸到最高元素的高度**。实际上，它们被拉伸来填满 flex 容器 —— 最高的元素定义了容器的高度。
