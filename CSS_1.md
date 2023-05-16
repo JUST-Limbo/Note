@@ -720,3 +720,45 @@ html{
 
 `align-items`属性可以使元素在交叉轴方向对齐。这个属性的初始值为`stretch`，这就是为什么 flex 元素**会默认被拉伸到最高元素的高度**。实际上，它们被拉伸来填满 flex 容器 —— 最高的元素定义了容器的高度。
 
+## colgroup
+
+```html
+<table border="1">
+  <colgroup>
+    <col span="2" style="background-color:red">
+    <col style="background-color:yellow">
+  </colgroup>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>3476896</td>
+    <td>My first HTML</td>
+    <td>$53</td>
+  </tr>
+</table>
+```
+
+`<colgroup> `标签用于对表格中的列进行组合，以便对其进行格式化。
+
+通过使用` <colgroup> `标签，可以向整个列应用样式，而不需要重复为每个单元格或每一行设置样式。
+
+只能在 `<table> `元素之内，在任何一个` <caption>` 元素之后，在任何一个` <thead>`、`<tbody>`、`<tfoot>`、`<tr>` 元素之前使用 `<colgroup>` 标签。
+
+## table-layout
+
+```
+auto
+```
+
+默认情况下，大多数浏览器使用自动表格布局算法。表格及其单元格的宽度会根据内容自动调整大小。
+
+```
+fixed
+```
+
+表格和列的宽度是由 `table` 和 `col` 元素的宽度或第一行单元格的宽度来设置的。后续行中的单元格不会影响列的宽度。
+
+在“fixed”布局方法下，一旦下载并分析了第一行表格，整个表格就可以被渲染出来。这可以加快渲染时间，相比于“automatic”布局方法，但是后续单元格内容可能不适合提供的列宽。单元格使用 [`overflow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow) 属性来确定是否要剪裁任何溢出的内容，但仅当表格具有已知宽度时才会生效；否则，它们不会溢出到单元格之外。
