@@ -25,3 +25,5 @@ https://www.yuque.com/guoba7/xh8mvb/dfrqiq
 [基于vue-cli3 SSR 程序实现热更新功能 - 掘金 (juejin.cn)](https://juejin.cn/post/6844903693373046792)
 
 [5.4.3 SSR的作用及Vue-SSR在网易的实践 (yuque.com)](https://www.yuque.com/guoba7/xh8mvb/dfrqiq#N5D7R)
+
+如何同时开始打包server和client的webpack?
