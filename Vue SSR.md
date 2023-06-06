@@ -27,3 +27,17 @@ https://www.yuque.com/guoba7/xh8mvb/dfrqiq
 [5.4.3 SSR的作用及Vue-SSR在网易的实践 (yuque.com)](https://www.yuque.com/guoba7/xh8mvb/dfrqiq#N5D7R)
 
 如何同时开始打包server和client的webpack?
+
+[聊一聊 Vue-SSR 激活失败（Vue hydration fails）-51CTO.COM](https://www.51cto.com/article/701710.html)
+
+[What to do when Vue hydration fails | blog.Lichter.io](https://blog.lichter.io/posts/vue-hydration-error/)
+
+[彻底理解服务端渲染 - SSR原理 · Issue #30 · yacan8/blog (github.com)](https://github.com/yacan8/blog/issues/30)
+
+## 坑：
+
+1. 重复请求
+
+2. [vue-router: 在App.vue中获取不到正确的路由？ - 掘金 (juejin.cn)](https://juejin.cn/post/6844904148408745997)
+
+   客户端存在该问题，server端不存在，会有两端一致性问题
