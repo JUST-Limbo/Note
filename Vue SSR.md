@@ -34,6 +34,10 @@ https://www.yuque.com/guoba7/xh8mvb/dfrqiq
 
 [彻底理解服务端渲染 - SSR原理 · Issue #30 · yacan8/blog (github.com)](https://github.com/yacan8/blog/issues/30)
 
+sw-precache-webpack-plugin
+
+register-service-worker
+
 ## 坑：
 
 1. 重复请求
@@ -41,3 +45,4 @@ https://www.yuque.com/guoba7/xh8mvb/dfrqiq
 2. [vue-router: 在App.vue中获取不到正确的路由？ - 掘金 (juejin.cn)](https://juejin.cn/post/6844904148408745997)
 
    客户端存在该问题，server端不存在，会有两端一致性问题
+
