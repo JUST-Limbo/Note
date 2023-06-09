@@ -33,7 +33,7 @@
 
 + npm version 
 
-  version字段结构为：'0.0.0-0'，分别代表：大号.中号.小号-预发布号，对应majon.minor.patch-prerelease
+  version字段结构为：'0.0.0-0'，分别代表：大号.中号.小号-预发布号，对应major.minor.patch-prerelease
 
   [npm version 常用命令_文摘资讯的博客-CSDN博客](https://blog.csdn.net/gtLBTNq9mr3/article/details/125252366)
 
