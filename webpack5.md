@@ -1822,7 +1822,7 @@ contenthash表示生成的文件hash名称，只和内容有关系：
 
 推荐 `production` 环境的构建将 CSS 从你的 bundle 中分离出来，这样可以使用 CSS/JS 文件的并行加载。 这可以通过使用 `mini-css-extract-plugin` 来实现，因为它可以创建单独的 CSS 文件。 对于 `development` 模式（包括 `webpack-dev-server`），你可以使用 [style-loader](https://webpack.docschina.org/loaders/style-loader/)，因为它可以使用多个 标签将 CSS 插入到 DOM 中，并且反应会更快。
 
-> i 不要同时使用 `style-loader` 与 `mini-css-extract-plugin`。
+> i不要同时使用 `style-loader` 与 `mini-css-extract-plugin`。
 
 ## Terser
 
