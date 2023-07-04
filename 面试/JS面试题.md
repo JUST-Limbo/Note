@@ -128,12 +128,16 @@ obj.a.call({
 
 JavaScript 对象是动态的属性“包”（指其自己的属性）。JavaScript 对象有一个指向一个原型对象的链。当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。
 
+
+
+![img](assets/v2-56a7492446fafe758fc6bf09b8c97199_r.jpg)
+
 ```js
 /**
  * 对应名称
  * prototype:原型
  * __proto__:原型链 链接点
- * 
+ *
  * 从属关系
  * prototype->函数的一个属性 :对象{}
  * __proto__ ->对象Object的一个属性 :对象{}
@@ -153,7 +157,7 @@ console.log(Test.prototype === test.__proto__)
 
 // Test.prototype 也是一个对象,因此它也有__proto__
 console.log(Test.prototype.__proto__)
-console.log(Object.prototype.__proto__) // 最顶层的__proto__为null 
+console.log(Object.prototype.__proto__) // 最顶层的__proto__为null
 
 Object.prototype.c = 3
 
@@ -244,7 +248,7 @@ const debounce = (func, wait, ...args) => {
     timeout = setTimeout(() => {
       timeout = null;
     },wait)
-    
+
     if(callNow) func.apply(context,args)
    }
 }
@@ -383,7 +387,7 @@ Result:
 
 new Promise(resolve => {
     resolve(1);
-    
+
     Promise.resolve().then(() => {
     	// t2
     	console.log(2)
@@ -485,7 +489,7 @@ console.log(c[b]);
 add(1); // 1
 add(1)(2);  // 3
 add(1)(2)(3)； // 6
-add(1)(2)(3)(4)； // 10 
+add(1)(2)(3)(4)； // 10
 // 以此类推
 ```
 
@@ -531,7 +535,7 @@ function add () {
     let args = [...arguments];
     let fn = function(){
         return add.apply(null, args.concat([...arguments]))
-    } 
+    }
     fn.toString = () => args.reduce((a, b) => a + b)
     return fn;
 }
@@ -543,11 +547,11 @@ function add () {
 
 1. 普通情况下，a b c 都在局部作用域里
 
-![image-20211228231110477](JS面试题.assets/image-20211228231110477.png)
+![image-20211228231110477](assets/image-20211228231110477.png)
 
 2. 函数参数有默认值时，a b在局部作用域里，c在块作用域里
 
-![image-20211228232240876](JS面试题.assets/image-20211228232240876.png)
+![image-20211228232240876](assets/image-20211228232240876.png)
 
 3. 函数形参和函数体内都声明了同一个变量名的变量a，代码执行第16行时，块级作用域中a的值取自局部作用域中a的值。
 
@@ -555,9 +559,9 @@ function add () {
 
    如果进入函数时，局部作用域形参有默认值则会给块作用域中同名的变量赋默认值。
 
-![image-20220101215340845](JS面试题.assets/image-20220101215340845.png)
+![image-20220101215340845](assets/image-20220101215340845.png)
 
-![image-20220101215812796](JS面试题.assets/image-20220101215812796.png)
+![image-20220101215812796](assets/image-20220101215812796.png)
 
 
 
@@ -716,7 +720,7 @@ function add () {
 
 ## typeof instanceof toString
 
-![image-20220215103036235](JS面试题.assets/image-20220215103036235.png)
+![image-20220215103036235](assets/image-20220215103036235.png)
 
 在 javascript 的最初版本中，使用的 32 位系统，为了性能考虑使用低位存储了变量的类型信息：
 
@@ -726,11 +730,11 @@ function add () {
 - 110：布尔
 - 1：整数
 
-对于 `undefined` 和 `null` 来说，这两个值的信息存储是有点特殊的。     
+对于 `undefined` 和 `null` 来说，这两个值的信息存储是有点特殊的。
 
 `null`：对应机器码的 NULL 指针，一般是全零
 
-`undefined`：用 −2^30 整数来表示 
+`undefined`：用 −2^30 整数来表示
 
 所以，`typeof` 在判断 `null` 的时候就出现问题了，由于 `null` 的所有机器码均为0，因此直接被当做了对象来看待。
 
@@ -751,8 +755,8 @@ typeof undefined; // "undefined"
 typeof false; // "boolean"
 typeof 1; // "number"
 typeof '1'; // "string"
-typeof {}; // "object" 
-typeof []; // "object" 
+typeof {}; // "object"
+typeof []; // "object"
 typeof new Date(); // "object"
 typeof Symbol(); // "Symbol"
 typeof 123n // 'bigint'
@@ -879,7 +883,7 @@ class Scheduler {
         if(this.taskList.length) this.run()
       })
     }
-      
+
     add(promiseCreator) {
        this.taskList.push(() => promiseCreator())
        //当当前任务数小于最大任务数就将其任务执行
