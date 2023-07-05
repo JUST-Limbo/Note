@@ -2,7 +2,7 @@
 
 ## 工作机制
 
-![image-20220312223454968](git.assets/image-20220312223454968.png)32
+![image-20220312223454968](assets/git.assets/image-20220312223454968.png)32
 
 ## 常用命令
 
@@ -19,12 +19,12 @@
 
 Git 切换版本，底层其实是移动的 HEAD 指针，具体原理如下图所示。
 
-![image-20220312231507461](git.assets/image-20220312231507461.png)
+![image-20220312231507461](assets/git.assets/image-20220312231507461.png)
 
 ## 用户签名
 
 ```bash
-git config --global user.name 用户名 
+git config --global user.name 用户名
 git config --global user.email 邮箱
 
 // 保存在 C:/users/xxx/.gitconfig
@@ -32,9 +32,9 @@ git config --global user.email 邮箱
 
 ## 分支操作
 
-![image-20220312231812843](git.assets/image-20220312231812843.png)
+![image-20220312231812843](assets/git.assets/image-20220312231812843.png)
 
-![image-20220312231928653](git.assets/image-20220312231928653.png)
+![image-20220312231928653](assets/git.assets/image-20220312231928653.png)
 
 ### 分支命令
 
@@ -54,17 +54,17 @@ git config --global user.email 邮箱
 
 冲突产生的表现  后面状态为 MERGING
 
-![image-20220312233450633](git.assets/image-20220312233450633.png)
+![image-20220312233450633](assets/git.assets/image-20220312233450633.png)
 
 1. 查看状态（检测到有文件 有两处修改）
 
-![image-20220312233721538](git.assets/image-20220312233721538.png)
+![image-20220312233721538](assets/git.assets/image-20220312233721538.png)
 
 2. 编辑有冲突的文件，删除特殊符号，决定要使用的内容
 
 特殊符号：<<<<<<< HEAD 当前分支的代码 ======= 合并过来的代码 >>>>>>> hot-fix
 
-![image-20220312233905588](git.assets/image-20220312233905588.png)
+![image-20220312233905588](assets/git.assets/image-20220312233905588.png)
 
 3. 添加到暂存区
 4. 执行提交
@@ -97,7 +97,7 @@ git push origin 分支名(默认只有一个master分支)
 
 ## 跨团队协作
 
-![image-20220312234418753](git.assets/image-20220312234418753.png)
+![image-20220312234418753](assets/git.assets/image-20220312234418753.png)
 
 ## rebase
 
