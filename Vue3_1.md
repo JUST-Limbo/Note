@@ -20,7 +20,7 @@
 
     ```js
     Object.defineProperty(data, 'count', {
-        get () {}, 
+        get () {},
         set () {}
     })
     ```
@@ -32,7 +32,7 @@
 
 ### Vue3.0的响应式
 
-- 实现原理: 
+- 实现原理:
 
   - 通过Proxy（代理）:  拦截对象中任意属性的变化, 包括：属性值的读写、属性的添加、属性的删除等。
 
@@ -59,8 +59,8 @@
           	return Reflect.deleteProperty(target, prop)
           }
       })
-      
-      proxy.name = 'tom'   
+
+      proxy.name = 'tom'
       ```
 
 ## 5.reactive对比ref
@@ -100,7 +100,7 @@
 
   ```js
   import {computed} from 'vue'
-  
+
   setup(){
       ...
   	//计算属性——简写
@@ -135,25 +135,25 @@
   watch(sum,(newValue,oldValue)=>{
   	console.log('sum变化了',newValue,oldValue)
   },{immediate:true})
-  
+
   //情况二：监视多个ref定义的响应式数据
   watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
     /* ... */
   })
-  
+
   /* 情况三：监视reactive定义的响应式数据
   			若watch监视的是reactive定义的响应式数据，则无法正确获得oldValue！！
-  			若watch监视的是reactive定义的响应式数据，则强制开启了深度监视 
+  			若watch监视的是reactive定义的响应式数据，则强制开启了深度监视
   */
   watch(person,(newValue,oldValue)=>{
   	console.log('person变化了',newValue,oldValue)
   },{immediate:true,deep:false}) //此处的deep配置不再奏效
-  
+
   //情况四：监视reactive定义的响应式数据中的某个属性
   // 侦听器数据源可以是一个具有返回值的 getter 函数，也可以直接是一个 ref：
   watch(()=>person.job,(newValue,oldValue)=>{
   	console.log('person的job变化了',newValue,oldValue)
-  },{immediate:true,deep:true}) 
+  },{immediate:true,deep:true})
   // 侦听一个 getter
   const state = reactive({ count: 0 })
   watch(
@@ -162,12 +162,12 @@
       /* ... */
     }
   )
-  
+
   //情况五：监视reactive定义的响应式数据中的某些属性
   watch([()=>person.job,()=>person.name],(newValue,oldValue)=>{
   	console.log('person的job变化了',newValue,oldValue)
   },{immediate:true,deep:true})
-  
+
   //特殊情况
   watch(()=>person.job,(newValue,oldValue)=>{
       console.log('person的job变化了',newValue,oldValue)
@@ -276,7 +276,7 @@
   	<input type="text" v-model="keyword">
   	<h3>{{keyword}}</h3>
   </template>
-  
+
   <script>
   	import {ref,customRef} from 'vue'
   	export default {
@@ -312,11 +312,11 @@
   </script>
   ```
 
-  
+
 
 ## 5.provide 与 inject
 
-<img src="Vue3_1.assets/components_provide.png" style="width:300px" />
+<img src="assets/Vue3_1.assets/components_provide.png" style="width:300px" />
 
 - 作用：实现<strong style="color:#DD5145">祖与后代组件间</strong>通信
 
@@ -369,9 +369,9 @@
 
 我们可以更加优雅的组织我们的代码，函数。让相关功能的代码更加有序的组织在一起。
 
-![img](Vue3_1.assets/bc0be8211fc54b6c941c036791ba4efetplv-k3u1fbpfcp-watermark.image)
+![img](assets/Vue3_1.assets/bc0be8211fc54b6c941c036791ba4efetplv-k3u1fbpfcp-watermark.image)
 
-![img](Vue3_1.assets/6cc55165c0e34069a75fe36f8712eb80tplv-k3u1fbpfcp-watermark.image)
+![img](assets/Vue3_1.assets/6cc55165c0e34069a75fe36f8712eb80tplv-k3u1fbpfcp-watermark.image)
 
 
 # 五、新的组件
@@ -444,7 +444,7 @@
       }),
       template: '<button @click="count++">Clicked {{ count }} times.</button>'
     })
-    
+
     //注册全局指令
     Vue.directive('focus', {
       inserted: el => el.focus()
@@ -491,7 +491,7 @@
     .v-leave-to {
       opacity: 0;
     }
-    
+
     .v-leave-from,
     .v-enter-to {
       opacity: 1;

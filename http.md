@@ -8,7 +8,7 @@
 
 强缓存：浏览器不会像服务器发送任何请求，直接从本地缓存中读取文件并返回Status Code: 200 OK
 
-![img](http.assets/16a8bdbc4b9c8720~tplv-t2oaga2asx-watermark.awebp)
+![img](assets/http.assets/16a8bdbc4b9c8720~tplv-t2oaga2asx-watermark.awebp)
 
 > 200 form memory cache : 不访问服务器，一般已经加载过该资源且缓存在了内存当中，直接从内存中读取缓存。浏览器关闭后，数据将不存在（资源被释放掉了），再次打开相同的页面时，不会出现from memory cache。
 
@@ -18,7 +18,7 @@
 
 协商缓存: 向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源
 
-![img](http.assets/16a8bc3172e3a167~tplv-t2oaga2asx-watermark.awebp)
+![img](assets/http.assets/16a8bc3172e3a167~tplv-t2oaga2asx-watermark.awebp)
 
 两类缓存规则可以同时存在，强制缓存优先级高于协商缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行协商缓存规则。
 
@@ -45,9 +45,9 @@
 
 针对浏览器和服务器时间不同步，加入了新的缓存方案；这次服务器不是直接告诉浏览器过期时间，而是告诉一个相对时间`max-age=10`，意思是10秒内，直接使用浏览器缓存。
 
-![cache-control](http.assets/16531214de157f88~tplv-t2oaga2asx-watermark.awebp)
+![cache-control](assets/http.assets/16531214de157f88~tplv-t2oaga2asx-watermark.awebp)
 
-### Last-Modified / If-Modified-Since 
+### Last-Modified / If-Modified-Since
 
 服务器比较请求头中的`If-Modified-Since `，如果一致则给出304状态码，不返回目标文件；如果不一致，则返回目标文件并告知浏览器目标文件最新的`Last-Modified`
 
@@ -60,7 +60,7 @@
 
 应对文件内容不变的情况，在服务器引入Etag响应头，
 
-![img](http.assets/16a8c60fb0ef49f0~tplv-t2oaga2asx-watermark.awebp)
+![img](assets/http.assets/16a8c60fb0ef49f0~tplv-t2oaga2asx-watermark.awebp)
 
 ## Cookie
 

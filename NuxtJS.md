@@ -6,7 +6,7 @@
 
 [如何理解 SSR 中的 hydrate？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/323174003)
 
-![image-20230220234231709](NuxtJS.assets/image-20230220234231709.png)
+![image-20230220234231709](assets//NuxtJS.assets/image-20230220234231709.png)
 
 ## cookie-universal-nuxt
 

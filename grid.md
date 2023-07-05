@@ -24,7 +24,7 @@ div {
 
 
 
-### grid-template-columns 
+### grid-template-columns
 
 ### grid-template-rows
 
@@ -161,11 +161,11 @@ grid-template-columns: repeat(12, 1fr);
 
 
 
-### grid-row-gap 
+### grid-row-gap
 
-###  grid-column-gap 
+###  grid-column-gap
 
-### grid-gap 
+### grid-gap
 
 `grid-row-gap`属性设置行与行的间隔（行间距），`grid-column-gap`属性设置列与列的间隔（列间距）。
 
@@ -181,7 +181,7 @@ grid-gap: <grid-row-gap> <grid-column-gap>;
 
 
 
-### grid-template-areas 
+### grid-template-areas
 
 网格布局允许指定"区域"（area），一个区域由单个或多个单元格组成。`grid-template-areas`属性用于定义区域。
 
@@ -232,7 +232,7 @@ grid-template-areas: "header header header"
 
 划分网格以后，容器的子元素会按照顺序，自动放置在每一个网格。默认的放置顺序是"先行后列"，即先填满第一行，再开始放入第二行，即下图数字的顺序。
 
-![img](grid.assets/bg2019032506.png)
+![img](assets/grid.assets/bg2019032506.png)
 
 这个顺序由`grid-auto-flow`属性决定，默认值是`row`，即"先行后列"。也可以将它设成`column`，变成"先列后行"。
 
@@ -242,13 +242,13 @@ grid-auto-flow: column;
 
 [上面代码](https://jsbin.com/xutokec/edit?css,output)设置了`column`以后，放置顺序就变成了下图。
 
-![img](grid.assets/bg2019032512.png)
+![img](assets/grid.assets/bg2019032512.png)
 
 `grid-auto-flow`属性除了设置成`row`和`column`，还可以设成`row dense`和`column dense`。这两个值主要用于，某些项目指定位置以后，剩下的项目怎么自动放置。
 
 [下面的例子](https://jsbin.com/wapejok/edit?css,output)让1号项目和2号项目各占据两个单元格，然后在默认的`grid-auto-flow: row`情况下，会产生下面这样的布局。
 
-![img](grid.assets/bg2019032513.png)
+![img](assets/grid.assets/bg2019032513.png)
 
 上图中，1号项目后面的位置是空的，这是因为3号项目默认跟着2号项目，所以会排在2号项目后面。
 
@@ -260,7 +260,7 @@ grid-auto-flow: row dense;
 
 [上面代码](https://jsbin.com/helewuy/edit?css,output)的效果如下。
 
-![img](grid.assets/bg2019032514.png)
+![img](assets/grid.assets/bg2019032514.png)
 
 上图会先填满第一行，再填满第二行，所以3号项目就会紧跟在1号项目的后面。8号项目和9号项目就会排到第四行。
 
@@ -272,7 +272,7 @@ grid-auto-flow: column dense;
 
 [上面代码](https://jsbin.com/pupoduc/1/edit?html,css,output)的效果如下。
 
-![img](grid.assets/bg2019032515.png)
+![img](assets/grid.assets/bg2019032515.png)
 
 上图会先填满第一列，再填满第2列，所以3号项目在第一列，4号项目在第二列。8号项目和9号项目被挤到了第四列。
 
@@ -310,7 +310,7 @@ grid-auto-flow: column dense;
 
 [上面代码](https://jsbin.com/gijeqej/edit?css,output)表示，单元格的内容左对齐，效果如下图。
 
-![img](grid.assets/bg2019032516.png)
+![img](assets/grid.assets/bg2019032516.png)
 
 ```css
 .container {
@@ -320,7 +320,7 @@ grid-auto-flow: column dense;
 
 [上面代码](https://jsbin.com/tecawur/edit?css,output)表示，单元格的内容头部对齐，效果如下图。
 
-![img](grid.assets/bg2019032517.png)
+![img](assets/grid.assets/bg2019032517.png)
 
 `place-items`属性是`align-items`属性和`justify-items`属性的合并简写形式。
 
@@ -349,7 +349,7 @@ grid-auto-flow: column dense;
 ```css
 .container {
   justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
-  align-content: start | end | center | stretch | space-around | space-between | space-evenly;  
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;
 }
 ```
 
@@ -357,31 +357,31 @@ grid-auto-flow: column dense;
 
 - start - 对齐容器的起始边框。
 
-![img](grid.assets/bg2019032519.png)
+![img](assets/grid.assets/bg2019032519.png)
 
 - end - 对齐容器的结束边框。
 
-![img](grid.assets/bg2019032518.png)
+![img](assets/grid.assets/bg2019032518.png)
 
 - center - 容器内部居中。
 
-![img](grid.assets/bg2019032520.png)
+![img](assets/grid.assets/bg2019032520.png)
 
 - stretch - 项目大小没有指定时，拉伸占据整个网格容器。
 
-![img](grid.assets/bg2019032521-1609577432175.png)
+![img](assets/grid.assets/bg2019032521-1609577432175.png)
 
 - space-around - 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与容器边框的间隔大一倍。
 
-![img](grid.assets/bg2019032522.png)
+![img](assets/grid.assets/bg2019032522.png)
 
 - space-between - 项目与项目的间隔相等，项目与容器边框之间没有间隔。
 
-![img](grid.assets/bg2019032523.png)
+![img](assets/grid.assets/bg2019032523.png)
 
 - space-evenly - 项目与项目的间隔相等，项目与容器边框之间也是同样长度的间隔。
 
-![img](grid.assets/bg2019032524.png)
+![img](assets/grid.assets/bg2019032524.png)
 
 `place-content`属性是`align-content`属性和`justify-content`属性的合并简写形式。
 
@@ -414,23 +414,23 @@ place-content: space-around space-evenly;
   display: grid;
   grid-template-columns: 100px 100px 100px;
   grid-template-rows: 100px 100px 100px;
-  grid-auto-rows: 50px; 
+  grid-auto-rows: 50px;
 }
 ```
 
 上面代码指定新增的行高统一为50px（原始的行高为100px）。
 
-![img](grid.assets/bg2019032525.png)
+![img](assets/grid.assets/bg2019032525.png)
 
 ## 项目属性
 
-### grid-column-start 
+### grid-column-start
 
-### grid-column-end 
+### grid-column-end
 
-### grid-row-start 
+### grid-row-start
 
-###  grid-row-end 
+###  grid-row-end
 
 项目的位置是可以指定的，具体方法就是指定项目的四个边框，分别定位在哪根网格线。
 
@@ -448,7 +448,7 @@ place-content: space-around space-evenly;
 
 [上面代码](https://jsbin.com/yukobuf/edit?css,output)指定，1号项目的左边框是第二根垂直网格线，右边框是第四根垂直网格线
 
-![img](grid.assets/bg2019032526.png)
+![img](assets/grid.assets/bg2019032526.png)
 
 上图中，只指定了1号项目的左右边框，没有指定上下边框，所以会采用默认位置，即上边框是第一根水平网格线，下边框是第二根水平网格线。
 
@@ -465,7 +465,7 @@ place-content: space-around space-evenly;
 }
 ```
 
-![img](grid.assets/bg2019032527.png)
+![img](assets/grid.assets/bg2019032527.png)
 
 这四个属性的值，除了指定为第几个网格线，还可以指定为网格线的名字。
 
@@ -488,7 +488,7 @@ place-content: space-around space-evenly;
 
 [上面代码](https://jsbin.com/hehumay/edit?html,css,output)表示，1号项目的左边框距离右边框跨越2个网格。
 
-![img](grid.assets/bg2019032528.png)
+![img](assets/grid.assets/bg2019032528.png)
 
 这与[下面的代码](https://jsbin.com/mujihib/edit?html,css,output)效果完全一样。
 
@@ -551,7 +551,7 @@ place-content: space-around space-evenly;
 
 [上面代码](https://jsbin.com/volugow/edit?html,css,output)中，项目`item-1`占据的区域，包括第一行 + 第二行、第一列 + 第二列。
 
-![img](grid.assets/bg2019032529.png)
+![img](assets/grid.assets/bg2019032529.png)
 
 斜杠以及后面的部分可以省略，默认跨越一个网格。
 
@@ -578,7 +578,7 @@ place-content: space-around space-evenly;
 
 [上面代码](https://jsbin.com/qokexob/edit?css,output)中，1号项目位于`e`区域，效果如下图。
 
-![img](grid.assets/bg2019032530.png)
+![img](assets/grid.assets/bg2019032530.png)
 
 `grid-area`属性还可用作`grid-row-start`、`grid-column-start`、`grid-row-end`、`grid-column-end`的合并简写形式，直接指定项目的位置。
 
@@ -628,7 +628,7 @@ place-content: space-around space-evenly;
 }
 ```
 
-![img](grid.assets/bg2019032532.png)
+![img](assets/grid.assets/bg2019032532.png)
 
 `place-self`属性是`align-self`属性和`justify-self`属性的合并简写形式。
 
@@ -654,7 +654,7 @@ place-self: center center;
 
 
 
-![img](grid.assets/16dcd4e3de38f55a)
+![img](assets/grid.assets/16dcd4e3de38f55a)
 
 
 
@@ -680,7 +680,7 @@ place-self: center center;
 
 
 
-![img](grid.assets/16dd200804aaa578)
+![img](assets/grid.assets/16dd200804aaa578)
 
 
 
@@ -688,7 +688,7 @@ place-self: center center;
 
 
 
-![img](grid.assets/16dd2ee29bcc74b1)
+![img](assets/grid.assets/16dd2ee29bcc74b1)
 
 ### 限定列宽的表格
 
@@ -696,7 +696,7 @@ place-self: center center;
 
 
 
-![img](grid.assets/16dcdef5932dba1a)
+![img](assets/grid.assets/16dcdef5932dba1a)
 
 
 
@@ -709,7 +709,7 @@ place-self: center center;
 
 ### 页眉页脚固定布局
 
-页眉页脚固定的布局在管理端和移动端都常见，如下图所示： ![img](grid.assets/720e11100eaf482ba8e9c421c8423bd5~tplv-k3u1fbpfcp-watermark.image) 这种布局头部和底部固定，中间内容区域自适应高度，代码如下：
+页眉页脚固定的布局在管理端和移动端都常见，如下图所示： ![img](assets/grid.assets/720e11100eaf482ba8e9c421c8423bd5~tplv-k3u1fbpfcp-watermark.image) 这种布局头部和底部固定，中间内容区域自适应高度，代码如下：
 
 ```css
 display: grid;

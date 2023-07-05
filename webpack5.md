@@ -13,7 +13,7 @@ webpack在执行时是依赖webpack-cli的，如果没有安装就会报错；
 而webpack-cli中代码执行时，才是真正利用webpack进行编译和打包的过程；
 所以在安装webpack时，我们需要同时安装webpack-cli（第三方的脚手架事实上是没有使用webpack-cli的，而是类似于自己的vue-service-cli的东西）
 
-![image-20220228191855494](webpack5.assets/image-20220228191855494.png)
+![image-20220228191855494](assets/webpack5.assets/image-20220228191855494.png)
 
 ```bash
 npm install webpack webpack-cli –g # 全局安装
@@ -40,7 +40,7 @@ npm install webpack webpack-cli –D # 局部安装
 
 在根目录下创建一个webpack.config.js文件，来作为webpack的配置文件：
 
-![image-20220228195659760](webpack5.assets/image-20220228195659760.png)
+![image-20220228195659760](assets/webpack5.assets/image-20220228195659760.png)
 
 ### 指定配置文件
 
@@ -50,7 +50,7 @@ npm install webpack webpack-cli –D # 局部安装
 webpack --config wk.config.js
 ```
 
-![image-20220228195808523](webpack5.assets/image-20220228195808523.png)
+![image-20220228195808523](assets/webpack5.assets/image-20220228195808523.png)
 
 > 在没有`webpack.config.js`配置文件的前提下，webpack是如何确定我们的入口的呢？
 >
@@ -66,7 +66,7 @@ webpack --config wk.config.js
 + 从入口开始，会生成一个依赖关系图，这个依赖关系图会包含应用程序中所需的所有模块（比如.js文件、css文件、图片、字体等）
 + 然后遍历图结构，打包一个个模块（根据文件的不同使用不同的loader来解析）
 
-![image-20220228202729902](webpack5.assets/image-20220228202729902.png)
+![image-20220228202729902](assets/webpack5.assets/image-20220228202729902.png)
 
 
 
@@ -91,7 +91,7 @@ rules属性对应的值是一个数组：[Rule]
   - [UseEntry]也可以直接传递一个传递字符串（如：use: [ 'style-loader' ]）是loader 属性的简写方式（如：use: [ { loader: 'style-loader'} ]）；
 - loader属性： Rule.use: [ { loader } ] 的简写。
 
-![image-20220228211421439](webpack5.assets/image-20220228211421439.png)
+![image-20220228211421439](assets/webpack5.assets/image-20220228211421439.png)
 
 ## context
 
@@ -111,7 +111,7 @@ cnpm i css-loader -D
 
   在引入的样式前加上使用的loader，并且使用!分割；
 
-​		![image-20220228205627591](webpack5.assets/image-20220228205627591.png)
+​		![image-20220228205627591](assets/webpack5.assets/image-20220228205627591.png)
 
 + 在`webpack.config.js`中配置css-loader
 
@@ -247,8 +247,8 @@ module.exports = {
 2. `.browserslistrc`文件
 
    ```bash
-   # Browsers that we support 
-    
+   # Browsers that we support
+
    last 1 version
    > 1%
    maintained node versions
@@ -274,7 +274,7 @@ PostCSS本身功能很少，强的是PostCSS的插件（需要配置）
 npm install postcss postcss-cli -D
 ```
 
-![image-20220228223112032](webpack5.assets/image-20220228223112032.png)
+![image-20220228223112032](assets/webpack5.assets/image-20220228223112032.png)
 
 因为我们需要添加前缀，所以要安装autoprefixer
 
@@ -288,7 +288,7 @@ npm install autoprefixer -D
 npx postcss --use autoprefixer -o end.css ./src/css/style.css
 ```
 
-![image-20220228223056710](webpack5.assets/image-20220228223056710.png)
+![image-20220228223056710](assets/webpack5.assets/image-20220228223056710.png)
 
 ### postcss-loader
 
@@ -300,7 +300,7 @@ npx postcss --use autoprefixer -o end.css ./src/css/style.css
 npm install postcss-loader -D
 ```
 
-![image-20220228224530407](webpack5.assets/image-20220228224530407.png)
+![image-20220228224530407](assets/webpack5.assets/image-20220228224530407.png)
 
 ```js
 module.exports = {
@@ -391,7 +391,7 @@ file-loader的作用就是帮助我们处理import/require()方式引入的一�
 npm install file-loader -D
 ```
 
-![image-20220228233702230](webpack5.assets/image-20220228233702230.png)
+![image-20220228233702230](assets/webpack5.assets/image-20220228233702230.png)
 
 ### 文件的名称规则
 
@@ -412,11 +412,11 @@ npm install file-loader -D
 npm install url-loader -D
 ```
 
-![image-20220301122409705](webpack5.assets/image-20220301122409705.png)
+![image-20220301122409705](assets/webpack5.assets/image-20220301122409705.png)
 
 purl-loader有一个options属性limit，可以用于设置转换的限制
 
-![image-20220301122428261](webpack5.assets/image-20220301122428261.png)
+![image-20220301122428261](assets/webpack5.assets/image-20220301122428261.png)
 
 ## asset module type
 
@@ -431,28 +431,28 @@ purl-loader有一个options属性limit，可以用于设置转换的限制
 + asset 在导出一个data URI 和发送一个单独的文件之间自动选择。之前通过使用url-loader，并且配置资源
   体积限制实现；
 
-![image-20220301124142821](webpack5.assets/image-20220301124142821.png)
+![image-20220301124142821](assets/webpack5.assets/image-20220301124142821.png)
 
 如何可以自定义文件的输出路径和文件名
 
 此处[ext]本身会自带`.`
 
-![image-20220301124203146](webpack5.assets/image-20220301124203146.png)
+![image-20220301124203146](assets/webpack5.assets/image-20220301124203146.png)
 
-![image-20220301124208841](webpack5.assets/image-20220301124208841.png)
+![image-20220301124208841](assets/webpack5.assets/image-20220301124208841.png)
 
 ### url-loader的limit效果
 
 步骤一：将type修改为asset；
 步骤二：添加一个parser属性，并且制定dataUrl的条件，添加maxSize属性；
 
-![image-20220301130714280](webpack5.assets/image-20220301130714280.png)
+![image-20220301130714280](assets/webpack5.assets/image-20220301130714280.png)
 
 ## 加载字体文件
 
-![image-20220301140009250](webpack5.assets/image-20220301140009250.png)
+![image-20220301140009250](assets/webpack5.assets/image-20220301140009250.png)
 
-![image-20220301140013609](webpack5.assets/image-20220301140013609.png)
+![image-20220301140013609](assets/webpack5.assets/image-20220301140013609.png)
 
 
 
@@ -462,7 +462,7 @@ Loader是用于特定的模块类型进行转换
 
 Plugin可以用于执行更加广泛的任务，比如打包优化、资源管理、环境变量注入等
 
-![image-20220301143347850](webpack5.assets/image-20220301143347850.png)
+![image-20220301143347850](assets/webpack5.assets/image-20220301143347850.png)
 
 ## CleanWebpackPlugin
 
@@ -474,7 +474,7 @@ Plugin可以用于执行更加广泛的任务，比如打包优化、资源管�
 npm install clean-webpack-plugin -D
 ```
 
-![image-20220301143939569](webpack5.assets/image-20220301143939569.png)
+![image-20220301143939569](assets/webpack5.assets/image-20220301143939569.png)
 
 ## HtmlWebpackPlugin
 
@@ -486,7 +486,7 @@ npm install html-webpack-plugin -D
 
 默认情况dist下是没有打包出index.html的
 
-![image-20220301145105491](webpack5.assets/image-20220301145105491.png)
+![image-20220301145105491](assets/webpack5.assets/image-20220301145105491.png)
 
 作用：
 
@@ -497,7 +497,7 @@ npm install html-webpack-plugin -D
 
 ### 自定义html模板
 
-![image-20220301162451848](webpack5.assets/image-20220301162451848.png)
+![image-20220301162451848](assets/webpack5.assets/image-20220301162451848.png)
 
 上面的代码中，会有一些类似这样的语法`<%= 变量%>`，这个是EJS模块填充数据的方式。
 
@@ -505,11 +505,11 @@ npm install html-webpack-plugin -D
 template：指定我们要使用的模块所在的路径；
 title：在进行htmlWebpackPlugin.options.title读取时，就会读到该信息；
 
-![image-20220301162434435](webpack5.assets/image-20220301162434435.png)
+![image-20220301162434435](assets/webpack5.assets/image-20220301162434435.png)
 
 但是，这个时候编译还是会报错，因为在我们的模块中还使用到一个BASE_URL的常量
 
-![image-20220301162724131](webpack5.assets/image-20220301162724131.png)
+![image-20220301162724131](assets/webpack5.assets/image-20220301162724131.png)
 
 这是因为在编译template模块时，有一个BASE_URL：
 
@@ -521,7 +521,7 @@ title：在进行htmlWebpackPlugin.options.title读取时，就会读到该信�
 
 DefinePlugin允许在编译时创建配置的全局常量，是一个webpack内置的插件（不需要单独安装）
 
-![image-20220301163115501](webpack5.assets/image-20220301163115501.png)
+![image-20220301163115501](assets/webpack5.assets/image-20220301163115501.png)
 
 ## CopyWebpackPlugin
 
@@ -544,7 +544,7 @@ globOptions：设置一些额外的选项，其中可以编写需要忽略的文
 
 `**`指代`public`
 
-![image-20220301164148252](webpack5.assets/image-20220301164148252.png)
+![image-20220301164148252](assets/webpack5.assets/image-20220301164148252.png)
 
 ## stats
 
@@ -564,9 +564,9 @@ module.exports = {
 };
 ```
 
-![image-20220301172017103](webpack5.assets/image-20220301172017103.png)
+![image-20220301172017103](assets/webpack5.assets/image-20220301172017103.png)
 
-![image-20220301172019985](webpack5.assets/image-20220301172019985.png)
+![image-20220301172019985](assets/webpack5.assets/image-20220301172019985.png)
 
 ## webpack模块化
 
@@ -634,13 +634,13 @@ cheap-module-source-map：
 如果我这里使用了babel-loader（注意：目前还没有讲babel）
 可以先按照我的babel配置演练；
 
-![image-20220302131218894](webpack5.assets/image-20220302131218894.png)
+![image-20220302131218894](assets/webpack5.assets/image-20220302131218894.png)
 
 cheap-source-map和cheap-module-source-map的区别
 
-![image-20220302131621767](webpack5.assets/image-20220302131621767.png)
+![image-20220302131621767](assets/webpack5.assets/image-20220302131621767.png)
 
-![image-20220302131624005](webpack5.assets/image-20220302131624005.png)
+![image-20220302131624005](assets/webpack5.assets/image-20220302131624005.png)
 
 ### hidden-source-map
 
@@ -657,11 +657,11 @@ cheap-source-map和cheap-module-source-map的区别
 
 会生成sourcemap，但是生成的sourcemap只有错误信息的提示，会有错误行提示，但是不会生成源代码文件
 
-![image-20220302132150811](webpack5.assets/image-20220302132150811.png)
+![image-20220302132150811](assets/webpack5.assets/image-20220302132150811.png)
 
 点击错误提示，无法查看源码：
 
-![image-20220302132152970](webpack5.assets/image-20220302132152970.png)
+![image-20220302132152970](assets/webpack5.assets/image-20220302132152970.png)
 
 ### 组合的规则
 
@@ -685,7 +685,7 @@ JavaScript；
 
 包括：语法转换、源代码转换、Polyfill实现目标缓解缺少的功能等
 
-![image-20220302134719861](webpack5.assets/image-20220302134719861.png)
+![image-20220302134719861](assets/webpack5.assets/image-20220302134719861.png)
 
 如果我们希望在命令行尝试使用babel，需要安装如下库
 
@@ -700,7 +700,7 @@ npm install @babel/cli @babel/core -D
 src：是源文件的目录；
 --out-dir：指定要输出的文件夹dist；
 
-```bash 
+```bash
 npx babel src --out-dir dist
 ```
 
@@ -732,11 +732,11 @@ npx babel src --out-dir dist --presets=@babel/preset-env
 npm install babel-loader @babel/core
 ```
 
-![image-20220302160048460](webpack5.assets/image-20220302160048460.png)
+![image-20220302160048460](assets/webpack5.assets/image-20220302160048460.png)
 
 指定插件
 
-![image-20220302160059589](webpack5.assets/image-20220302160059589.png)
+![image-20220302160059589](assets/webpack5.assets/image-20220302160059589.png)
 
 ### babel-preset插件
 
@@ -748,19 +748,19 @@ npm install @babel/preset-env
 
 设置目标浏览器targets
 
-![image-20220302161027365](webpack5.assets/image-20220302161027365.png)
+![image-20220302161027365](assets/webpack5.assets/image-20220302161027365.png)
 
 配置的targets属性会覆盖browserslist
 
 ### Stage-X
 
-![image-20220302161744130](webpack5.assets/image-20220302161744130.png)
+![image-20220302161744130](assets/webpack5.assets/image-20220302161744130.png)
 
 在babel7之前（比如babel6中），我们会经常看到这种设置方式：
 它表达的含义是使用对应的babel-preset-stage-x 预设；
 但是从babel7开始，已经不建议使用了，建议使用preset-env来设置；
 
-![image-20220302161753802](webpack5.assets/image-20220302161753802.png)
+![image-20220302161753802](assets/webpack5.assets/image-20220302161753802.png)
 
 ### Babel的配置文件
 
@@ -774,7 +774,7 @@ babel.config.json（或者.js，.cjs，.mjs）文件；
 
 babel.config.json（babel7）：可以直接作用于Monorepos项目的子包，更加推荐
 
-![image-20220302162940739](webpack5.assets/image-20220302162940739.png)
+![image-20220302162940739](assets/webpack5.assets/image-20220302162940739.png)
 
 ### polyfill
 
@@ -791,7 +791,7 @@ babel7.4.0之后，可以通过单独引入core-js和regenerator-runtime来完�
 npm install core-js regenerator-runtime --save
 ```
 
-![image-20220302163700596](webpack5.assets/image-20220302163700596.png)
+![image-20220302163700596](assets/webpack5.assets/image-20220302163700596.png)
 
 ```js
 // babel.config.js
@@ -832,9 +832,9 @@ corejs：设置corejs的版本，目前使用较多的是3.x的版本，比如�
 并且需要在入口文件中添加`import 'core-js/stable'; import 'regenerator-runtime/runtime';
 这样做会根据browserslist 目标导入所有的polyfill，但是对应的包也会变大；
 
-![image-20220302165155820](webpack5.assets/image-20220302165155820.png)
+![image-20220302165155820](assets/webpack5.assets/image-20220302165155820.png)
 
-![image-20220302165158183](webpack5.assets/image-20220302165158183.png)
+![image-20220302165158183](assets/webpack5.assets/image-20220302165158183.png)
 
 ### Plugin-transform-runtime
 
@@ -850,7 +850,7 @@ Plugin-transform-runtime和useBuiltIns疑似互斥?
 npm install @babel/plugin-transform-runtime -D
 ```
 
-![image-20220302165948580](webpack5.assets/image-20220302165948580.png)
+![image-20220302165948580](assets/webpack5.assets/image-20220302165948580.png)
 
 ## TypeScript的编译
 
@@ -864,7 +864,7 @@ TypeScript的编译配置信息我们通常会编写一个tsconfig.json文件：
 tsc --init
 ```
 
-![image-20220302172533419](webpack5.assets/image-20220302172533419.png)
+![image-20220302172533419](assets/webpack5.assets/image-20220302172533419.png)
 
 运行npx tsc来编译自己的ts代码
 
@@ -882,7 +882,7 @@ npm install ts-loader -D
 
 配置ts-loader
 
-![image-20220302172740807](webpack5.assets/image-20220302172740807.png)
+![image-20220302172740807](assets/webpack5.assets/image-20220302172740807.png)
 
 tsloader不能兼容polyfill，即无法将ts中添加对应需要的polyfill
 
@@ -898,9 +898,9 @@ Babel是有对TypeScript进行支持；
 npm install @babel/preset-typescript -D
 ```
 
-![image-20220302172827629](webpack5.assets/image-20220302172827629.png)
+![image-20220302172827629](assets/webpack5.assets/image-20220302172827629.png)
 
-![image-20220302172823457](webpack5.assets/image-20220302172823457.png)
+![image-20220302172823457](assets/webpack5.assets/image-20220302172823457.png)
 
 ## ts-loader和babel-loader选择
 
@@ -921,7 +921,7 @@ npm install @babel/preset-typescript -D
 
 执行npm run type-check-watch可以实时的检测类型错误
 
-![image-20220302181452637](webpack5.assets/image-20220302181452637.png)
+![image-20220302181452637](assets/webpack5.assets/image-20220302181452637.png)
 
 ## ForkTsCheckerWebpackPlugin
 
@@ -951,7 +951,7 @@ eslint-config-standard 需要eslint 7.32.0[【一听就懂】ESLint机制浅析_
 
 https://eslint.vuejs.org/rules/
 
-'errors-only'不能屏蔽eslint warn 
+'errors-only'不能屏蔽eslint warn
 
 eslintignore 屏蔽build webpack.config.js
 
@@ -979,7 +979,7 @@ npm install eslint -D
 npx eslint --init
 ```
 
-![image-20220302182555323](webpack5.assets/image-20220302182555323.png)
+![image-20220302182555323](assets/webpack5.assets/image-20220302182555323.png)
 
 执行检测命令 依赖于.eslintrc.js
 
@@ -1014,7 +1014,7 @@ rules：自定义的一些规则；
 npm install eslint-loader -D
 ```
 
-![image-20220302201427829](webpack5.assets/image-20220302201427829.png)
+![image-20220302201427829](assets/webpack5.assets/image-20220302201427829.png)
 
 ## eslintWebpackPlugin
 
@@ -1033,13 +1033,13 @@ npm install vue-loader -D
 npm install vue-template-compiler -D
 ```
 
-![image-20220302202105555](webpack5.assets/image-20220302202105555.png)
+![image-20220302202105555](assets/webpack5.assets/image-20220302202105555.png)
 
-![image-20220302202110376](webpack5.assets/image-20220302202110376.png)
+![image-20220302202110376](assets/webpack5.assets/image-20220302202110376.png)
 
-![image-20220302202112528](webpack5.assets/image-20220302202112528.png)
+![image-20220302202112528](assets/webpack5.assets/image-20220302202112528.png)
 
-![image-20220302202115242](webpack5.assets/image-20220302202115242.png)
+![image-20220302202115242](assets/webpack5.assets/image-20220302202115242.png)
 
 ## Webpack watch
 
@@ -1052,7 +1052,7 @@ webpack给我们提供了watch模式
 方式一：在导出的配置中，添加watch: true；
 方式二：在启动webpack的命令中，添加--watch的标识
 
-![image-20220302204302000](webpack5.assets/image-20220302204302000.png)
+![image-20220302204302000](assets/webpack5.assets/image-20220302204302000.png)
 
 ## webpack-dev-server
 
@@ -1062,13 +1062,13 @@ npm install --save-dev webpack-dev-server
 
 修改配置文件，告知dev server，从什么位置查找文件
 
-![image-20220302205210712](webpack5.assets/image-20220302205210712.png)
+![image-20220302205210712](assets/webpack5.assets/image-20220302205210712.png)
 
-![image-20220302205300201](webpack5.assets/image-20220302205300201.png)
+![image-20220302205300201](assets/webpack5.assets/image-20220302205300201.png)
 
 npm命令
 
-![image-20220302205303184](webpack5.assets/image-20220302205303184.png)
+![image-20220302205303184](assets/webpack5.assets/image-20220302205303184.png)
 
 
 
@@ -1098,15 +1098,15 @@ Hot Module Replacement 模块热替换
 
 开启HMR
 
-![image-20220302210808070](webpack5.assets/image-20220302210808070.png)
+![image-20220302210808070](assets/webpack5.assets/image-20220302210808070.png)
 
-![image-20220302210812856](webpack5.assets/image-20220302210812856.png)
+![image-20220302210812856](assets/webpack5.assets/image-20220302210812856.png)
 
 你会发现，当我们修改了某一个模块的代码时，依然是刷新的整个页面
 
 这是因为我们需要去指定哪些模块发生更新时，进行HMR
 
-![image-20220302211633052](webpack5.assets/image-20220302211633052.png)
+![image-20220302211633052](assets/webpack5.assets/image-20220302211633052.png)
 
 在开发其他项目时，我们是否需要经常手动去写入module.hot.accpet相关的API呢？
 
@@ -1120,11 +1120,11 @@ Hot Module Replacement 模块热替换
 npm install -D @pmmmwh/react-refresh-webpack-plugin react-refresh
 ```
 
-![image-20220302211935500](webpack5.assets/image-20220302211935500.png)
+![image-20220302211935500](assets/webpack5.assets/image-20220302211935500.png)
 
-![image-20220302211937500](webpack5.assets/image-20220302211937500.png)
+![image-20220302211937500](assets/webpack5.assets/image-20220302211937500.png)
 
-![image-20220302211940545](webpack5.assets/image-20220302211940545.png)
+![image-20220302211940545](assets/webpack5.assets/image-20220302211940545.png)
 
 ### Vue的HMR
 
@@ -1134,11 +1134,11 @@ Vue的加载我们需要使用vue-loader，而vue-loader加载的组件默认会
 npm install vue-loader vue-template-compiler -D
 ```
 
-![image-20220302212009057](webpack5.assets/image-20220302212009057.png)
+![image-20220302212009057](assets/webpack5.assets/image-20220302212009057.png)
 
-![image-20220302212011698](webpack5.assets/image-20220302212011698.png)
+![image-20220302212011698](assets/webpack5.assets/image-20220302212011698.png)
 
-![image-20220302212014187](webpack5.assets/image-20220302212014187.png)
+![image-20220302212014187](assets/webpack5.assets/image-20220302212014187.png)
 
 ## output的publicPath
 
@@ -1330,7 +1330,7 @@ extensions是解析到文件时自动添加扩展名：
 特别是当我们项目的目录结构比较深的时候，或者一个文件的路径可能需要../../../这种路径片段；
 我们可以给某些常见的路径起一个别名；
 
-![image-20220303230018967](webpack5.assets/image-20220303230018967.png)
+![image-20220303230018967](assets/webpack5.assets/image-20220303230018967.png)
 
 ## cache
 
@@ -1341,7 +1341,7 @@ extensions是解析到文件时自动添加扩展名：
 方案一：编写两个不同的配置文件，开发和生成时，分别加载不同的配置文件即可；
 方式二：使用相同的一个入口配置文件，通过设置参数来区分它们；
 
-![image-20220303232534092](webpack5.assets/image-20220303232534092.png)
+![image-20220303232534092](assets/webpack5.assets/image-20220303232534092.png)
 
 ```js
 // env来自脚本命令 webpack --config ./config/webpack.common.js --env production
@@ -1372,9 +1372,9 @@ context的作用是用于解析入口（entry point）和加载器（loader）�
 
 另外推荐在配置中传入一个值；
 
-![image-20220304223937286](webpack5.assets/image-20220304223937286.png)
+![image-20220304223937286](assets/webpack5.assets/image-20220304223937286.png)
 
-![image-20220304223939951](webpack5.assets/image-20220304223939951.png)
+![image-20220304223939951](assets/webpack5.assets/image-20220304223939951.png)
 
 ## 配置文件分离
 
@@ -1557,7 +1557,7 @@ Webpack中常用的代码分离有三种
 
 他们分别有自己的代码逻辑
 
-![image-20220304234734583](webpack5.assets/image-20220304234734583.png)
+![image-20220304234734583](assets/webpack5.assets/image-20220304234734583.png)
 
 [name]指的是 index和main键名
 
@@ -1569,7 +1569,7 @@ index.js和main.js都依赖两个库：lodash、dayjs
 
 事实上我们可以对他们进行共享
 
-![image-20220304234844857](webpack5.assets/image-20220304234844857.png)
+![image-20220304234844857](assets/webpack5.assets/image-20220304234844857.png)
 
 ```js
   entry: {
@@ -1595,11 +1595,11 @@ Webpack提供了SplitChunksPlugin默认的配置，我们也可以手动来修�
 
 minSize越小，入口bundle越小，但是会有一个极限最小体积，chunk越多会导致http加载时间比代码执行时间长，所以minSize的值需要多考究考究
 
-![image-20220304235945569](webpack5.assets/image-20220304235945569.png)
+![image-20220304235945569](assets/webpack5.assets/image-20220304235945569.png)
 
-![image-20220305000252018](webpack5.assets/image-20220305000252018.png)
+![image-20220305000252018](assets/webpack5.assets/image-20220305000252018.png)
 
-![image-20220305000311928](webpack5.assets/image-20220305000311928.png)
+![image-20220305000311928](assets/webpack5.assets/image-20220305000311928.png)
 
 
 
@@ -1621,13 +1621,13 @@ webpack提供了两种实现动态导入的方式：
 
 那么它的命名我们通常会在output中，通过chunkFilename 属性来命名
 
-![image-20220305003711353](webpack5.assets/image-20220305003711353.png)
+![image-20220305003711353](assets/webpack5.assets/image-20220305003711353.png)
 
 默认情况下我们获取到的[name] 是和id的名称保持一致的
 
 如果我们希望修改name的值，可以通过magic comments（魔法注释）的方式
 
-![image-20220305003727875](webpack5.assets/image-20220305003727875.png)
+![image-20220305003727875](assets/webpack5.assets/image-20220305003727875.png)
 
 #### 代码的懒加载
 
@@ -1635,9 +1635,9 @@ webpack提供了两种实现动态导入的方式：
 封装一个component.js，返回一个component对象；
 我们可以在一个按钮点击时，加载这个对象；
 
-![image-20220305003813201](webpack5.assets/image-20220305003813201.png)
+![image-20220305003813201](assets/webpack5.assets/image-20220305003813201.png)
 
-![image-20220305003814875](webpack5.assets/image-20220305003814875.png)
+![image-20220305003814875](assets/webpack5.assets/image-20220305003814875.png)
 
 ## optimization.chunkIds配置
 
@@ -1649,7 +1649,7 @@ boolean = false` `string: 'natural' | 'named' | 'size' | 'total-size' | 'determi
 
 不同`mode`下，chunkIds的默认值是不同的（需要打包论证是依赖于false还是依赖于mode）
 
-![image-20220321235137984](webpack5.assets/image-20220321235137984.png)
+![image-20220321235137984](assets/webpack5.assets/image-20220321235137984.png)
 
 | 选项值            | 描述                                                         |
 | :---------------- | :----------------------------------------------------------- |
@@ -1678,7 +1678,7 @@ true/multiple：针对每个入口打包一个runtime文件；
 single：打包一个runtime文件；
 对象：name属性决定runtimeChunk的名称；
 
-![image-20220305102451907](webpack5.assets/image-20220305102451907.png)
+![image-20220305102451907](assets/webpack5.assets/image-20220305102451907.png)
 
 如果当前runtimechunk的包体积过小，可以考虑直接写入到`index.html`中具体参考`InlineChunkHtmlPlugin`，`html-webpack-inline-source-plugin`，`react-dev-utils/InlineChunkHtmlPlugin`插件
 
@@ -1735,7 +1735,7 @@ single：打包一个runtime文件；
 prefetch(预获取)：将来某些导航下可能需要的资源
 preload(预加载)：当前导航下可能需要资源
 
-![image-20220305100233797](webpack5.assets/image-20220305100233797.png)
+![image-20220305100233797](assets/webpack5.assets/image-20220305100233797.png)
 
 与prefetch 指令相比，preload 指令有许多不同之处：
 
@@ -1749,16 +1749,16 @@ preload chunk 会在父chunk 中立即请求，用于当下时刻。prefetch chu
 第一步，我们可以通过webpack配置，来排除一些库的打包：
 第二步，在html模块中，加入CDN服务器地址：
 
-![image-20220305110108003](webpack5.assets/image-20220305110108003.png)
+![image-20220305110108003](assets/webpack5.assets/image-20220305110108003.png)
 
-![image-20220305110110981](webpack5.assets/image-20220305110110981.png)
+![image-20220305110110981](assets/webpack5.assets/image-20220305110110981.png)
 
 ```js
   <!-- ejs中的if判断 -->
-  <% if (process.env.NODE_ENV === 'production') { %> 
+  <% if (process.env.NODE_ENV === 'production') { %>
   <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <% } %> 
+  <% } %>
 ```
 
 左边是包名，右边是使用的变量名
@@ -1772,7 +1772,7 @@ preload chunk 会在父chunk 中立即请求，用于当下时刻。prefetch chu
 
 假如一个文件中我们使用了axios，但是没有对它进行引入，那么下面的代码是会报错的
 
-![image-20220305132033561](webpack5.assets/image-20220305132033561.png)
+![image-20220305132033561](assets/webpack5.assets/image-20220305132033561.png)
 
 我们可以通过使用ProvidePlugin来实现shimming的效果
 
@@ -1780,7 +1780,7 @@ ProvidePlugin能够帮助我们在每个模块中，通过一个变量来获取�
 如果webpack看到这个模块，它将在最终的bundle中引入这个模块；
 另外ProvidePlugin是webpack默认的一个插件，所以不需要专门导入
 
-![image-20220305132048105](webpack5.assets/image-20220305132048105.png)
+![image-20220305132048105](assets/webpack5.assets/image-20220305132048105.png)
 
 数组表示从前面字符串包中访问对应的键
 
@@ -1792,7 +1792,7 @@ ProvidePlugin能够帮助我们在每个模块中，通过一个变量来获取�
 npm install mini-css-extract-plugin -D
 ```
 
-![image-20220305133213927](webpack5.assets/image-20220305133213927.png)
+![image-20220305133213927](assets/webpack5.assets/image-20220305133213927.png)
 
 ## Hash、ContentHash、ChunkHash
 
@@ -1880,7 +1880,7 @@ npm install css-minimizer-webpack-plugin -D
 
 在optimization.minimizer中配置
 
-![image-20220305152157627](webpack5.assets/image-20220305152157627.png)
+![image-20220305152157627](assets/webpack5.assets/image-20220305152157627.png)
 
 ```js
 module.exports = {
@@ -1915,7 +1915,7 @@ Scope Hoisting可以将函数合并到一个模块中来运行；
 在production模式下，默认这个模块就会启用；
 在development模式下，我们需要自己来打开该模块；
 
-![image-20220305155746230](webpack5.assets/image-20220305155746230.png)
+![image-20220305155746230](assets/webpack5.assets/image-20220305155746230.png)
 
 ## Tree Shaking
 
@@ -1980,9 +1980,9 @@ sideEffects用于告知webpack compiler哪些模块是有副作用不能被删�
 该文件在导入时没有使用任何的变量来接受；
 那么打包后的文件，不会保留format.js、style.css相关的任何代码
 
-![image-20220305170257905](webpack5.assets/image-20220305170257905.png)
+![image-20220305170257905](assets/webpack5.assets/image-20220305170257905.png)
 
-![image-20220305170300278](webpack5.assets/image-20220305170300278.png)
+![image-20220305170300278](assets/webpack5.assets/image-20220305170300278.png)
 
 ### CSS树摇
 
@@ -2008,7 +2008,7 @@ paths：表示要检测哪些目录下的内容需要被分析，这里我们可
 
 默认情况下，Purgecss会将我们的html标签的样式移除掉，如果我们希望保留，可以添加一个safelist的属性
 
-![	](webpack5.assets/image-20220305171031955.png)
+![	](assets/webpack5.assets/image-20220305171031955.png)
 
 purgecss也可以对less文件进行处理（所以它是对打包后的css进行tree shaking操作）；
 
@@ -2024,11 +2024,11 @@ HTTP压缩的流程
 
 第二步：兼容的浏览器在向服务器发送请求时，会告知服务器自己支持哪些压缩格式
 
-![image-20220305173756799](webpack5.assets/image-20220305173756799.png)
+![image-20220305173756799](assets/webpack5.assets/image-20220305173756799.png)
 
 第三步：服务器在浏览器支持的压缩格式下，直接返回对应的压缩后的文件，并且在响应头中告知浏览器；
 
-![image-20220305173806905](webpack5.assets/image-20220305173806905.png)
+![image-20220305173806905](assets/webpack5.assets/image-20220305173806905.png)
 
 ### Webpack对文件压缩
 
@@ -2036,7 +2036,7 @@ HTTP压缩的流程
 npm install compression-webpack-plugin -D
 ```
 
-![image-20220305173957719](webpack5.assets/image-20220305173957719.png)
+![image-20220305173957719](assets/webpack5.assets/image-20220305173957719.png)
 
 ## HTML文件中代码的压缩
 
@@ -2049,7 +2049,7 @@ inject：设置打包的资源插入的位置
 cache：设置为true，只有当文件改变时，才会生成新的文件（默认值也是true）
 minify：默认会使用一个插件html-minifier-terser  生产环境默认启动，见文档  不会合并的
 
-![image-20220305175902107](webpack5.assets/image-20220305175902107.png)
+![image-20220305175902107](assets/webpack5.assets/image-20220305175902107.png)
 
 ## InlineChunkHtmlPlugin
 
@@ -2072,17 +2072,17 @@ npm install react-dev-utils -D
 
 在production的plugins中进行配置：
 
-![image-20220305180440458](webpack5.assets/image-20220305180440458.png)
+![image-20220305180440458](assets/webpack5.assets/image-20220305180440458.png)
 
 ## 封装Library
 
 webpack可以帮助我们打包自己的库文件，比如我们需要打包一个coderwhy_utils的一个库
 
-![image-20220305181216097](webpack5.assets/image-20220305181216097.png)
+![image-20220305181216097](assets/webpack5.assets/image-20220305181216097.png)
 
-![image-20220305181221862](webpack5.assets/image-20220305181221862.png)
+![image-20220305181221862](assets/webpack5.assets/image-20220305181221862.png)
 
-![image-20220305181225197](webpack5.assets/image-20220305181225197.png)
+![image-20220305181225197](assets/webpack5.assets/image-20220305181225197.png)
 
 ## Vue脚手架分析
 
@@ -2108,6 +2108,6 @@ webpack-bundle-analyzer报错可能是因为devServer的文件在内存里
 
 如果eslint不报错，重启/删除node_modules后重试，eslintwebpackplugin概率性出现缓存的问题，
 
-多线程 
+多线程
 
 happypack thread-loader

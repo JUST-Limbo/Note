@@ -1,6 +1,6 @@
 ## :target伪类
 
-**`:target`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) 代表一个唯一的页面元素(目标元素)，其[`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#attr-id) 与当前URL片段匹配 
+**`:target`** [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) [伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) 代表一个唯一的页面元素(目标元素)，其[`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes#attr-id) 与当前URL片段匹配
 
 ```html
 <h3>Table of Contents</h3>
@@ -377,7 +377,7 @@ normal
   </style>
 ```
 
-5. lineheight 
+5. lineheight
 
 把box设置为行内元素，通过`text-align`就可以做到水平居中，通过`vertical-align`在垂直方向做到居中，代码如下
 
@@ -617,7 +617,7 @@ fit-content也能用来更好的处理水平居中：（via[理解CSS3 max/min-c
 .fit-content {
     width: -webkit-fit-content;
     width: -moz-fit-content;
-    width: fit-content;    
+    width: fit-content;
 }
 ```
 
@@ -691,7 +691,7 @@ html{
 <div style="background-color:#e5edff;"><img src="mm1.jpg"></div>
 ```
 
-> ![image-20230508215141743](CSS_1.assets/image-20230508215141743.png)
+> ![image-20230508215141743](assets/CSS_1.assets/image-20230508215141743.png)
 
 **在HTML5文档声明下，块状元素内部的内联元素的行为表现，就好像块状元素内部还有一个（更有可能两个-前后）看不见摸不着没有宽度没有实体的空白节点，这个假想又似乎存在的空白节点，我称之为“幽灵空白节点”。**
 
@@ -699,7 +699,7 @@ html{
 
 **一个inline-block元素，如果里面没有inline内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘，否则，其基线就是元素里面最后一行内联元素的基线。**
 
-> ![image-20230508231106419](CSS_1.assets/image-20230508231106419.png)
+> ![image-20230508231106419](assets/CSS_1.assets/image-20230508231106419.png)
 
 参考资料
 

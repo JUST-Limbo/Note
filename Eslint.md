@@ -1,4 +1,4 @@
-# ESLint 
+# ESLint
 
 [传智播客 邹华栋](http://t.csdn.cn/hMWyT)
 
@@ -16,9 +16,9 @@ npx  eslint --init
 
 standard依赖于eslint@7.32.0
 
-![image-20220327005903794](eslint.assets/image-20220327005903794.png)
+![image-20220327005903794](assets/eslint.assets/image-20220327005903794.png)
 
-![image-20220327005910492](eslint.assets/image-20220327005910492.png)
+![image-20220327005910492](assets/eslint.assets/image-20220327005910492.png)
 
 ## ESLint配置文件入门
 
@@ -52,7 +52,7 @@ env: {
 
 一个环境定义了一组预定义的全局变量。
 
-![image-20220327012224827](eslint.assets/image-20220327012224827.png)
+![image-20220327012224827](assets/eslint.assets/image-20220327012224827.png)
 
 ### extends
 
@@ -184,7 +184,7 @@ ESLint 默认使用[Espree](https://github.com/eslint/espree)作为其解析器�
 
 指定你想要支持的 JavaScript 语言选项。
 
-![image-20220327015626407](eslint.assets/image-20220327015626407.png)
+![image-20220327015626407](assets/eslint.assets/image-20220327015626407.png)
 
 ### plugins
 

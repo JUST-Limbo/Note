@@ -19,7 +19,7 @@
 + 标签首字母小写，则转为同名的html元素，如果没有对应同名元素则报错
 + 标签首字母大写，则渲染对应组件，若组件未定义则报错
 
- 
+
 
 ## 类组件
 
@@ -86,7 +86,7 @@ class Person extends React.Component{
     )
   }
 }
-//类的静态属性 对标签属性进行类型、必要性的限制 
+//类的静态属性 对标签属性进行类型、必要性的限制
 Person.propTypes = { // 注意静态属性的键名为propTypes首字母小写,而下方的内置对象PropTypes首字母为大写
   name:PropTypes.string.isRequired, //限制name必传，且为字符串  PropTypes或React.PropTypes
   sex:PropTypes.string,//限制sex为字符串
@@ -138,7 +138,7 @@ class Person extends React.Component{
     sex:'男',//sex默认值为男
     age:18 //age默认值为18
   }
-  
+
   render(){
     // console.log(this);
     const {name,age,sex} = this.props
@@ -310,7 +310,7 @@ ReactDOM.render(<Demo/>,document.getElementById('test'))
 ```javascript
 //创建组件
 class Demo extends React.Component{
-  /* 
+  /*
     React.createRef调用后可以返回一个容器，该容器可以存储被ref所标识的节点,该容器是“专人专用”的
     */
   myRef = React.createRef()
@@ -452,7 +452,7 @@ class NameForm extends React.Component {
 
 旧
 
-![image-20211017152817655](React.assets/image-20211017152817655.png)
+![image-20211017152817655](assets/React.assets/image-20211017152817655.png)
 
 `componentWillReceiveProps`首次挂载不会触发，更新`props`才会触发
 
@@ -460,7 +460,7 @@ class NameForm extends React.Component {
 
 `componentWillMount` `componentWillReceiveProps` `componentWillUpdate`需要加`UNSAFE_`前缀
 
-![react生命周期(新)](React.assets/react生命周期(新).png)
+![react生命周期(新)](assets/React.assets/react生命周期(新).png)
 
 **static getDerivedStateFromProps()**
 
@@ -579,7 +579,7 @@ export default class Hello extends Component{
 
    ```js
    const proxy = require('http-proxy-middleware')
-   
+
    module.exports = function(app) {
      app.use(
        proxy('/api1', {  //api1是需要转发的请求(所有带有/api1前缀的请求都会转发给5000)
@@ -592,7 +592,7 @@ export default class Hello extends Component{
          */
          pathRewrite: {'^/api1': ''} //去除请求前缀，保证交给后台服务器的是正常请求地址(必须配置)
        }),
-       proxy('/api2', { 
+       proxy('/api2', {
          target: 'http://localhost:5001',
          changeOrigin: true,
          pathRewrite: {'^/api2': ''}
@@ -710,7 +710,7 @@ NavLink可以实现路由链接的高亮，通过activeClassName指定样式名
 			2.开启严格匹配：<Route exact path="/about" component={About}/>
 			3.严格匹配不要随便开启，需要再开，有些时候开启会导致无法继续匹配二级路由
 			  (/home/news 不能匹配/home)
-### Redirect的使用	
+### Redirect的使用
 
 				1.一般写在所有路由注册的最下方，当所有路由都无法匹配时，跳转到Redirect指定的路由
 				2.具体编码：
@@ -808,7 +808,7 @@ export default withRouter(Header)
 
 ## redux
 
-<img src="React.assets/image-20211128185336134.png" alt="image-20211128185336134" style="zoom:80%;" />
+<img src="assets/React.assets/image-20211128185336134.png" alt="image-20211128185336134" style="zoom:80%;" />
 
 ## react-redux
 

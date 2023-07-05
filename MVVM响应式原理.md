@@ -16,6 +16,6 @@
 
 dep(订阅器/数据依赖）  watcher（订阅者/观察者）
 
-![img](MVVM响应式原理.assets/172970655167cff7)
+![img](assets//MVVM响应式原理.assets/172970655167cff7.jpg)
 
 ## 实现指令解析器Compile
