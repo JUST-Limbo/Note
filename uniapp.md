@@ -10,7 +10,7 @@
 
 关于上述观点的文档依据如下：
 
-![image-20220808143113779](uniapp.assets/image-20220808143113779.png)
+![image-20220808143113779](assets/uniapp.assets/image-20220808143113779.png)
 
 代码调试结果如下：
 
@@ -56,8 +56,8 @@ export default {
 
 H5端：
 
-![image-20220808144109425](uniapp.assets/image-20220808144109425.png)
+![image-20220808144109425](assets/uniapp.assets/image-20220808144109425.png)
 
 微信小程序端：
 
-![image-20220808144246788](uniapp.assets/image-20220808144246788.png)
+![image-20220808144246788](assets/uniapp.assets/image-20220808144246788.png)
