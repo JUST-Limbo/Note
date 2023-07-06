@@ -1,11 +1,5 @@
 # JSON.stringify
 
-## 参考文献：
-
-[你会用JSON.stringify()?](https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247493740&idx=1&sn=b7b42aa25c5a366e62d596dcb142dd28&chksm=c06569faf712e0ec424babcc36475de32a7b667f845eacfb60c7a1524e3db4d65e1298822685&scene=132#wechat_redirect)
-
-[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
-
 ## 语法
 
 > JSON.stringify(value[, replacer [, space]])
@@ -218,13 +212,11 @@ console.log(JSON.stringify(obj1) === JSON.stringify(obj2)) // false
 
   
 
+## 参考资料
 
+[你会用JSON.stringify()?](https://mp.weixin.qq.com/s?__biz=Mzg5ODA5NTM1Mw==&mid=2247493740&idx=1&sn=b7b42aa25c5a366e62d596dcb142dd28&chksm=c06569faf712e0ec424babcc36475de32a7b667f845eacfb60c7a1524e3db4d65e1298822685&scene=132#wechat_redirect)
 
-
-
-
-
-
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
 
 
 
