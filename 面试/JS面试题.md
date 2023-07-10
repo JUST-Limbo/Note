@@ -25,6 +25,8 @@ JavaScript 对象是动态的属性“包”（指其自己的属性）。JavaSc
 
 ## event loop
 
+微任务：promise的回调，process.nextTick，MutationObserver
+
 每个宏任务之后，引擎会立即执行微任务队列中的所有任务，然后再执行其他的宏任务，或渲染，或进行其他任何操作。
 
 ```
