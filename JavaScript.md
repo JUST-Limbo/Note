@@ -1,3 +1,11 @@
+## sessionStorage
+
+sessionStorage不能在多个窗口或选项卡之间共享数据，但是，当通过window.open或链接打开新页面时，新页面会复制上一个页面的sessionStorage。
+
+参考链接：
+
+[面试官：sessionStorage可以在多个Tab之间共享数据吗？ (qq.com)](https://mp.weixin.qq.com/s/tPZifwZFOBDoHv36U11gkQ)
+
 ## 如何判断当前函数是否被new调用
 
 在通过[new](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new)运算符被初始化的函数或构造方法中，`new.target`返回一个指向构造方法或函数的引用。在普通的函数调用中，`new.target` 的值是`undefined`。
