@@ -1,5 +1,11 @@
 # uniapp
 
+## v-bind传递一个对象的所有`property`
+
+微信小程序不支持通过`v-bind="obj"`的形式传入一个对象的所有property
+
+![image-20230802091231281](assets/uniapp.assets/image-20230802091231281.png)
+
 ## 微信小程序组件属性类型转换行为
 
 当使用自定义组件时，通常可以通过为`prop`指定类型，来对传入的值启动类型检查。
