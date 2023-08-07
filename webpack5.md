@@ -248,7 +248,7 @@ module.exports = {
 
    ```bash
    # Browsers that we support
-
+   
    last 1 version
    > 1%
    maintained node versions
@@ -1211,6 +1211,8 @@ open是否打开浏览器
 
 compress是否为静态文件开启gzip compression 默认值是false，可以设置为true
 
+
+
 ## devServer的Proxy代理
 
 目的设置代理来解决跨域访问的问题
@@ -1783,6 +1785,10 @@ ProvidePlugin能够帮助我们在每个模块中，通过一个变量来获取�
 ![image-20220305132048105](assets/webpack5.assets/image-20220305132048105.png)
 
 数组表示从前面字符串包中访问对应的键
+
+## CompressionPlugin
+
+不应该对图片进行gzip压缩
 
 ## MiniCssExtractPlugin
 
