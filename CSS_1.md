@@ -635,6 +635,59 @@ fit-content也能用来更好的处理水平居中：（via[理解CSS3 max/min-c
 </div>
 ```
 
+## viewport
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+```
+
+属性：
+
+```
+width
+```
+
+控制视口的大小。这可以设置为特定像素数（如'width=600'），也可以设置为特殊值`device-width`，即 [100vw](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#视口_viewport_比例的长度)，100% 的视口宽度。最小值为 `1`。最大值为 `10000`。负值会被忽略。
+
+```
+height
+```
+
+控制视口的大小。这可以设置为特定像素数（如 `width=600`），也可以设置为特殊值 `device-height`，即 [100vh](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#视口_viewport_比例的长度)，100% 的视口高度。最小值为 `1`。最大值为 `10000`。负值会被忽略。
+
+```
+initial-scale
+```
+
+控制页面首次加载时显示的缩放倍数。最小值是 `0.1`。最大值是 `10`。默认值为 `1`。负值会被忽略。
+
+```
+minimum-scale
+```
+
+控制页面允许缩小的倍数。最小值是 `0.1`。最大值是 `10`。默认值为 `1`。负值会被忽略。
+
+```
+maximum-scale
+```
+
+控制页面允许放大的倍数。设置一个低于 `3` 的值将不具备无障碍访问性。最小值是 `0.1`。最大值是 `10`。默认值为 `1`。负值会被忽略。
+
+```
+user-scalable
+```
+
+控制是否允许页面上的放大和缩小操作。有效值为 `0`、`1`、`yes` 或 `no`。默认值为 `1`，与 `yes` 相同。
+
+对于设置了初始或最大比例的页面，**这意味着宽度属性实际上转化为最小视口宽度**。例如，如果你的布局需要至少 500 像素的宽度，那么你可以使用以下标记。当屏幕的宽度超过 500 像素时，**浏览器将扩大视口**（而不是放大）以适应屏幕。
+
+```html
+<meta name="viewport" content="width=500, initial-scale=1" />
+```
+
+参考资料
+[viewport meta 标记 - HTML（超文本标记语言） | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Viewport_meta_tag)
+
 ## em和rem
 
 em，相对单位，这个单位表示元素的 [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 的计算值。如果用在[`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 属性本身，它则表示元素*继承*的 `font-size` 值。em不仅可以用作font-size的计算值，也可用于width等。
