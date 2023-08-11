@@ -637,6 +637,8 @@ fit-content也能用来更好的处理水平居中：（via[理解CSS3 max/min-c
 
 ## viewport
 
+在PC端上，设置viewport不生效,布局视口永远等于浏览器窗口的宽度。
+
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 ```
@@ -738,6 +740,56 @@ html{
 }
 ```
 
+## 移动端适配
+
+css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。
+
+**设备像素比dpr**，返回当前显示设备的*物理像素*分辨率与*CSS 像素*分辨率之比，它告诉浏览器应使用多少屏幕实际像素来绘制单个 CSS 像素。
+
+访问：
+
+```js
+window.devicePixelRatio
+```
+
+参考资料
+
+https://juejin.cn/post/6884042902587047943
+
+## 媒体查询
+
+| 屏幕     | 设备 | 尺寸               |
+| -------- | ---- | ------------------ |
+| 超小屏幕 | 手机 | <768px             |
+| 小屏幕   | 平板 | >=768px && <992px  |
+| 中等屏幕 | PC   | >=992px && <1200px |
+| 大屏幕   | PC   | >=1200px           |
+| 超大屏幕 | PC   | >=1680px           |
+
+```css
+/* 小屏幕设备 */
+@media only screen and (max-width: 767px) {
+  /* 在此编写小屏幕设备的样式 */
+}
+
+/* 中屏幕设备 */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* 在此编写中屏幕设备的样式 */
+}
+
+/* 大屏幕设备 */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /* 在此编写大屏幕设备的样式 */
+}
+
+/* 极大屏幕设备 */
+@media only screen and (min-width: 1200px) {
+  /* 在此编写极大屏幕设备的样式 */
+}
+```
+
+
+
 ## 幽灵空白节点
 
 ```html
@@ -815,3 +867,4 @@ fixed
 表格和列的宽度是由 `table` 和 `col` 元素的宽度或第一行单元格的宽度来设置的。后续行中的单元格不会影响列的宽度。
 
 在“fixed”布局方法下，一旦下载并分析了第一行表格，整个表格就可以被渲染出来。这可以加快渲染时间，相比于“automatic”布局方法，但是后续单元格内容可能不适合提供的列宽。单元格使用 [`overflow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow) 属性来确定是否要剪裁任何溢出的内容，但仅当表格具有已知宽度时才会生效；否则，它们不会溢出到单元格之外。
+
