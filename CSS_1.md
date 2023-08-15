@@ -792,6 +792,12 @@ https://juejin.cn/post/6884042902587047943
 
 ## 幽灵空白节点
 
+行盒、行内块之间在源代码中出现多个空白字符会造成空白折叠。
+
+在**HTML5 文档声明**中，内联元素的所有解析和渲染表现就如同每个行框盒子的前面有一个“空白节点”一样。这个“空白节点”永远透明，不占据任何宽度，看不见也无法通过脚本获取，就好像幽灵一样，但又确确实实地存在，表现如同文本节点一样，因此，在张鑫旭大佬的《CSS 世界》一书中根据特点，将其称之为“幽灵空白节点”，也就是官方规范中的“`strut`”。
+
+
+
 ```html
 <div style="background-color:#e5edff;"><img src="mm1.jpg"></div>
 ```
@@ -811,6 +817,8 @@ https://juejin.cn/post/6884042902587047943
 [CSS深入理解vertical-align和line-height的基友关系 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/)
 
 [css vertical-align你真的很了解嘛？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/28626505)
+
+[带你探索神秘的“幽灵空白节点” - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/391118319)s
 
 ## flex
 
