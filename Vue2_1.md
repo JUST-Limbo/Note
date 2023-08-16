@@ -223,3 +223,10 @@ propsData在该写法中疑似不支持响应式？
 
 [API — Vue.js (vuejs.org)](https://v2.cn.vuejs.org/v2/api/#vm-mount)
 
+## scoped影响子组件的根元素
+
+使用 `scoped` 后，父组件的样式将不会渗透到子组件中。不过一个子组件的根节点会同时受其父组件的 scoped CSS 和子组件的 scoped CSS 的影响。
+
+[Scoped CSS | Vue Loader (vuejs.org)](https://vue-loader.vuejs.org/zh/guide/scoped-css.html#子组件的根元素)
+
+[vue2组件嵌套的时候什么情况下scoped会失效以及怎么解决_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1J14y1a7kY/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3)
