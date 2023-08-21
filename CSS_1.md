@@ -756,6 +756,8 @@ window.devicePixelRatio
 
 https://juejin.cn/post/6884042902587047943
 
+[基于vw等viewport视区单位配合rem响应式排版和布局 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/)
+
 ## 媒体查询
 
 | 屏幕     | 设备 | 尺寸               |
