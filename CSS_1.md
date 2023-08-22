@@ -758,6 +758,76 @@ https://juejin.cn/post/6884042902587047943
 
 [基于vw等viewport视区单位配合rem响应式排版和布局 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/)
 
+[通过插件postcss-pxtorem轻松实现px到rem转换，完成移动端适配_SZ_FED的博客-CSDN博客](https://blog.csdn.net/llq886/article/details/105737987)
+
+### flexible
+
+```js
+// set 1rem = viewWidth / 10
+function setRemUnit () {
+    var rem = docEl.clientWidth / 10
+    docEl.style.fontSize = rem + 'px'
+}
+setRemUnit();
+// reset rem unit on page resize
+window.addEventListener('resize', setRemUnit)window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      setRemUnit()
+    }
+})
+```
+
+> lib-flexible这个过渡方案（本质上）已经可以放弃使用，不管是现在的版本还是以前的版本，都存有一定的问题。建议大家开始使用viewport来替代此方案。
+
+## vh和vw
+
+`flexible`方案就是模仿这种方案，因为早些时候`vw`还没有得到很好的兼容。
+
+- `vw(Viewport's width)`：`1vw`等于视觉视口的`1%`
+- `vh(Viewport's height)` :` 1vh` 为视觉视口高度的`1%`
+- `vmin` : `vw` 和 `vh` 中的较小值
+- `vmax` : 选取 `vw` 和 `vh` 中的较大值
+
+缺陷：
+
+- `px`转换成`vw`不一定能完全整除，因此有一定的像素差。
+- 比如当容器使用`vw`，`margin`采用`px`时，很容易造成整体宽度超过`100vw`，从而影响布局效果。当然我们也是可以避免的，例如使用`padding`代替`margin`，结合`calc()`函数使用等等...
+
+## 不同dpr下图片适配
+
+**media   -webkit-min-device-pixel-ratio**
+
+```css
+.avatar{
+            background-image: url(conardLi_1x.png);
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio:2){
+            .avatar{
+                background-image: url(conardLi_2x.png);
+            }
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio:3){
+            .avatar{
+                background-image: url(conardLi_3x.png);
+            }
+        }
+
+```
+
+**-webkit-image-set**
+
+```css
+.avatar {
+    background-image: -webkit-image-set( "conardLi_1x.png" 1x, "conardLi_2x.png" 2x );
+}
+```
+
+**srcset**
+
+```html
+<img src="conardLi_1x.png"	srcset=" conardLi_2x.png 2x, conardLi_3x.png 3x">
+```
+
 ## 媒体查询
 
 | 屏幕     | 设备 | 尺寸               |
