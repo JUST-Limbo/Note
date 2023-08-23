@@ -526,23 +526,26 @@ div:hover{
 
 ## BFC
 
+**区块格式化上下文**
+
 当CSS的 **position** 属性为 **static** 或 **relative**，并且 **float** 为 **none** 时，其布局方式为普通流。
 
 独立渲染区域
 
 创建BFC的方式：
 
-1. float不为none（float默认为none）
-2. position值为absoluted、fixed（没有relative、static）
-3. display值为inline-block、table-cell、flex、flow-root
-4. overflow值为hidden、auto、scroll（除了visible？）
+1. 浮动元素（float不为none，float默认为none）
+2. 绝对定位、固定定位元素。（position值为absoluted、fixed，没有relative、static）
+3. display值为**inline-block**、table-cell、flex、**flow-root**
+4. overflow值为hidden、auto、scroll（除了visible）
 
 能解决什么问题：
 
-1. 边距重叠
-2. 边距溢出、盒子塌陷
-3. 清除浮动
-4. 浮动环绕文字（现象的原因是文本信息不会被浮动元素所覆盖）
+1. 阻止外边距重叠
+2. 子元素相对于父元素的边距溢出
+3. 包含内部浮动（防止浮动元素溢出到父元素的外部，子元素浮动造成父元素盒子高度塌陷）
+4. 排除外部浮动（清除浮动）
+5. 浮动环绕文字（文本信息不会被浮动元素所覆盖）
 
 ## fit-content
 
