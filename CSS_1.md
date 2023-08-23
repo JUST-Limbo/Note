@@ -541,11 +541,15 @@ div:hover{
 
 能解决什么问题：
 
-1. 阻止外边距重叠
-2. 子元素相对于父元素的边距溢出
-3. 包含内部浮动（防止浮动元素溢出到父元素的外部，子元素浮动造成父元素盒子高度塌陷）
-4. 排除外部浮动（清除浮动）
-5. 浮动环绕文字（文本信息不会被浮动元素所覆盖）
+1. 边距重叠（兄弟元素外边距重叠，父子元素外边距重叠）
+
+2. 包含内部浮动（防止浮动元素溢出到父元素的外部，子元素浮动造成父元素盒子高度塌陷）
+
+3. 排除外部浮动（[区块格式化上下文 - Web 开发者指南 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context#排除外部浮动)）
+
+4. 浮动环绕文字（文本信息不会被浮动元素所覆盖[浮动 - 学习 Web 开发 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Floats)）
+
+   ![image-20230823160034223](assets/CSS_1.assets/image-20230823160034223.png)
 
 ## fit-content
 
