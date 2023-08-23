@@ -760,7 +760,7 @@ https://juejin.cn/post/6884042902587047943
 
 [通过插件postcss-pxtorem轻松实现px到rem转换，完成移动端适配_SZ_FED的博客-CSDN博客](https://blog.csdn.net/llq886/article/details/105737987)
 
-### flexible
+## flexible
 
 ```js
 // set 1rem = viewWidth / 10
