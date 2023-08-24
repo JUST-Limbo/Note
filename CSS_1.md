@@ -955,3 +955,13 @@ fixed
 
 在“fixed”布局方法下，一旦下载并分析了第一行表格，整个表格就可以被渲染出来。这可以加快渲染时间，相比于“automatic”布局方法，但是后续单元格内容可能不适合提供的列宽。单元格使用 [`overflow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow) 属性来确定是否要剪裁任何溢出的内容，但仅当表格具有已知宽度时才会生效；否则，它们不会溢出到单元格之外。
 
+## justify-content
+
+定义子元素在主轴上的对齐方式
+
+- `flex-start`: 默认值，左对齐（或上对齐）。
+- `flex-end`: 右对齐（或下对齐）。
+- `center`: 居中对齐。
+- `space-between`: 两端对齐，项目之间的间隔相等。
+- `space-around`: 每个项目两侧的间隔相等，所以项目之间的间隔是项目与容器之间间隔的两倍。
+- **`space-evenly`: 项目之间的间隔相等，包括项目与容器之间的间隔。**
