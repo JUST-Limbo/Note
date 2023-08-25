@@ -912,6 +912,10 @@ window.addEventListener('resize', setRemUnit)window.addEventListener('pageshow',
 
 `align-items`属性可以使元素在交叉轴方向对齐。这个属性的初始值为`stretch`，这就是为什么 flex 元素**会默认被拉伸到最高元素的高度**。实际上，它们被拉伸来填满 flex 容器 —— 最高的元素定义了容器的高度。
 
+**项目属性**
+
+**order**：取值：默认0，用于决定项目排列顺序，数值越小，项目排列越靠前。
+
 ## colgroup
 
 ```html
