@@ -112,3 +112,9 @@ rebase不会产生新节点，是将两个分支融合成一个线性提交
 
 
 ## 撤销commit
+
+```bash
+git reset --hard commit id
+git push -f
+```
+
