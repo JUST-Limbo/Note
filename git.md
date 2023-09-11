@@ -111,10 +111,17 @@ rebase不会产生新节点，是将两个分支融合成一个线性提交
 
 
 
-## 撤销commit
+## 远程仓库回退版本
 
 ```bash
-git reset --hard commit id
+git reset --hard <commit id>
 git push -f
 ```
 
+## cherry-pick
+
+将指定的提交应用到当前分支上，并创建一个新的提交。
+
+```bash
+git cherry-pick <commit id>
+```
