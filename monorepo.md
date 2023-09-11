@@ -56,6 +56,12 @@ cd hello-world
 pnpm i axios 
 ```
 
+## 跨项目脚本和命令
+
+```bash
+pnpm run start --filter packageA
+```
+
 ## 子项目的引用
 
 ```

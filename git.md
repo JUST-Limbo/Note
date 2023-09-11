@@ -1,8 +1,6 @@
-# Git
-
 ## 工作机制
 
-![image-20220312223454968](assets/git.assets/image-20220312223454968.png)32
+![image-20220312223454968](assets/git.assets/image-20220312223454968.png)
 
 ## 常用命令
 
