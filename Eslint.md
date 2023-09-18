@@ -88,6 +88,40 @@ extends: [
 
 ### rules
 
+在 rules 对象中，通常 key 为规则的名称，比如上述的 `no-console` 代表具体的规则名称，而 value 可以为一个数组。
+
+数组第一个项代表规则 ID ，通过 `0 1 2` 或者 `off warn error` 表示检测的等级，而其余参数代表规则的具体配置。
+
+```js
+module.exports = {
+  root: true,
+  parserOptions: {
+    ecmaVersion: 6,
+  },
+  env: {
+    browser: true,
+  },
+  globals: {
+    wangHaoyu: true,
+  },
+  rules: {
+    quotes: ['error', 'single', { allowTemplateLiterals: true }],
+  },
+};
+```
+
+上述的 rules 中的 `quotes` 引号规则配置，第一个参数表示错误的等级。
+
+第二个参数，表示传递给 `quotes` 的具体配置，它支持；
+
+- `"double"`（默认）要求尽可能使用双引号
+- `"single"`要求尽可能使用单引号
+- `"backtick"`要求尽可能使用反引号
+
+同时第三参数，同样作为传递给 `quotes` 的配置选项，它是一个对象配置，这里的 `allowTemplateLiterals` 表示支持单引号的同时允许模版字符串的写法。
+
+
+
 `rules` 属性可以做下面的任何事情以扩展（或覆盖）规则：
 
 - 启用额外的规则
