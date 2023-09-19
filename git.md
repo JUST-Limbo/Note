@@ -139,6 +139,14 @@ git push -f
 
 [Git Reset 三种模式 - 简书 (jianshu.com)](https://www.jianshu.com/p/c2ec5f06cf1a)
 
+## 放弃解决冲突
+
+```bash
+git merge --abort
+```
+
+
+
 ## cherry-pick
 
 将指定的提交应用到当前分支上，并创建一个新的提交。
