@@ -14,6 +14,10 @@
   - 下载并保存依赖项
 
   - npm i -S 包名
+
++ npm  i xx  --save-exact
+  + 安装一个第三方包，将一个确定的依赖版本写死在package.json中
+
 - npm uninstall 包名
   - 只删除,如果有依赖项会依然保存
   - npm un 包名
