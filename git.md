@@ -43,6 +43,7 @@ git config --global user.email 邮箱
 | git branch -v                         | 查看各个分支最后一个提交信息     |
 | git branch --delete 分支名            | 删除本地分支                     |
 | git push origin --delete 分支名       | 删除远程分支                     |
+| git push origin :分支名               | (分支名前的冒号代表删除)         |
 | git checkout 分支名                   | 切换分支                         |
 | git checkout --orphan 分支名          | 创建空白分支                     |
 | git merge 分支名                      | 把指定的分支合并到**当前分支**上 |
