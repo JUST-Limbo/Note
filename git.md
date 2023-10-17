@@ -48,6 +48,7 @@ git config --global user.email 邮箱
 | git checkout --orphan 分支名          | 创建空白分支                     |
 | git merge 分支名                      | 把指定的分支合并到**当前分支**上 |
 | git push --set-upstream origin 分支名 | 将本地新分支推送到远端           |
+| git branch -m 原始名称 新名称         | 重命名本地分支                   |
 
 ### 合并冲突
 
