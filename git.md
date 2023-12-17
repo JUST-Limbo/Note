@@ -148,6 +148,12 @@ git push -f
 git merge --abort
 ```
 
+## 区分文件名大小写
+
+```bash
+git config core.ignorecase false // false区分大小写，true不区分
+```
+
 
 
 ## cherry-pick
