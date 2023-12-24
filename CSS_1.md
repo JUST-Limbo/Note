@@ -969,3 +969,7 @@ fixed
 - `space-between`: 两端对齐，项目之间的间隔相等。
 - `space-around`: 每个项目两侧的间隔相等，所以项目之间的间隔是项目与容器之间间隔的两倍。
 - **`space-evenly`: 项目之间的间隔相等，包括项目与容器之间的间隔。**
+
+## content-visibility
+
+[使用 content-visibility 优化渲染性能 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/528538686)
