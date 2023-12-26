@@ -973,3 +973,29 @@ fixed
 ## content-visibility
 
 [使用 content-visibility 优化渲染性能 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/528538686)
+
+## css阻塞
+
+DOM解析和CSS解析是两个并行的进程
+
+只有link引入的外部css才能够产生阻塞
+
+style样式
+
++ 由html解析器进行解析
++ 不阻塞浏览器渲染
++ 不阻塞DOM解析
+
+link外部样式
+
++ 由CSS解析器进行解析
+
++ 不阻塞DOM的解析
+
++ 阻塞DOM树渲染
+
++ 阻塞其后面的js语句的执行
+
+  **代码中JS语句可能会操作前面的DOM结构从而形成重绘和重排，所以浏览器渲染时，会让js语句的执行放在css执行完成之后，所以css的加载也会造成js语句的执行**
+
+  
