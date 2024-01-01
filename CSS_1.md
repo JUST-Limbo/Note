@@ -998,4 +998,14 @@ link外部样式
 
   **代码中JS语句可能会操作前面的DOM结构从而形成重绘和重排，所以浏览器渲染时，会让js语句的执行放在css执行完成之后，所以css的加载也会造成js语句的执行**
 
-  
+## margin auto
+
+左边距或右边距auto将占据所有“可用”空间，使元素看起来像是向右或向左偏移。
+
+在flex布局中，在水平方向上有空余空间的情况下，空余的空间会被平均分给水平方向上写有 margin-left:auto 属性的元素的外边距
+
+参考资料
+
+[margin-left - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-left)
+
+https://www.bilibili.com/video/BV11c411r7Yu
