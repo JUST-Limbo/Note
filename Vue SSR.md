@@ -26,8 +26,6 @@ https://www.yuque.com/guoba7/xh8mvb/dfrqiq
 
 [5.4.3 SSR的作用及Vue-SSR在网易的实践 (yuque.com)](https://www.yuque.com/guoba7/xh8mvb/dfrqiq#N5D7R)
 
-如何同时开始打包server和client的webpack?
-
 [聊一聊 Vue-SSR 激活失败（Vue hydration fails）-51CTO.COM](https://www.51cto.com/article/701710.html)
 
 [What to do when Vue hydration fails | blog.Lichter.io](https://blog.lichter.io/posts/vue-hydration-error/)

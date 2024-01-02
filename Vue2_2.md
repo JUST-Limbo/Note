@@ -108,76 +108,11 @@ export default {
 
 ```
 
-
-
 ## \$attrs ​\$listeners
 
 `$attrs`表示父组件传给子组件且在子组件中不作为`prop`识别的标签属性（包括静态属性，动态属性，`class`和`style`属性除外）,可以通过`v-bind="$attrs"`传递给更下一级的组件。
 
 `$listeners`包含了父组件给子组件的`v-on`事件监听器（`.native`修饰器修饰的监听器除外）。可以通过`v-on="$listeners"` 传递给更下一级的组件。
-
-
-
-## 事件总线	eventBus
-
-定义一个vue对象作为eventBus，让其代为订阅发布事件，进行通讯。
-
-### 1.定义eventBus文件
-
-```js
-<script>
-export default new Vue({
-  name: 'eventBus',
-  data() {
-    return {
-      // code
-    }
-  }
-})
-</script>
-```
-
-引用eventBus
-
-```js
-import eventBus from './js/bus.vue'; 
-```
-
-### 2.发布（声明）事件
-
-```vue
-created() {  
-    eventBus.$on('getTarget', target => {  
-        console.log(target);  
-    });  
-}  
-```
-
-### 3.订阅（触发）事件
-
-```vue
-methods: {
-   addCart(event) {
-       eventBus.$emit('getTarget', event.target);   
-   }
-}
-```
-
-### 4.移除事件监听器
-
-```vue
-eventBus.$off('getTarget')
-```
-
-### 5.销毁一个实例
-
-```vue
-eventBus.$destroy()
-```
-
-
-
-
 
 ## Vue生命周期
 
