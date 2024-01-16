@@ -21,7 +21,7 @@
 
 将以上代码转换为 CSS 代码，如下所示：
 
-```scss
+```css
 .danger {
   color: red;
   font-size: 25px;
@@ -75,7 +75,7 @@
 
 将以上代码转换为 CSS 代码
 
-```scss
+```css
 .button-basic, .button-report, .button-submit {
   border: none;
   padding: 15px 30px;
@@ -91,6 +91,53 @@
 .button-submit  {
   background-color: green;
   color: white;
+}
+```
+
+## 占位符选择器
+
+Sass 有一种特殊的选择器，称为“占位符”。它看起来和行为很像一个类选择器，但它以%开头，**并且不包含在 CSS 输出中。**
+
+占位符选择器有什么用？它仍然能被继承的！与类选择器不同，在占位符没有被@extend，没有被库用户为 HTML 使用特定的类名，他们就不会把CSS弄得杂乱无章。
+
+```scss
+%toolbelt {
+  box-sizing: border-box;
+  border-top: 1px rgba(#000, .12) solid;
+  padding: 16px 0;
+  width: 100%;
+
+  &:hover { border: 2px rgba(#000, .5) solid; }
+}
+
+.action-buttons {
+  @extend %toolbelt;
+  color: #4285f4;
+}
+
+.reset-buttons {
+  @extend %toolbelt;
+  color: #cddc39;
+}
+```
+
+```css
+.action-buttons, .reset-buttons {
+  box-sizing: border-box;
+  border-top: 1px rgba(0, 0, 0, 0.12) solid;
+  padding: 16px 0;
+  width: 100%;
+}
+.action-buttons:hover, .reset-buttons:hover {
+  border: 2px rgba(0, 0, 0, 0.5) solid;
+}
+
+.action-buttons {
+  color: #4285f4;
+}
+
+.reset-buttons {
+  color: #cddc39;
 }
 ```
 
