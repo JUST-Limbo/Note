@@ -1009,3 +1009,19 @@ link外部样式
 [margin-left - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-left)
 
 https://www.bilibili.com/video/BV11c411r7Yu
+
+## 外边距合并 外边距折叠
+
+普通文档流中块元素的外边距才会发生外边距合并（大值胜出）。行内框、浮动框或绝对定位之间的外边距不会合并。
+
+`display` 设置为 `flex` 或 `grid` 的容器中不会发生外边距折叠。
+
+有三种情况会形成外边距折叠：
+
++ 相邻的同级元素
++ 父元素没有内容（边框（border）、内边距（padding）、行级（inline））将父元素和后代元素分开
++ 如果存在一个空的块级元素，其 border、padding、inline content、height、min-height 都不存在。那么此时它的上下边距中间将没有任何阻隔，此时它的上下外边距将会合并
+
+BFC会阻止元素外边距合并。
+
+[外边距合并 - CSS | MDN (h3399.cn)](http://web.h3399.cn/Mastering_margin_collapsing.htm)
