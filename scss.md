@@ -315,7 +315,7 @@ code {
 
 ```scss
 /* 混入接收两个参数 */
-@mixin bordered($color, $width) {
+@mixin bordered($color, $width:10px) { // 支持默认值语法
   border: $width solid $color;
 }
 
@@ -324,9 +324,50 @@ code {
 }
 
 .myNotes {
-  @include bordered(red, 2px); // 调用混入，并传递两个参数
+  @include bordered(red, 2px);
+}
+// 通过名称传递参数
+@mixin square($size, $radius: 0) {
+  width: $size;
+  height: $size;
+
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+}
+
+.avatar {
+  @include square(100px, $radius: 4px);
 }
 ```
+
+**内容块@content**
+
+```scss
+@mixin hover {
+  &:not([disabled]):hover {
+    @content;
+  }
+}
+
+.button {
+  border: 1px solid black;
+  @include hover {
+    border-width: 2px;
+  }
+}
+```
+
+```css
+.button {
+  border: 1px solid black;
+}
+.button:not([disabled]):hover {
+  border-width: 2px;
+}
+```
+
+
 
 ## @extend 与 继承
 
