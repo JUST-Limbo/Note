@@ -36,6 +36,18 @@ sw-precache-webpack-plugin
 
 register-service-worker
 
+## preload prefetch
+
+preload安排脚本以更高的优先级进行下载和缓存。但它并不加载和执行脚本，需要自己找到合适的地方将其显式嵌入。
+
+```html
+<link rel="preload" href="style.css" as="style" />
+```
+
+![image-20240219171846240](assets/Vue SSR.assets/image-20240219171846240.png)
+
+prefetch此属性标识下一个导航可能需要的资源，浏览器应检索该资源。这允许浏览器在将来请求资源时更快地做出响应。
+
 ## 坑：
 
 1. 重复请求
