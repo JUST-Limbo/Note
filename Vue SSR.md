@@ -36,9 +36,15 @@ sw-precache-webpack-plugin
 
 register-service-worker
 
-## preload prefetch
+## preload prefetch dns-prefetch
 
-preload安排脚本以更高的优先级进行下载和缓存。但它并不加载和执行脚本，需要自己找到合适的地方将其显式嵌入。
+`preload` 用于提前加载用于当前页面的资源，而 `prefetch` 则是用于加载未来（比如下一个页面）会用到的资源。
+
+**preload会提高资源加载优先级，prefetch会降低资源加载优先级。**
+
+**preload**安排脚本以更高的优先级进行下载和缓存。但它并不加载和执行脚本，需要自己找到合适的地方将其显式嵌入。
+
+当指定列恶rel="preload"时，要使用as指定其资源类型
 
 ```html
 <link rel="preload" href="style.css" as="style" />
@@ -46,7 +52,32 @@ preload安排脚本以更高的优先级进行下载和缓存。但它并不加�
 
 ![image-20240219171846240](assets/Vue SSR.assets/image-20240219171846240.png)
 
-prefetch此属性标识下一个导航可能需要的资源，浏览器应检索该资源。这允许浏览器在将来请求资源时更快地做出响应。
+**prefetch**此属性标识下一个导航可能需要的资源，浏览器会认为这个资源目前不会用到，但可能下个页面会用到，于是**会将对应资源的下载优先级降为最低（Lowest）**。
+
+在其他资源加载好了之后，下载队列空闲了，该资源才被下载缓存起来。
+
+```html
+<link rel="prefetch" href="lib/jquery.min.js" as="script">
+```
+
+**dns-prefetch**空闲时间预先对指定域名进行DNS解析，在真正请求该域名下资源时，可以省掉 DNS 查询这一步。
+
+```html
+<link rel="dns-prefetch" href="https://cdn-s1.somecdnsite.com">
+```
+
+应用场景：
+
+- 常用的 cdn 资源所在的域名先连接好
+- 视频不播放，在用户点击播放前，先连上对应域名
+
+**preconnect**不仅进行DNS解析，还预先建立TCP连接（在HTTPS下还会进行TLS握手）。当网页需要加载资源时，连接已经建立，可以立即开始传输数据，从而进一步减少了延迟。通常用于那些需要频繁通信的服务器，如WebSocket服务器。
+
+```html
+<link rel="preconnect" href="https://cdn-s1.somecdnsite.com">
+```
+
+> 通过 preconnect 和别的域建立连接后，应该尽快的使用它，因为浏览器会关闭所有在 10 秒内未使用的连接。不必要的预连接会延迟其他重要资源，因此要限制 preconnect 连接域的数量。
 
 ## 坑：
 
