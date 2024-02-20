@@ -974,6 +974,8 @@ fixed
 
 [使用 content-visibility 优化渲染性能 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/528538686)
 
+[两行CSS让长列表性能渲染提升7倍！ (qq.com)](https://mp.weixin.qq.com/s/9UT4-8GRkOeQbmGH8_X6xg)
+
 ## css阻塞
 
 DOM解析和CSS解析是两个并行的进程
