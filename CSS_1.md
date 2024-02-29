@@ -842,7 +842,7 @@ window.addEventListener('resize', setRemUnit)window.addEventListener('pageshow',
 | 超小屏幕 | 手机 | <768px             |
 | 小屏幕   | 平板 | >=768px && <992px  |
 | 中等屏幕 | PC   | >=992px && <1200px |
-| 大屏幕   | PC   | >=1200px0          |
+| 大屏幕   | PC   | >=1200px           |
 | 超大屏幕 | PC   | >=1680px           |
 
 ```css
@@ -1014,7 +1014,7 @@ https://www.bilibili.com/video/BV11c411r7Yu
 
 ## 外边距合并 外边距折叠
 
-普通文档流中块元素的外边距才会发生外边距合并（大值胜出）。行内框、浮动框或绝对定位之间的外边距不会合并。
+普通文档流中块元素的外边距才会发生外边距合并（**大值胜出**）。行内框、浮动框或绝对定位之间的外边距不会合并。
 
 `display` 设置为 `flex` 或 `grid` 的容器中不会发生外边距折叠。
 
@@ -1027,3 +1027,48 @@ https://www.bilibili.com/video/BV11c411r7Yu
 BFC会阻止元素外边距合并。
 
 [外边距合并 - CSS | MDN (h3399.cn)](http://web.h3399.cn/Mastering_margin_collapsing.htm)
+
+## 滚动条样式
+
+滚动条由轨道和滑块两部分组成
+
++ `::-webkit-scrollbar`定义滚动条整体样式
++ `::-webkit-scrollbar-thumb`滑块部分
++ `::-webkit-scrollbar-track`轨道部分
+
+**实验性属性**
+
++ `scrollbar-color: rebeccapurple green; `将第一种颜色应用于滚动条拇指，第二种颜色应用于滚动条轨道。
++ `scrollbar-width: auto/thin/none;`
+
+```css
+body::-webkit-scrollbar {
+	width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--custom-thumb-color);
+    border-radius: 16px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--custom-track-color);
+    border-radius: 16px;
+}
+
+/* 针对不支持::-webkit-scrollbar-*的浏览器的样式调整 */
+@supports not (selector(::-webkit-scrollbar)) {
+    html {
+        scrollbar-width: auto;
+        scrollbar-color: #bbb #bbb;
+    }
+}
+```
+
+
+
+[scrollbar-color - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scrollbar-color)
+
+[scrollbar-width - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scrollbar-width)
+
+[16 个 CSS @ 规则，一网打尽！ (qq.com)](https://mp.weixin.qq.com/s/qmfxy7Q9UmuHTmIJKDFrjA)

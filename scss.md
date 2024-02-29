@@ -341,7 +341,7 @@ code {
 }
 ```
 
-**内容块@content**
+## **内容块@content**
 
 ```scss
 @mixin hover {
