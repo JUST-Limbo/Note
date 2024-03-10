@@ -49,7 +49,8 @@ git config --global user.email 邮箱
 | git checkout --orphan 分支名          | 创建空白分支                     |
 | git merge 分支名                      | 把指定的分支合并到**当前分支**上 |
 | git push --set-upstream origin 分支名 | 将本地新分支推送到远端           |
-| git branch -m 原始名称 新名称         | 重命名本地分支                   |
+| git branch -m <oldname> <newname>     | 重命名本地分支 **-M**强制执行    |
+| git branch -m <newname>               | 重命名当前活动的分支             |
 
 ### 合并冲突
 
@@ -80,7 +81,7 @@ HEAD 如果指向hotfix，那么我们现在就在hotfix 分支上。
 | 命令                           | 作用                                       |
 | ------------------------------ | ------------------------------------------ |
 | git remote -v                  | 查看                                       |
-| git remote add 别名 远程地址   | 起别名                                     |
+| git remote add <name> <url>    | 起别名                                     |
 | git push 别名 分支             | 将本地分支内容推送到远程仓库               |
 | git clone 远程仓库             | 拉取远程仓库内容到本地                     |
 | git pull 远程仓库别名 远程分支 | 将远程仓库指定分支拉取并与当前本地分支合并 |
