@@ -595,7 +595,43 @@ Person["addr"] // This is Address.
 
 ## namespace
 
-TypeScript与ECMAScript 2015一样，任何包含顶级`import`或者`export`的文件都被当成一个模块。相反地，如果一个文件不带有顶级的`import`或者`export`声明，那么它的内容被视为全局可见的（因此对模块也是可见的）
+TypeScript与ECMAScript 2015一样，任何包含顶级`import`或者`export`的文件都被当成一个模块。相反地，如果一个文件不带有顶级的`import`或者`export`声明，那么它的内容被视为全局可见的（因此对模块也是可见的）。当两个或更多个不同的代码库中的类型名称冲突时，使用命名空间可以帮助避免这个问题。
+
+命名空间中通过`export`将想要暴露的部分导出，如果不用export 导出是无法读取其值的。
+
+```ts
+namespace a {
+    export const Time: number = 1000
+    export const fn = <T>(arg: T): T => {
+        return arg
+    }
+    fn(Time)
+}
+
+namespace b {
+     export const Time: number = 1000
+     export const fn = <T>(arg: T): T => {
+        return arg
+    }
+    fn(Time)
+}
+ 
+a.Time
+b.Time
+```
+
+如果两个或多个命名空间具有相同的名称，并且它们在不同的文件中定义，那么这些命名空间的内容在编译时会进行合并。
+
+**命名空间的简化**
+
+```ts
+import MVLCN = MyVeryLongAndComplexNamespace;  
+  
+let myObject: MVLCN.MyInterface = { /* ... */ };  
+let myInstance = new MVLCN.MyClass(/* ... */);
+```
+
+通过简短的别名`MVLCN`来访问`MyVeryLongAndComplexNamespace`
 
 ## 为js文件提供类型声明
 
