@@ -622,7 +622,7 @@ b.Time
 
 如果两个或多个命名空间具有相同的名称，并且它们在不同的文件中定义，那么这些命名空间的内容在编译时会进行合并。
 
-**命名空间的简化**
+**命名空间的简化**（不常用）
 
 ```ts
 import MVLCN = MyVeryLongAndComplexNamespace;  
@@ -632,6 +632,8 @@ let myInstance = new MVLCN.MyClass(/* ... */);
 ```
 
 通过简短的别名`MVLCN`来访问`MyVeryLongAndComplexNamespace`
+
+[学习TypeScript16（namespace命名空间）_一个文件不带有顶级的import或者export声明,那么它的内容被视为全局可见的-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122544685)
 
 ## 为js文件提供类型声明
 
