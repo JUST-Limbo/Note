@@ -85,7 +85,11 @@ const TARGET = process.env.npm_lifecycle_event;
 
 [node-sass - npm (npmjs.com)](https://www.npmjs.com/package/node-sass)
 
+## .npmrc
 
+```bash
+registry=https://registry.npmmirror.com #指定特定的 registry 来获取依赖
+```
 
 
 
