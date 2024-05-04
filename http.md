@@ -86,16 +86,16 @@ document.cookie = "username=Darren;path=/;domain=.csdn.net"
 
 CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，一方面要服务器同意，指定`Access-Control-Allow-Credentials`字段。（via[跨域资源共享 CORS 详解 - 阮一峰的网络日志 (ruanyifeng.com)](http://www.ruanyifeng.com/blog/2016/04/cors.html)）
 
-> ```http
-> Access-Control-Allow-Credentials: true
-> ```
+```http
+Access-Control-Allow-Credentials: true
+```
 
 另一方面，开发者必须在AJAX请求中打开`withCredentials`属性。
 
-> ```javascript
-> var xhr = new XMLHttpRequest();
-> xhr.withCredentials = true;
-> ```
+```js
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+```
 
 如果要发送Cookie，`Access-Control-Allow-Origin`就不能设为星号，必须指定明确的、与请求网页一致的域名。
 
@@ -104,3 +104,9 @@ CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服
 [cookie的domain属性_cookie domain_545龙哥哥的博客-CSDN博客](https://blog.csdn.net/longgege001/article/details/81274088)
 
 [关于Cookie的知识的总结 - Fogwind - 博客园 (cnblogs.com)](https://www.cnblogs.com/fogwind/p/6890159.html)
+
+## 状态码
+
+301状态码表示永久移动，让客户端请求的资源在未来指向新的URL，且为了避免搜索引擎等数据错误，应该使用301来告知浏览器直接自动访问新URL。一个常见的例子就是网站的 HTTPS 化，服务器接收到 HTTP 请求后会发出301回应，告诉浏览器将页面跳转到HTTPS协议上。
+
+302状态码表示临时移动或者重定向，但后续请求依旧会去请求老的url。

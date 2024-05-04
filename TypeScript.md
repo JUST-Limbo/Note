@@ -643,3 +643,37 @@ let myInstance = new MVLCN.MyClass(/* ... */);
 
 1. 对于type interface等明确是ts类型的可以省略declare
 2. 对于let function等应该使用declare关键字明确指出此处是用于类型声明
+
+## 声明文件d.ts
+
+```ts
+declare var 声明全局变量
+declare function 声明全局方法
+declare class 声明全局类
+declare enum 声明全局枚举类型
+declare namespace 声明（含有子属性的）全局对象
+interface 和 type 声明全局类型
+/// <reference /> 三斜线指令
+```
+
+[学习TypeScript18（声明文件d.ts）_.d.ts refrence-CSDN博客](https://xiaoman.blog.csdn.net/article/details/122558474)
+
+**三斜线指令**
+
+`/// <reference types="..." />`
+
+这个指令用于声明对某个第三方包的类型依赖。
+
+```ts
+/// <reference types="lodash" /> 
+```
+
+`/// <reference path="..." />`
+
+这个指令用于告诉 TypeScript 编译器在编译时包含指定的 TypeScript 声明文件（`.d.ts` 文件）。
+
+这个指令用于告诉 TypeScript 编译器在编译过程中包含其他文件。一个三斜线引用路径是相对于包含它的文件的，如果不是根文件。
+
+[三斜线指令 · TypeScript中文网 · TypeScript——JavaScript的超集 (tslang.cn)](https://www.tslang.cn/docs/handbook/triple-slash-directives.html)
+
+在现代 TypeScript 开发中，由于模块解析和配置文件的改进（如 `tsconfig.json`），许多传统的 `/// <reference ... />` 指令的使用已经减少或不再必要。
