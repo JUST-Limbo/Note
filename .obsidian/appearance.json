@@ -1,4 +1,8 @@
 {
   "theme": "system",
-  "cssTheme": "Yin and Yang"
+  "cssTheme": "Typora-Vue",
+  "nativeMenus": true,
+  "accentColor": "",
+  "baseFontSize": 16,
+  "interfaceFontFamily": "Microsoft YaHei"
 }
