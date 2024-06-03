@@ -404,20 +404,7 @@ normal
 6. css-table
 
 ```html
-<style>
-.wp {
-    line-height: 300px;
-    text-align: center;
-    font-size: 0px;
-}
-.box {
-    font-size: 16px;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: initial;
-    text-align: left; /* 修正文字 */
-}
-</style><div class="wp">
+<div class="wp">
     <div class="box">123123</div>
 </div>
 <style>
@@ -448,6 +435,24 @@ normal
 ```
 
 8. grid
+
+```css
+.wp {
+    display: grid;
+}
+.box {
+    align-self: center;
+    justify-self: center;
+}
+
+```
+
+9. flex
+
+```css
+.f{display: flex;height: 400px;width: 400px;background: red;}
+.s{margin: auto;height: 50px;width: 50px;background: #fff;}
+```
 
 
 
