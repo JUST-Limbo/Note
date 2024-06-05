@@ -30,7 +30,7 @@ async function asyncPrint(value, ms) {
   await timeout(ms);
   console.log(value);
 }
-
+1
 asyncPrint('hello world', 50)
 ```
 
@@ -62,3 +62,44 @@ async function logInOrder(urls) {
   }
 }
 ```
+
+## forEach和async
+
+```js
+function dbFuc(db) { //这里不需要 async
+  let docs = [{}, {}, {}];
+  // 可能得到错误结果
+  docs.forEach(async function (doc) {
+    await db.post(doc);
+  });
+}
+```
+
+map/forEach**内部使用了while结合callback方式来执行函数，await不会等待callback的执行**
+
+map/forEach是简单的执行下回调函数，并不会处理异步的情况。
+
+forEach内部的迭代器在回调执行时并没有`await cb(arr[index])`，因此回调几乎是同时执行。
+
+类似于
+
+```js
+while(index <arr.length) { 
+    callback(item,index)
+    index++
+}
+```
+
+[为什么await在forEach/map中不生效？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/566467454)
+
+上面代码可能不会正常工作，原因是这时三个`db.post()`操作将是并发执行，也就是同时执行，而不是继发执行。正确的写法是采用`for`循环。
+
+```js
+async function dbFuc(db) {
+  let docs = [{}, {}, {}];
+  for (let doc of docs) {
+    await db.post(doc);
+  }
+}
+```
+
