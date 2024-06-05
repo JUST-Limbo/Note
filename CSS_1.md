@@ -60,7 +60,7 @@ p:before {
 
 ## :nth-of-type :nth-child
 
-`ele:nth-of-type(n)`表示在`ele`父元素下选择第n个`ele`元素
+`ele:nth-of-type(n)`表示在`ele`父元素下选择第n个`ele`元素，同时要满足匹配的规则，且和标签类型有关
 
 `ele:nth-child(n)`表示在`ele`父元素下第n个子元素
 
