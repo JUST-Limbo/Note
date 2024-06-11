@@ -10,6 +10,9 @@ Cross Site Request Forgery 跨站请求伪造
 + 尽量post（不能完全防住）
 + 验证referer
 + Anti CSRF Token
++ 使用没登录过的浏览器打开不明网址
++ 及时退出使cookie失效
++ sanmesite=lax
 
 > referer首部，如果通过浏览器发起的请求，是无法伪造的，referer首部是禁止修改首部，浏览器自动设置的，通过js代码设置无效
 
