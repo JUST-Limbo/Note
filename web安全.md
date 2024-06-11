@@ -1,6 +1,6 @@
 ## CSRF
 
-Cross Site Request Forgery
+Cross Site Request Forgery 跨站请求伪造
 
 是一种冒充受信任用户，**向服务器发送非预期请求**的攻击方式。（并不一定要进入页面，而是直接从来浏览器地址栏发起get请求）
 
@@ -14,6 +14,8 @@ Cross Site Request Forgery
 > referer首部，如果通过浏览器发起的请求，是无法伪造的，referer首部是禁止修改首部，浏览器自动设置的，通过js代码设置无效
 
 ## xss攻击
+
+Cross-site scripting 跨站脚本
 
 指攻击者通过注入恶意HTML、JS脚本到网页中，当用户浏览网页时执行恶意代码，从而实施攻击的过程。
 
