@@ -139,6 +139,16 @@ git reset --hard <commit id>
 git push -f
 ```
 
+**强制将本地代码库重置为远程分支的最新版本**
+
+```bash
+git reset --hard origin/<branch-name>
+```
+
+
+
+
+
 参考资料
 
 [Git Reset 三种模式 - 简书 (jianshu.com)](https://www.jianshu.com/p/c2ec5f06cf1a)
