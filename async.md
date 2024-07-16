@@ -84,7 +84,7 @@ forEach内部的迭代器在回调执行时并没有`await cb(arr[index])`，因
 类似于
 
 ```js
-while(index <arr.length) { 
+while(index <arr.length) {
     callback(item,index)
     index++
 }
@@ -102,4 +102,3 @@ async function dbFuc(db) {
   }
 }
 ```
-
