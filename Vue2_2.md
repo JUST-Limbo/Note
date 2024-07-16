@@ -82,7 +82,7 @@ Vuex 和 provide/inject 最大的区别在于，Vuex 中的全局状态的每次
 // 根组件提供将自身提供给后代组件
 export default {
   provide () {
-    return { 
+    return {
       app: this
     }
   },
@@ -339,7 +339,7 @@ created(){
    ```vue
    // Parent.vue
    <Child @mounted="doSomething"/>
-       
+
    // Child.vue
    mounted() {
      this.$emit("mounted");
@@ -351,30 +351,17 @@ created(){
    ```vue
    //  Parent.vue
    <Child @hook:mounted="doSomething" ></Child>
-   
+
    doSomething() {
       console.log('父组件监听到 mounted 钩子函数 ...');
    },
-       
+
    //  Child.vue
    mounted(){
       console.log('子组件触发 mounted 钩子函数 ...');
-   },    
-       
+   },
+
    // 以上输出顺序为：
    // 子组件触发 mounted 钩子函数 ...
    // 父组件监听到 mounted 钩子函数 ...
    ```
-
-
-
-
-
-
-
-
-
-
-
-
-
