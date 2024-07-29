@@ -1079,3 +1079,24 @@ body::-webkit-scrollbar-track {
 [scrollbar-width - CSS：层叠样式表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scrollbar-width)
 
 [16 个 CSS @ 规则，一网打尽！ (qq.com)](https://mp.weixin.qq.com/s/qmfxy7Q9UmuHTmIJKDFrjA)
+
+## 设置DOM元素的内联样式
+
+```js
+// 获取元素  
+var element = document.getElementById("myElement");  
+// 设置样式  
+element.style.color = "red";  
+element.style.fontSize = "16px";
+
+element.style.cssText = "color: red; font-size: 16px; background-color: yellow;";
+
+element.style.setProperty("color", "red", "important");  
+element.style.setProperty("font-size", "16px");
+
+element.style.removeProperty("color");
+
+element.setAttribute("style", "color: red; font-size: 16px;");
+
+```
+
