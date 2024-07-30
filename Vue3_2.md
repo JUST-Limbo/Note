@@ -38,3 +38,9 @@ watchEffect(async () => {
 ```
 
 **如果你需要侦听一个嵌套数据结构中的几个属性，`watchEffect()` 可能会比深度侦听器更有效，因为它将只跟踪回调中被使用到的属性，而不是递归地跟踪所有的属性。**
+
+## watchEffect和watch
+
+watchEffect不需要显式指明所监听的数据。
+
+watchEffect会立即执行一次，在依赖数据变化时再次执行。watch只在所监测数据变化时执行。
