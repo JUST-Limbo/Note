@@ -44,3 +44,73 @@ watchEffect(async () => {
 watchEffect不需要显式指明所监听的数据。
 
 watchEffect会立即执行一次，在依赖数据变化时再次执行。watch只在所监测数据变化时执行。
+
+## vue视图更新为什么是异步的，nextTick的实现
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <button id="btn">count++</button>
+            <div id="el"></div>
+        </div>
+        <script>
+            const el = document.querySelector('#el');
+            const btn = document.querySelector('#btn');
+            function effect(fn) {
+                activeEffect = fn;
+                fn();
+                activeEffect = null;
+            }
+            let activeEffect = null;
+            const set = new Set();
+
+            const tasks = new Set();
+            function runTasks() {
+                Promise.resolve().then(() => {
+                    tasks.forEach((task) => task());
+                    tasks.clear();
+                });
+            }
+
+            const count = {
+                _value: 0,
+                get value() {
+                    activeEffect && set.add(activeEffect);
+                    return this._value;
+                },
+                set value(val) {
+                    this._value = val;
+                    set.forEach((cb) => tasks.add(cb));
+                    runTasks();
+                },
+            };
+            effect(() => {
+                el.innerText = count.value;
+            });
+            function nextTick(cb) {
+                Promise.resolve().then(cb);
+            }
+            btn.addEventListener('click', () => {
+                count.value++;
+                count.value++;
+                console.log(el.innerText); // 取不到最新的值
+                nextTick(() => {
+                    console.log(el.innerText);
+                });
+            });
+        </script>
+    </body>
+</html>
+
+```
+
+参考资料
+
++ 【vue 的异步更新原理和 nextTick 的实现】 https://www.bilibili.com/video/BV1xwpme4EJk/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
