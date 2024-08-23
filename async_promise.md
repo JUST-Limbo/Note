@@ -102,3 +102,45 @@ async function dbFuc(db) {
   }
 }
 ```
+
+## async异常处理
+
+```js
+/**  
+ * @param {Promise} promise  
+ * @param {Object=} errorExt - Additional Information you can pass to the err object  
+ * @return {Promise}  
+ */  
+export function to(promise, errorExt) {  
+  return promise  
+    .then((data) => [null, data])  
+    .catch((err) => {  
+      if (errorExt) {  
+        const parsedError = Object.assign({}, err, errorExt);  
+        return [parsedError, undefined];  
+      }  
+  
+      return [err, undefined];  
+    });  
+}  
+// 简版的实现
+export default function to(promise) {
+   return promise.then(data => {
+      return [null, data];
+   })
+   .catch(err => [err]);
+}
+
+  
+export default to;
+
+async function asyncFunctionWithThrow() {
+  const [err, user] = await to(UserModel.findById(1));
+  if (!user) throw new Error('User not found');
+}
+
+```
+
+参考资料
+
+[使用await-to-js优雅地解决使用await等待的promise的异常处理 promise中reject的信息要用 - 掘金 (juejin.cn)](https://juejin.cn/post/7076243357256646663)
