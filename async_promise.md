@@ -213,3 +213,12 @@ Promise.myAll = function (proms) {
 参考资料
 
 【手写 Promise.all【渡一教育】】 https://www.bilibili.com/video/BV1mG411178Y/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
+
+## Promise.withResolvers
+
+**`Promise.withResolvers()`** 静态方法返回一个对象，其包含一个新的 [`Promise`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 对象和两个函数，用于解决或拒绝它，对应于传入给 [`Promise()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) 构造函数执行器的两个参数。
+
+```js
+const { promise, resolve, reject } = Promise.withResolvers();
+```
+
