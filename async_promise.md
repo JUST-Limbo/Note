@@ -144,3 +144,72 @@ async function asyncFunctionWithThrow() {
 参考资料
 
 [使用await-to-js优雅地解决使用await等待的promise的异常处理 promise中reject的信息要用 - 掘金 (juejin.cn)](https://juejin.cn/post/7076243357256646663)
+
+
+
+## 面试题
+
+```js
+Promise.resolve().then(() => {
+  console.log(0);
+  return Promise.resolve(4)
+}).then(res => {
+  console.log(res)
+})
+
+Promise.resolve().then(() => {
+  console.log(1);
+}).then(() => {
+  console.log(2);
+}).then(() => {
+  console.log(3);
+}).then(() => {
+  console.log(5);
+}).then(() =>{
+  console.log(6);
+})
+
+// 输出：0 1 2 3 4 5 6
+```
+
+参考资料
+
+【难度拉满的Promise魔鬼面试题【渡一教育】】 https://www.bilibili.com/video/BV1Nh4y127EM/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
+
+## Promise.all实现
+
+```js
+Promise.myAll = function (proms) {
+    let res, rej;
+    const p = new Promise((resolve, reject) => {
+        res = resolve;
+        rej = reject;
+    });
+
+    let result = [];
+    let count = 0;
+    let fullfilledCount = 0;
+    let i = 0;
+    for (const prom of proms) {
+        let index = i;
+        i++;
+        count++;
+        Promise.resolve(prom).then((data) => {
+            result[index] = data;
+            fullfilledCount++;
+            if (fullfilledCount == count) {
+                res(result);
+            }
+        }, rej);
+        if (count == 0) {
+            res(result);
+        }
+    }
+    return p;
+};
+
+```
+
+参考资料
+
+【手写 Promise.all【渡一教育】】 https://www.bilibili.com/video/BV1mG411178Y/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
