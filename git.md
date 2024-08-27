@@ -42,7 +42,7 @@ git config --global user.email 邮箱
 | git branch                            | 列出当前分支清单                 |
 | git branch -v                         | 查看各个分支最后一个提交信息     |
 | git branch --delete 分支名            | 删除本地分支                     |
-| git branch -D 分支名                  |                                  |
+| git branch -D 分支名                  | 强制删除                         |
 | git push origin --delete 分支名       | 删除远程分支                     |
 | git push origin :分支名               | (分支名前的冒号代表删除)         |
 | git checkout 分支名                   | 切换分支                         |
@@ -85,6 +85,9 @@ HEAD 如果指向hotfix，那么我们现在就在hotfix 分支上。
 | git push 别名 分支             | 将本地分支内容推送到远程仓库               |
 | git clone 远程仓库             | 拉取远程仓库内容到本地                     |
 | git pull 远程仓库别名 远程分支 | 将远程仓库指定分支拉取并与当前本地分支合并 |
+| git fetch --prune              | 更新本地的远程跟踪分支列表，--prune        |
+
+[git以及sourcetree使用问题（一） - gongziyiyi - 博客园 (cnblogs.com)](https://www.cnblogs.com/gongziyiyi/p/11012662.html)
 
 本地有仓库，远程仓库无内容
 
@@ -93,6 +96,7 @@ git add *
 git commit -m '提交的信息'
 git remote add origin https://github.com/JUST-Limbo/Note.git
 git push origin 分支名(默认只有一个master分支)
+git push -all origin 将所有分支推送到仓库
 ```
 
 注意：push是将本地库代码推送到远程库，如果本地库代码跟远程库代码版本不一致，push的操作是会被拒绝的。也就是说， 要想 push成功，一定要保证本地库的版本要比远程库的版本高！ 因此一个成熟的程序员在动手改本地代码之前，一定会先检查下远程库跟本地代码的区别！如果本地的代码版本已经落后，切记要先 pull拉取一下远程库的代码，将本地代码更新到最新以后，然后再修改，提交，推送
