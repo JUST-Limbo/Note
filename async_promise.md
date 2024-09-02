@@ -103,6 +103,14 @@ async function dbFuc(db) {
 }
 ```
 
+`forEach()` 不会改变其调用的数组，但是，作为 `callbackFn` 的函数可以更改数组。请注意，在第一次调用 `callbackFn` *之前*，数组的长度已经被保存。因此：
+
+- 当调用 `forEach()` 时，`callbackFn` 不会访问超出数组初始长度的任何元素。
+- 已经访问过的索引的更改不会导致 `callbackFn` 再次调用它们。
+- 如果 `callbackFn` 更改了数组中已经存在但尚未访问的元素，则传递给 `callbackFn` 的值将是在访问该元素时的值。已经被[删除](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete)的元素不会被访问。
+
+[Array.prototype.forEach() - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+
 ## async异常处理
 
 ```js

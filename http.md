@@ -22,8 +22,6 @@
 
 两类缓存规则可以同时存在，强制缓存优先级高于协商缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行协商缓存规则。
 
-
-
 ### expires
 
 服务器和浏览器以GMT格式标准时间约定文件过期时间，用expires字段控制。下次请求时，请求时间小于服务端返回的到期时间则直接使用缓存（没有走到服务端）。
@@ -33,6 +31,10 @@
 1. 缓存过期后，不论目标文件是否产生过变化，都会再次读取目标文件并返回到浏览器
 2. 服务器和浏览器时间可能不同步，缓存使用不精准
 
+```http
+Expires: Sun, 20 Apr 2024 12:00:00 GMT
+```
+
 ### Cache-Control
 
 | 字段值   | 作用                                                         |
@@ -40,12 +42,44 @@
 | no-cache | 防止从缓存中返回过期的资源，所以使用之前，需要和源服务器发起请求比对过期时间 |
 | no-store | 这个指令才是真正的不进行缓存，暗示请求报文中可能含有机密信息，不可缓存 |
 | max-age  | 在指定时间内（单位秒），缓存服务器不再对资源的有效性进行确认，可以使用 |
-| private  | 只有某个在通过缓存服务器的时候，得到缓存资源                 |
-| public   | 所有的用户在通过缓存服务器的时候，都可以缓存这个资源。       |
+| private  | 可缓存性指令，只有某个在通过缓存服务器的时候，得到缓存资源   |
+| public   | 可缓存性指令，所有的用户在通过缓存服务器的时候，都可以缓存这个资源。 |
 
 针对浏览器和服务器时间不同步，加入了新的缓存方案；这次服务器不是直接告诉浏览器过期时间，而是告诉一个相对时间`max-age=10`，意思是10秒内，直接使用浏览器缓存。
 
+`Cache-Control`可以使用多个指令，以逗号分隔。
+
+客户端可以在 HTTP 请求中使用的标准 Cache-Control 指令。
+
+```http
+Cache-Control: max-age=<seconds>
+Cache-Control: max-stale[=<seconds>]
+Cache-Control: min-fresh=<seconds>
+Cache-control: no-cache
+Cache-control: no-store
+Cache-control: no-transform
+Cache-control: only-if-cached
+```
+
+服务器可以在响应中使用的标准 Cache-Control 指令。
+
+```http
+Cache-control: must-revalidate
+Cache-control: no-cache
+Cache-control: no-store
+Cache-control: no-transform
+Cache-control: public
+Cache-control: private
+Cache-control: proxy-revalidate
+Cache-Control: max-age=<seconds>
+Cache-control: s-maxage=<seconds>
+```
+
 ![cache-control](assets/http.assets/16531214de157f88~tplv-t2oaga2asx-watermark.awebp)
+
+参考资料
+
+[Cache-Control - HTTP | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
 
 ### Last-Modified / If-Modified-Since
 
