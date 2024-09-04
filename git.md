@@ -101,6 +101,17 @@ git push -all origin 将所有分支推送到仓库
 
 注意：push是将本地库代码推送到远程库，如果本地库代码跟远程库代码版本不一致，push的操作是会被拒绝的。也就是说， 要想 push成功，一定要保证本地库的版本要比远程库的版本高！ 因此一个成熟的程序员在动手改本地代码之前，一定会先检查下远程库跟本地代码的区别！如果本地的代码版本已经落后，切记要先 pull拉取一下远程库的代码，将本地代码更新到最新以后，然后再修改，提交，推送
 
+本地仓库已经被追踪，切换远程仓库地址
+
+```bash
+git remote set-url origin https://newrepository.url/repo.git
+git push origin --tags
+git push -u origin --all // 将本地所有分支推送到远程仓库
+
+```
+
+
+
 ## 跨团队协作
 
 ![image-20220312234418753](assets/git.assets/image-20220312234418753.png)
