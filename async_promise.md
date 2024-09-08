@@ -209,9 +209,9 @@ Promise.myAll = function (proms) {
                 res(result);
             }
         }, rej);
-        if (count == 0) {
-            res(result);
-        }
+    }
+    if (count == 0) {
+        res(result);!
     }
     return p;
 };
@@ -221,6 +221,14 @@ Promise.myAll = function (proms) {
 参考资料
 
 【手写 Promise.all【渡一教育】】 https://www.bilibili.com/video/BV1mG411178Y/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
+
+Promise.resolve
+
+如果参数是 Promise 实例，那么`Promise.resolve`将不做任何修改、原封不动地返回这个实例。
+
+如果参数是一个原始值，或者是一个不具有`then()`方法的对象，则`Promise.resolve()`方法返回一个新的 Promise 对象，状态为`resolved`。`Promise.resolve()`方法的参数，会同时传给回调函数。
+
+`Promise.resolve()`方法允许调用时不带参数，直接返回一个`resolved`状态的 Promise 对象。
 
 ## Promise.withResolvers
 

@@ -51,6 +51,7 @@ git config --global user.email 邮箱
 | git push --set-upstream origin 分支名 | 将本地新分支推送到远端           |
 | git branch -m <oldname> <newname>     | 重命名本地分支 **-M**强制执行    |
 | git branch -m <newname>               | 重命名当前活动的分支             |
+| git config --list --local             | 获取当前Git仓库的配置信息        |
 
 ### 合并冲突
 

@@ -488,3 +488,52 @@ xxx/background.scss:8 DEBUG: divider offset: 5px
 @at-root<selector>{...}
 ```
 
+## @function
+
+```scss
+ @function double($n){
+     @return $n*2
+ }
+ .content {
+     width: double(100px);
+     height: 30px * 3;
+     border: 1px solid red;
+ }
+```
+
+## map-get
+
+map-get($map,$key) 函数的作用是根据 $key 参数，返回 $key 在 $map 中对应的 value 值。如果 $key 不存在 $map中，将返回 null 值。
+
+```scss
+$social-colors: ( dribble: #ea4c89, facebook: #3b5998, github: #171515, google: #db4437, twitter: #55acee );
+.btn-dribble{ color: map-get($social-colors,facebook); } 
+```
+
+## @each
+
+```scss
+$sizes: 40px, 50px, 80px;
+
+@each $size in $sizes {
+  .icon-#{$size} {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+}
+```
+
+You can also use `@each` to iterate over every key/value pair in a map by writing it `@each <variable>, <variable> in <expression> { ... }`. The key is assigned to the first variable name, and the element is assigned to the second.
+
+```scss
+$icons: ("eye": "\f112", "start": "\f12e", "stop": "\f12f");
+
+@each $name, $glyph in $icons {
+  .icon-#{$name}:before {
+    display: inline-block;
+    font-family: "Icon Font";
+    content: $glyph;
+  }
+}
+```
