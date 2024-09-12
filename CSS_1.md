@@ -902,7 +902,9 @@ window.addEventListener('resize', setRemUnit)window.addEventListener('pageshow',
 
 [css vertical-align你真的很了解嘛？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/28626505)
 
-[带你探索神秘的“幽灵空白节点” - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/391118319)s
+[带你探索神秘的“幽灵空白节点” - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/391118319)
+
+【CSS精讲12集 精深、复杂但很重要的vertical-align属性】 https://www.bilibili.com/video/BV17M4m117Xj/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
 
 ## flex
 
