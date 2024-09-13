@@ -22,8 +22,6 @@ div {
 
 上面代码指定`div`是一个行内元素，该元素内部采用网格布局。
 
-
-
 ### grid-template-columns
 
 ### grid-template-rows
@@ -47,7 +45,7 @@ div {
 
 **（1）repeat()**
 
-有时候，重复写同样的值非常麻烦，尤其网格很多时。这时，可以使用`repeat()`函数，简化重复的值。上面的代码用`repeat()`改写如下。
+可以使用`repeat()`函数，简化重复的值。
 
  ```css
 .container {

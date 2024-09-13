@@ -5,3 +5,5 @@
 [基于vw等viewport视区单位配合rem响应式排版和布局 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/)
 
 [让CSS flex布局最后一行列表左对齐的N种方法 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2019/08/css-flex-last-align/)
+
+[图片加载失败后CSS样式处理最佳实践 « 张鑫旭-鑫空间-鑫生活 (zhangxinxu.com)](https://www.zhangxinxu.com/wordpress/2020/10/css-style-image-load-fail/)
