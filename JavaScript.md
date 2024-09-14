@@ -450,4 +450,20 @@ http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html
 
 
 
-## 
+## forin和forof
+
+`forin`用于遍历对象的键，`forof`用于遍历对象键的值。
+
+`for...in`用于遍历对象的可枚举属性键名，会遍历对象继承（原型链）的属性。输出顺序不确定，一般先排序输出非负整数键，其次按定义顺序输出其他键。
+
+`for...of`循环用于遍历可迭代对象的值，而不是键名。
+
+Symbol 值作键名时，不可遍历。
+
+## 判断属性是否存在
+
+Object.keys 对象自有的可枚举属性
+
+obj.hasOwnProperty(key) 对象自有属性
+
+key in obj 对象自有属性+原型链上的属性
