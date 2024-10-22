@@ -98,6 +98,18 @@ Cache-control: s-maxage=<seconds>
 
 ![img](assets/http.assets/16a8c60fb0ef49f0~tplv-t2oaga2asx-watermark.awebp)
 
+通常在缓存在下发浏览器时，`cache-control` `Etag` `Last-Modified`三个字段都会带上。
+
+在地址栏输入URL访问资源时强缓存会失效，协商缓存有效。
+
+如果资源由网页中代码加载，则遵循强缓存和协商缓存策略。
+
+![QQ_1727280098117](C:\code\Note\assets\QQ_1727280098117.png)
+
+参考链接：
+
+【前端浏览器缓存手把手教程】 https://www.bilibili.com/video/BV1r24y127M3/?share_source=copy_web&vd_source=dc1323228f1470bd561672c18d78adf3
+
 ## Cookie
 
 每个域名下的cookie 的大小最大为4KB
