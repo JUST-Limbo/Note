@@ -1,5 +1,46 @@
 # NuxtJS
 
+## 安装初始化
+
+### raw.githubusercontent.com镜像错误
+
+[网站IP查询_IP反查域名_同IP网站查询 - 站长工具](https://tool.chinaz.com/same/raw.githubusercontent.com)
+
+查询对应域名的IP，调整hosts文件，目录`c:\windows\system32\drivers\etc`
+```bash
+185.199.111.133 raw.githubusercontent.com
+185.199.109.133 raw.githubusercontent.com
+185.199.110.133 raw.githubusercontent.com
+185.199.108.133 raw.githubusercontent.com
+```
+
+### SAOError: Failed to install packages in XXX
+
+忽略报错，直接进行初始化
+
+```bash
+npm i
+npm run dev
+```
+
+###  The requested module 'node:events' does not provide an export named 'addAbortListener'
+
+通常是node版本问题
+
+```bash
+nvm use 20.17.0
+#或
+npm init nuxt-app@2 nuxtdemo
+```
+
+
+
+参考资料：
+
+[Nuxt无法初始化项目（极速版） - 知乎](https://zhuanlan.zhihu.com/p/695734748)
+
+[Nuxt2 创建项目中的问题_saoerror: failed to install packages in-CSDN博客](https://blog.csdn.net/gjzzhjuer51129/article/details/136701522)
+
 ## SSR脱水 喝水的概念
 
 [React SSR中的hydrate是什么意思？ | 黯羽轻扬 (ayqy.net)](http://www.ayqy.net/blog/ssr-hydrate/)
