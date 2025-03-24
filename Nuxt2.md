@@ -29,8 +29,6 @@ npm run dev
 
 ```bash
 nvm use 20.17.0
-#或
-npm init nuxt-app@2 nuxtdemo
 ```
 
 
