@@ -1045,14 +1045,13 @@ BFC会阻止元素外边距合并。
 + `::-webkit-scrollbar-thumb`滑块部分
 + `::-webkit-scrollbar-track`轨道部分
 
-**实验性属性**
-
 + `scrollbar-color: rebeccapurple green; `将第一种颜色应用于滚动条拇指，第二种颜色应用于滚动条轨道。
 + `scrollbar-width: auto/thin/none;`
 
 ```css
 body::-webkit-scrollbar {
-	width: 8px;
+	width: 8px; // 控制垂直滚动条宽度
+    height: 8px; // 控制水平滚动条高度
 }
 
 body::-webkit-scrollbar-thumb {
@@ -1073,6 +1072,24 @@ body::-webkit-scrollbar-track {
     }
 }
 ```
+
+```scss
+&::-webkit-scrollbar {
+    width: 4px; /* 垂直滚动条的宽度 */
+    height: 4px; /* 水平滚动条的高度 */
+}
+
+/* 或者更明确地分别设置 */
+&::-webkit-scrollbar-vertical {
+    width: 4px;
+}
+
+&::-webkit-scrollbar-horizontal {
+    height: 4px;
+}
+```
+
+
 
 
 

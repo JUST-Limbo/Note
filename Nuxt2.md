@@ -33,6 +33,12 @@ nvm use 20.17.0
 
 
 
+### 创建nuxt2项目
+
+```bash
+npm init nuxt-app@2 <project-name>
+```
+
 参考资料：
 
 [Nuxt无法初始化项目（极速版） - 知乎](https://zhuanlan.zhihu.com/p/695734748)
