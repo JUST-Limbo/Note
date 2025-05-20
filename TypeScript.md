@@ -635,6 +635,58 @@ let myInstance = new MVLCN.MyClass(/* ... */);
 
 [学习TypeScript16（namespace命名空间）_一个文件不带有顶级的import或者export声明,那么它的内容被视为全局可见的-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122544685)
 
+
+
+如果命名空间是在**全局作用域**下声明（不在模块文件中），则可以直接使用而不需要导入
+
+```ts
+// 在非模块文件中（没有 import/export 的文件）
+namespace MyGlobalNamespace {
+    export function hello() {
+        return "Hello world!";
+    }
+}
+
+// 可以直接使用
+MyGlobalNamespace.hello(); // 不需要导入
+```
+
+如果命名空间是在**模块文件**中定义（文件包含 import/export），则需要先导入
+
+```ts
+// utils.ts（模块文件，因为有 export）
+export namespace MyUtils {
+    export function log(message: string) {
+        console.log(message);
+    }
+}
+
+// 其他文件中使用时需要导入
+import { MyUtils } from './utils';
+MyUtils.log("This requires import");
+```
+
+判断是否需要导入的规则
+
+1. **文件是否是模块**：
+
+   - 如果文件中有任何 `import` 或 `export` 语句，它就是模块
+   - 模块中的命名空间需要导入后才能使用
+
+2. 编译器配置影响：
+
+   ```json
+   {
+     "compilerOptions": {
+       "module": "commonjs" // 或 ES6/ES2015 等，会强制所有文件为模块
+     }
+   }
+   ```
+
+   如果配置了模块系统，所有文件都被视为模块，命名空间都需要导入
+
+是否需要导入命名空间取决于它是否在模块中定义，现代 TypeScript 项目通常所有文件都是模块，因此大多数情况下需要导入命名空间。
+
 ## 为js文件提供类型声明
 
 导入`.js`文件时，TS会自动加载与其文件同名的`.d.ts`文件，以提供类型声明
