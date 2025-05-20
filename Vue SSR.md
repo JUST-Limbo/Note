@@ -44,7 +44,7 @@ register-service-worker
 
 **preload**安排脚本以更高的优先级进行下载和缓存。但它并不加载和执行脚本，需要自己找到合适的地方将其显式嵌入。
 
-当指定列恶rel="preload"时，要使用as指定其资源类型
+当指定rel="preload"时，要使用as指定其资源类型
 
 ```html
 <link rel="preload" href="style.css" as="style" />
