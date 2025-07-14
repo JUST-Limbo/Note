@@ -65,6 +65,13 @@ pnpm config set registry https://registry.npmmirror.com
 npm config set registry https://registry.npmjs.org
 ```
 
+查看当前设置
+
+```bash
+npm config list
+yarn config list
+```
+
 获取当前设置的镜像地址
 
 ```bash
@@ -104,3 +111,6 @@ registry=https://registry.npmmirror.com #指定特定的 registry 来获取依�
 
 
 
+## yarn 安装依赖 报 error Error: certificate has expired
+
+删除yarn.lock后再试
