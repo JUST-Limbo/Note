@@ -156,3 +156,12 @@ console.log(d.outerHTML);
 */
 ```
 
+## window.innerWidth
+
+返回以像素为单位的窗口的内部宽度。**如果垂直滚动条存在，则这个属性将包括它的宽度**。
+
+如果你需要获取除去滚动条和边框的窗口宽度，请使用根元素`document.documentElement` 的[`clientWidth`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientWidth) 属性。
+
+## Element.clientWidth
+
+在根元素（`<html>` 元素）或怪异模式下的 `<body>` 元素上使用 `clientWidth` 时，该属性将返回视口宽度（不包含任何滚动条）。
